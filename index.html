@@ -83,9 +83,9 @@ nav.scrolled{box-shadow:var(--shadow-medium);height:76px}
 .new-collection-btn{background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.3);color:var(--white);padding:0.6rem 1.4rem;border-radius:100px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all 0.3s;text-decoration:none}
 .new-collection-btn:hover{background:rgba(255,255,255,0.25);transform:translateY(-2px)}
 
-.hero{min-height:100vh;padding-top:200px;position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;align-items:center;max-width:1440px;margin:0 auto}
+.hero{min-height:85vh;padding-top:180px;position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;align-items:center;max-width:1440px;margin:0 auto}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(89,193,212,0.08) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(196,151,90,0.06) 0%,transparent 50%);pointer-events:none;z-index:0}
-.hero-content{padding:4rem 3rem 4rem 4rem;position:relative;z-index:1;animation:slideUpHero 1s ease-out 0.6s both}
+.hero-content{padding:2rem 3rem 2rem 4rem;position:relative;z-index:1;animation:slideUpHero 1s ease-out 0.6s both}
 .hero-badge{display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg,rgba(89,193,212,0.15),rgba(196,151,90,0.1));border:1px solid rgba(89,193,212,0.25);padding:0.6rem 1.4rem;border-radius:100px;margin-bottom:1.5rem;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--navy-light);font-weight:600;backdrop-filter:blur(10px);animation:fadeInStagger 0.8s ease 1s both}
 .hero-badge-dot{width:8px;height:8px;background:var(--teal);border-radius:50%;animation:pulse-glow 2s infinite}
 
@@ -108,7 +108,7 @@ nav.scrolled{box-shadow:var(--shadow-medium);height:76px}
 .btn-business:hover::before{left:100%}
 .btn-business:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(196,151,90,0.4)}
 
-.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(45,31,94,0.08);animation:fadeInStagger 0.8s ease 1.8s both}
+.hero-stats{display:flex;gap:2.5rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(45,31,94,0.08);animation:fadeInStagger 0.8s ease 1.8s both}
 .stat-item{display:flex;flex-direction:column;gap:0.3rem}
 .stat-num{font-family:'Space Grotesk',sans-serif;font-size:2.8rem;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-0.02em}
 .stat-label{font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);font-weight:500}
@@ -129,14 +129,14 @@ nav.scrolled{box-shadow:var(--shadow-medium);height:76px}
 .hero-floating-card .card-text strong{font-size:1.05rem;color:var(--dark)}
 .hero-floating-card .card-text span{font-size:0.85rem;color:var(--gray)}
 
-.trust-bar{background:linear-gradient(90deg,var(--navy),var(--navy-light));padding:1.4rem 2rem;position:relative;z-index:10}
+.trust-bar{background:linear-gradient(90deg,var(--navy),var(--navy-light));padding:1rem 2rem;position:relative;z-index:10}
 .trust-bar-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap}
 .trust-item{display:flex;align-items:center;gap:0.8rem;color:rgba(255,255,255,0.9);font-size:1rem;font-weight:500}
 .trust-item svg{width:24px;height:24px;stroke:var(--teal);stroke-width:2;fill:none}
 .trust-divider{width:1px;height:24px;background:rgba(255,255,255,0.2)}
 
-section{padding:6rem 2rem;max-width:1400px;margin:0 auto}
-.section-header{text-align:center;margin-bottom:4rem}
+section{padding:4rem 2rem;max-width:1400px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:2.5rem}
 .section-eyebrow{display:inline-flex;align-items:center;gap:0.6rem;font-size:0.85rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:1rem}
 .section-eyebrow::before,.section-eyebrow::after{content:'';width:30px;height:1px;background:linear-gradient(90deg,var(--teal),transparent)}
 .section-eyebrow::after{background:linear-gradient(90deg,transparent,var(--teal))}
@@ -144,9 +144,9 @@ section{padding:6rem 2rem;max-width:1400px;margin:0 auto}
 .section-title em{color:var(--teal);font-style:italic;font-weight:400}
 .section-subtitle{font-size:1.1rem;color:var(--gray);max-width:650px;margin:0 auto;line-height:1.7}
 
-.categories{background:var(--white);border-radius:var(--radius-xl);margin:2rem auto;max-width:1400px;padding:4rem 2rem;box-shadow:var(--shadow-soft)}
-.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.cat-card{cursor:pointer;border-radius:var(--radius-lg);overflow:hidden;position:relative;transition:all 0.5s cubic-bezier(0.16,1,0.3,1);border:2px solid transparent;background:var(--white);box-shadow:var(--shadow-soft);aspect-ratio:3/4}
+.categories{background:var(--white);border-radius:var(--radius-xl);margin:1.5rem auto;max-width:1400px;padding:3rem 2rem;box-shadow:var(--shadow-soft)}
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.cat-card{cursor:pointer;border-radius:var(--radius-lg);overflow:hidden;position:relative;transition:all 0.5s cubic-bezier(0.16,1,0.3,1);border:2px solid transparent;background:var(--white);box-shadow:var(--shadow-soft);aspect-ratio:3/4;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .cat-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:var(--shadow-strong);border-color:var(--teal)}
 .cat-card.active{border-color:var(--teal);box-shadow:0 0 0 4px rgba(89,193,212,0.15),var(--shadow-medium)}
 .cat-img{height:100%;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:1.5rem; background-size: cover; background-position: center;}
@@ -159,7 +159,7 @@ section{padding:6rem 2rem;max-width:1400px;margin:0 auto}
 .cat-arrow{position:absolute;top:1rem;right:1rem;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;color:var(--white);opacity:0;transform:translateX(-10px);transition:all 0.3s;z-index:2; font-size: 1.2rem;}
 .cat-card:hover .cat-arrow{opacity:1;transform:translateX(0);background:var(--teal)}
 
-.products-section{padding-top:2rem}
+.products-section{padding-top:1rem}
 .products-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem}
 .toolbar-title{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--navy)}
 .toolbar-filters{display:flex;gap:0.6rem;flex-wrap:wrap}
@@ -167,13 +167,13 @@ section{padding:6rem 2rem;max-width:1400px;margin:0 auto}
 .filter-btn:hover{border-color:var(--teal);color:var(--navy);transform:translateY(-2px);box-shadow:var(--shadow-soft)}
 .filter-btn.active{background:linear-gradient(135deg,var(--navy),var(--navy-light));color:var(--white);border-color:transparent;box-shadow:0 4px 15px rgba(45,31,94,0.2)}
 
-.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:2.5rem}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem}
 .product-card{background:var(--white);border-radius:var(--radius-lg);overflow:hidden;transition:all 0.5s cubic-bezier(0.16,1,0.3,1);box-shadow:var(--shadow-soft);border:1px solid rgba(45,31,94,0.06);position:relative}
 .product-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-strong);border-color:transparent}
 .product-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--teal),var(--gold));transform:scaleX(0);transition:transform 0.4s ease;transform-origin:left;border-radius:0 0 var(--radius-lg) var(--radius-lg)}
 .product-card:hover::after{transform:scaleX(1)}
 
-.product-img{height:380px;position:relative;overflow:hidden;cursor:pointer;background:linear-gradient(135deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center}
+.product-img{height:320px;position:relative;overflow:hidden;cursor:pointer;background:linear-gradient(135deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center}
 .product-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s cubic-bezier(0.16,1,0.3,1)}
 .product-card:hover .product-img img{transform:scale(1.08)}
 .product-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:5rem;transition:transform 0.6s}
@@ -186,7 +186,7 @@ section{padding:6rem 2rem;max-width:1400px;margin:0 auto}
 .badge-limited{background:linear-gradient(135deg,var(--navy),var(--navy-light));color:var(--white)}
 .badge-pending{background:linear-gradient(135deg,#F59E0B,#D97706);color:var(--white)}
 
-.product-body{padding:1.8rem}
+.product-body{padding:1.4rem}
 .product-cat{font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:0.5rem}
 .product-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--navy);margin-bottom:0.5rem;line-height:1.3}
 .product-desc{font-size:0.95rem;color:var(--gray-dark);line-height:1.6;margin-bottom:1rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
@@ -200,7 +200,7 @@ section{padding:6rem 2rem;max-width:1400px;margin:0 auto}
 .btn-view{background:var(--cream);border:2px solid rgba(45,31,94,0.08);color:var(--gray-dark);padding:0.9rem 1.2rem;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all 0.3s;border-radius:12px}
 .btn-view:hover{border-color:var(--teal);color:var(--teal);background:rgba(89,193,212,0.05)}
 
-.instagram-section{background:linear-gradient(180deg,var(--cream) 0%,var(--white) 100%);padding:5rem 2rem}
+.instagram-section{background:linear-gradient(180deg,var(--cream) 0%,var(--white) 100%);padding:3rem 2rem}
 .instagram-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
 .insta-card{border-radius:var(--radius-lg);overflow:hidden;position:relative;aspect-ratio:1;background:linear-gradient(135deg,#1a1a2e,#16213e);cursor:pointer;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);box-shadow:var(--shadow-soft)}
 .insta-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:var(--shadow-strong)}
@@ -215,7 +215,7 @@ section{padding:6rem 2rem;max-width:1400px;margin:0 auto}
 .insta-placeholder svg{width:48px;height:48px;stroke:var(--teal);stroke-width:1.5;fill:none;margin-bottom:1rem}
 .insta-placeholder p{font-size:0.9rem;opacity:1;line-height:1.5}
 
-.hotel-section{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);padding:5rem 2rem;position:relative;overflow:hidden;border-radius:var(--radius-xl);margin:2rem auto;max-width:1400px}
+.hotel-section{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);padding:3rem 2rem;position:relative;overflow:hidden;border-radius:var(--radius-xl);margin:1.5rem auto;max-width:1400px}
 .hotel-section::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(89,193,212,0.1) 0%,transparent 70%);pointer-events:none}
 .hotel-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;max-width:1400px;margin:0 auto}
 .hotel-badge{display:inline-flex;align-items:center;gap:0.6rem;background:rgba(89,193,212,0.15);border:1px solid rgba(89,193,212,0.3);padding:0.5rem 1rem;border-radius:100px;margin-bottom:1.5rem;width:fit-content;backdrop-filter:blur(10px)}
@@ -233,7 +233,7 @@ section{padding:6rem 2rem;max-width:1400px;margin:0 auto}
 .hotel-card-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--white);margin-bottom:0.3rem}
 .hotel-card-desc{font-size:0.9rem;color:rgba(255,255,255,0.6);line-height:1.5}
 
-.reviews-section{padding:5rem 2rem;background:var(--white)}
+.reviews-section{padding:3rem 2rem;background:var(--white)}
 .rating-bar{display:flex;align-items:center;justify-content:center;gap:2rem;margin:2rem 0 3rem;flex-wrap:wrap}
 .rating-num{font-family:'Space Grotesk',sans-serif;font-size:5.5rem;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-0.03em}
 .rating-details{text-align:left}
@@ -253,7 +253,7 @@ section{padding:6rem 2rem;max-width:1400px;margin:0 auto}
 .review-name{font-size:0.95rem;font-weight:600;color:var(--navy)}
 .review-city{font-size:0.85rem;color:var(--gray)}
 
-.contact-section{background:linear-gradient(180deg,var(--cream) 0%,var(--white) 100%);padding:5rem 2rem}
+.contact-section{background:linear-gradient(180deg,var(--cream) 0%,var(--white) 100%);padding:3rem 2rem}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;max-width:1400px;margin:0 auto}
 .contact-panel{background:var(--white);border-radius:var(--radius-xl);padding:2.5rem;box-shadow:var(--shadow-soft);border:1px solid rgba(45,31,94,0.06)}
 .contact-info-list{display:flex;flex-direction:column;gap:1.2rem;margin:2rem 0}
@@ -280,7 +280,7 @@ section{padding:6rem 2rem;max-width:1400px;margin:0 auto}
 .map-info h4{font-family:'Cormorant Garamond',serif;font-size:1.6rem;margin-bottom:0.5rem}
 .map-info p{font-size:1rem;opacity:1;margin-bottom:1.5rem;line-height:1.6}
 
-footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:4rem 2rem 2rem}
+footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:3rem 2rem 1.5rem}
 .footer-inner{max-width:1400px;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.08)}
 .footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:1rem}
@@ -310,7 +310,7 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:4rem 2rem
 .gallery-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.4);cursor:pointer;transition:all 0.3s}
 .gallery-dot.active{background:var(--white);width:28px;border-radius:4px}
 
-.modal-right{width:45%;padding:2.5rem 3rem;display:flex;flex-direction:column;gap:1.2rem;overflow-y:auto;max-height:95vh}
+.modal-right{width:45%;padding:2rem 2.5rem;display:flex;flex-direction:column;gap:1rem;overflow-y:auto;max-height:95vh}
 .modal-cat{font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);font-weight:600}
 .modal-name{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--navy);line-height:1.15;letter-spacing:-0.01em}
 .modal-desc{font-size:1rem;line-height:1.8;color:var(--dark);padding-right:0.5rem}
@@ -743,7 +743,7 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:4rem 2rem
   </div>
   <div class="cat-grid">
     <div class="cat-card" onclick="filterProducts('Edredones',this)">
-      <div class="cat-img" style="background-image:url('COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR AZUL.jpeg');">
+      <div class="cat-img" style="background-image:url('COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR BEIGE(1).jpeg');">
         <div class="cat-overlay">
           <div class="cat-name">Edredones</div>
           <div class="cat-sub">Elegancia y confort · Todos los tamaños</div>
@@ -752,7 +752,7 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:4rem 2rem
       </div>
     </div>
     <div class="cat-card" onclick="filterProducts('Cobertores',this)">
-      <div class="cat-img" style="background-image:url('COBERTORES/COBERTOR DELUXE/COBERTOR LUCIFER.jpg');">
+      <div class="cat-img" style="background-image:url('COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR AZUL(1).jpeg');">
         <div class="cat-overlay">
           <div class="cat-name">Cobertores</div>
           <div class="cat-sub">Personajes · Sherpa · Edición limitada</div>
@@ -761,7 +761,7 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:4rem 2rem
       </div>
     </div>
     <div class="cat-card" onclick="filterProducts('Almohadas',this)">
-      <div class="cat-img" style="background-image:url('https://kimi-web-img.moonshot.cn/img/www.fabitex.ec/1f045fcdd31eb02ad58d7952840f1215eec9d956.jpg');">
+      <div class="cat-img" style="background-image:url('COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR PLOMO.jpeg');">
         <div class="cat-overlay">
           <div class="cat-name">Almohadas</div>
           <div class="cat-sub">Suaves · Firmes · Viscoelásticas</div>
@@ -770,7 +770,7 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:4rem 2rem
       </div>
     </div>
     <div class="cat-card" onclick="filterProducts('Cobijas',this)">
-      <div class="cat-img" style="background-image:url('COBERTORES/COBERTOR DELUXE/COBERTOR SNOOPY.jpg');">
+      <div class="cat-img" style="background-image:url('COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR ROJO(1).jpeg');">
         <div class="cat-overlay">
           <div class="cat-name">Cobijas</div>
           <div class="cat-sub">Sherpa · Polar · Felpa · 3D</div>
@@ -779,7 +779,7 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:4rem 2rem
       </div>
     </div>
     <div class="cat-card" onclick="filterProducts('Sábanas',this)">
-      <div class="cat-img" style="background-image:url('https://kimi-web-img.moonshot.cn/img/www.fabitex.ec/ac3406e242bd4d31e26f4247997c92bb66251e00.jpg');">
+      <div class="cat-img" style="background-image:url('COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR CELESTE.jpeg');">
         <div class="cat-overlay">
           <div class="cat-name">Sábanas</div>
           <div class="cat-sub">Plaza · Queen · King · Algodón</div>
@@ -797,7 +797,7 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:4rem 2rem
       </div>
     </div>
     <div class="cat-card" onclick="filterProducts('Pijamas',this)">
-      <div class="cat-img" style="background-image:url('https://kimi-web-img.moonshot.cn/img/img.kwcdn.com/82bc6ab81d4a634f7556e2dd964d43e577079d44.jpg');">
+      <div class="cat-img" style="background-image:url('COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA.jpeg');">
         <div class="cat-overlay">
           <div class="cat-name">Pijamas</div>
           <div class="cat-sub">Dama · Caballero · Franela</div>
@@ -806,7 +806,7 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:4rem 2rem
       </div>
     </div>
     <div class="cat-card" onclick="filterProducts('Hotel',this)">
-      <div class="cat-img" style="background-image:url('TOALLAS/TOALLAS HOTELERAS CARPETA/TOALLA HOTELERA PREMIUM.png');">
+      <div class="cat-img" style="background-image:url('COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR VINO(1).jpeg');">
         <div class="cat-overlay">
           <div class="cat-name">Lencería Hotelera</div>
           <div class="cat-sub">Producción a medida · Por volumen</div>
@@ -815,7 +815,7 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:4rem 2rem
       </div>
     </div>
     <div class="cat-card" onclick="filterProducts('Personalizado',this)">
-      <div class="cat-img" style="background-image:url('COBERTORES/COBERTOR DELUXE/COBERTOR HELLO KITTY.jpg');">
+      <div class="cat-img" style="background-image:url('COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR VERDE.jpeg');">
         <div class="cat-overlay">
           <div class="cat-name">Personalizados</div>
           <div class="cat-sub">Bordados · Estampados · Logos</div>
@@ -1218,13 +1218,14 @@ const products = [
 
   // EDREDÓN ALEJANDRINA - NUEVO PRODUCTO ESTRELLA
   {
+    {
     id: 61,
     name: "Edredón Alejandrina",
     cat: "Edredones",
-    shortDesc: "✨ Elegancia que abraza tus sueños. Tela damasco premium con reverso térmico. Incluye 3 cojines decorativos.",
+    shortDesc: "El Edredón Alejandrina es la pieza central que tu dormitorio merece. Confeccionado con tela damasco premium y un reverso térmico súper abrigado, este edredón transforma cada noche en una experiencia de lujo y calidez.",
     desc: `<div style="font-size:1rem;line-height:1.8;color:var(--gray-dark);">
-      <p style="font-size:1.3rem;font-weight:600;color:var(--navy);margin-bottom:1rem;font-family:'Cormorant Garamond',serif;">✨ Elegancia que abraza tus sueños ✨</p>
-      <p style="margin-bottom:1rem;"><strong style="color:var(--navy);">El Edredón Alejandrina</strong> es la pieza central que tu dormitorio merece. Confeccionado con <em style="color:var(--teal);font-weight:500;">tela damasco premium</em> y un <em style="color:var(--teal);font-weight:500;">reverso térmico súper abrigado</em>, este edredón transforma cada noche en una experiencia de lujo y calidez.</p>
+      <p style="font-size:1.3rem;font-weight:600;color:var(--navy);margin-bottom:1rem;font-family:'Cormorant Garamond',serif;">✨ El Edredón Alejandrina — Elegancia que abraza tus sueños ✨</p>
+      <p style="margin-bottom:1rem;"><strong style="color:var(--navy);">El Edredón Alejandrina es la pieza central que tu dormitorio merece.</strong> Confeccionado con <em style="color:var(--teal);font-weight:500;">tela damasco premium</em> y un <em style="color:var(--teal);font-weight:500;">reverso térmico súper abrigado</em>, este edredón transforma cada noche en una experiencia de lujo y calidez.</p>
       <div style="background:linear-gradient(135deg,rgba(89,193,212,0.08),rgba(196,151,90,0.05));border-radius:12px;padding:1.2rem;margin:1rem 0;border-left:3px solid var(--teal);">
         <p style="font-weight:600;color:var(--navy);margin-bottom:0.5rem;">🧵 Tela Principal: Damasco Premium</p>
         <p style="font-size:0.9rem;">Elegante tela tipo damasco con hermosos diseños estampados que realzan la decoración de tu dormitorio. Suave al tacto y visualmente impactante.</p>
@@ -1252,17 +1253,17 @@ const products = [
     bulkPrice: 32,
     bulkMin: 3,
     colors: [
-      {name: "Abano", hex: "#A0937D", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR ABANO.jpeg"},
-      {name: "Azul", hex: "#4A7BA7", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR AZUL(1).jpeg"},
-      {name: "Beige", hex: "#D4C4A8", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR BEIGE(1).jpeg"},
-      {name: "Café", hex: "#6B4E3D", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR CAFE.jpeg"},
-      {name: "Celeste", hex: "#8EC5C1", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR CELESTE.jpeg"},
-      {name: "Plomo", hex: "#6B6B6B", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR PLOMO.jpeg"},
-      {name: "Rojo", hex: "#C41E3A", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR ROJO(1).jpeg"},
-      {name: "Rosa", hex: "#D4869A", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA.jpeg"},
-      {name: "Turquesa", hex: "#40B5AD", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR TURQUESA(1).jpeg"},
-      {name: "Verde", hex: "#6B8E5A", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR VERDE.jpeg"},
-      {name: "Vino", hex: "#8B1538", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR VINO(1).jpeg"}
+      {name: "Abano", hex: "#A0937D", image: "EDREDONES/EDREDON ALEJANDRINA/COBERTOR ALEJANDRINA COLOR ABANO.jpeg"},
+      {name: "Azul", hex: "#4A7BA7", image: "EDREDONES/EDREDON ALEJANDRINA/COBERTOR ALEJANDRINA COLOR AZUL(2).jpeg"},
+      {name: "Beige", hex: "#D4C4A8", image: "EDREDONES/EDREDON ALEJANDRINA/COBERTOR ALEJANDRINA COLOR BEIGE(2).jpeg"},
+      {name: "Café", hex: "#6B4E3D", image: "EDREDONES/EDREDON ALEJANDRINA/COBERTOR ALEJANDRINA COLOR CAFE.jpeg"},
+      {name: "Celeste", hex: "#8EC5C1", image: "EDREDONES/EDREDON ALEJANDRINA/COBERTOR ALEJANDRINA COLOR CELESTE.jpeg"},
+      {name: "Plomo", hex: "#6B6B6B", image: "EDREDONES/EDREDON ALEJANDRINA/COBERTOR ALEJANDRINA COLOR PLOMO.jpeg"},
+      {name: "Rojo", hex: "#C41E3A", image: "EDREDONES/EDREDON ALEJANDRINA/COBERTOR ALEJANDRINA COLOR ROJO(2).jpeg"},
+      {name: "Rosa", hex: "#D4869A", image: "EDREDONES/EDREDON ALEJANDRINA/COBERTOR ALEJANDRINA COLOR ROSA(1).jpeg"},
+      {name: "Turquesa", hex: "#40B5AD", image: "EDREDONES/EDREDON ALEJANDRINA/COBERTOR ALEJANDRINA COLOR TURQUESA(2).jpeg"},
+      {name: "Verde", hex: "#6B8E5A", image: "EDREDONES/EDREDON ALEJANDRINA/COBERTOR ALEJANDRINA COLOR VERDE.jpeg"},
+      {name: "Vino", hex: "#8B1538", image: "EDREDONES/EDREDON ALEJANDRINA/COBERTOR ALEJANDRINA COLOR VINO(2).jpeg"}
     ],
     badge: "Nuevo",
     emoji: "🛏️",
@@ -1833,7 +1834,6 @@ function renderProducts(filter, customList) {
     showTowelSubcategories();
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
-    if (event && event.target && event.target.closest('.filter-btn')) event.target.closest('.filter-btn').classList.add('active');
     return;
   }
 
@@ -1906,12 +1906,21 @@ function filterProducts(cat, btn) {
   renderProducts(cat);
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  if (event && event.target.closest('.cat-card')) event.target.closest('.cat-card').classList.add('active');
-  document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });
+  if (btn) {
+    btn.classList.add('active');
+    // Also activate the parent cat-card if btn is inside one
+    const parentCard = btn.closest('.cat-card');
+    if (parentCard) parentCard.classList.add('active');
+  }
 
-  if (cat !== 'Cobertores' && cat !== 'todos') {
-    document.getElementById('newCollectionBanner').style.display = 'none';
+  const productosSection = document.getElementById('productos');
+  if (productosSection) {
+    productosSection.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  const banner = document.getElementById('newCollectionBanner');
+  if (banner && cat !== 'Cobertores' && cat !== 'todos') {
+    banner.style.display = 'none';
   }
 }
 
