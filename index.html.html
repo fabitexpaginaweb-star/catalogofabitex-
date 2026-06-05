@@ -549,6 +549,184 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:3rem 2rem
 .product-card:active {
   transform: scale(0.98);
 }
+
+/* ===== ESTILOS RESPONSIVE MEJORADOS ===== */
+
+/* Asegurar que el body no tenga overflow horizontal */
+html, body { overflow-x: hidden; width: 100%; }
+
+/* Asegurar imágenes responsive */
+img { max-width: 100%; height: auto; }
+
+/* Mejorar transiciones en categorías */
+.cat-card { will-change: transform; }
+
+/* Mejorar visualización de descripciones */
+.product-desc { word-wrap: break-word; hyphens: auto; }
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--navy-light); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--navy); }
+
+/* Botón volver a toallas sticky */
+#towelBackBtn {
+  position: sticky;
+  top: 200px;
+  z-index: 50;
+}
+
+/* html font-size responsive */
+@media(min-width:1600px){
+  section { max-width: 1500px; }
+  .cat-grid { max-width: 1400px; margin: 0 auto; }
+}
+
+/* Pantallas muy anchas: centrar mejor */
+@media(min-width:1800px){
+  section { max-width: 1600px; }
+  .hero { max-width: 1600px; }
+}
+
+/* Tablet mejoras */
+@media(min-width:769px) and (max-width:1024px){
+  .products-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+  .product-img { height: 300px; }
+  .footer-top { grid-template-columns: 2fr 1fr; gap: 2rem; }
+}
+
+/* Mejoras menú móvil con transición */
+@media(max-width:768px){
+  html { font-size: 16px; }
+  #navLinks {
+    display: flex;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: max-height 0.4s ease, opacity 0.3s ease, transform 0.3s ease;
+  }
+  #navLinks.mobile-open {
+    max-height: 400px;
+    opacity: 1;
+    transform: translateY(0);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--white);
+    padding: 1rem 2rem;
+    box-shadow: var(--shadow-medium);
+    gap: 1rem;
+    z-index: 199;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+  }
+  .hero { padding-top: 160px; }
+  .hero-content { padding: 1.5rem; }
+  .hero h1 { font-size: clamp(2.5rem, 8vw, 3.5rem); }
+  section { padding: 2.5rem 1rem; }
+  .categories { padding: 2rem 1rem; }
+  .product-img { height: 260px; }
+  .products-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+  .stat-num { font-size: 2.4rem; }
+}
+
+/* Mejoras móvil pequeño */
+@media(max-width:480px){
+  html { font-size: 15px; }
+  .hero { padding-top: 150px; min-height: auto; }
+  .hero-content { padding: 1rem; }
+  .hero-stats { gap: 1rem; justify-content: center; }
+  .stat-item { text-align: center; }
+  .cat-grid { gap: 0.8rem; }
+  .cat-card { aspect-ratio: 4/5; border-radius: var(--radius-md); }
+  .cat-name { font-size: 1.4rem; }
+  .product-img { height: 240px; }
+  .products-grid { gap: 1rem; }
+  .section-title { font-size: 1.8rem; }
+  .hero h1 { font-size: 2.5rem; }
+  .btn-primary, .btn-secondary, .btn-business { padding: 0.9rem 1.6rem; font-size: 0.95rem; }
+  .product-name { font-size: 1.25rem; }
+  .trust-bar-inner { gap: 0.5rem; font-size: 0.85rem; }
+  .footer-top { grid-template-columns: 1fr; gap: 1.5rem; }
+  .footer-bottom { flex-direction: column; text-align: center; gap: 0.5rem; }
+  .rating-bar { gap: 1rem; }
+  .rating-num { font-size: 3.5rem; }
+  .toolbar-filters { gap: 0.4rem; }
+  .filter-btn { padding: 0.5rem 1rem; font-size: 0.85rem; }
+  .contact-grid { gap: 1.5rem; }
+  .hotel-visual { grid-template-columns: 1fr; }
+}
+
+/* Mejorar padding-top de hero para compensar nav fixed */
+@media(min-width:769px){
+  .hero { padding-top: 200px; }
+}
+@media(min-width:1025px){
+  .hero { padding-top: 220px; }
+}
+
+/* Footer tablet */
+@media(min-width:481px) and (max-width:768px){
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+}
+
+/* Transición suave en el menú móvil */
+#navLinks a {
+  transition: color 0.3s, transform 0.2s;
+}
+#navLinks.mobile-open a:hover {
+  transform: translateX(4px);
+}
+
+/* Mejoras visuales adicionales */
+.products-grid {
+  align-items: start;
+}
+.product-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.product-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.product-actions {
+  margin-top: auto;
+}
+
+/* Mejorar visual de precios */
+.product-price {
+  white-space: nowrap;
+}
+
+/* Hotel section responsive */
+@media(max-width:768px){
+  .hotel-inner { gap: 2rem; }
+  .hotel-visual { grid-template-columns: 1fr 1fr; }
+  .hotel-card { padding: 1.2rem; }
+  .hotel-card-icon { font-size: 1.8rem; }
+  .hotel-card-title { font-size: 1.1rem; }
+}
+@media(max-width:480px){
+  .hotel-visual { grid-template-columns: 1fr; }
+}
+
+/* Smooth scroll behavior for filter buttons */
+.filter-btn {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Cat-img fallback gradient when no image loaded */
+.cat-img {
+  background-color: var(--navy);
+  background-image: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, var(--teal-dark) 100%);
+}
+
 </style>
 </head>
 <body>
@@ -583,7 +761,7 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:3rem 2rem
   <div class="new-collection-inner">
     <span class="new-collection-badge">✨ NUEVA COLECCIÓN</span>
     <span class="new-collection-text">¡Descubre nuestros <strong>cobertores de personajes</strong>! Snoopy, Mario, Hello Kitty y más. Edición limitada.</span>
-    <a href="#categorias" class="new-collection-btn" onclick="filterProducts('Cobertores'); return false;">Ver colección →</a>
+    <a href="#productos" class="new-collection-btn" onclick="filterProducts('Cobertores'); document.getElementById('newCollectionBanner').style.display='none';">Ver colección →</a>
   </div>
 </div>
 
@@ -742,8 +920,8 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:3rem 2rem
     <p class="section-subtitle">Selecciona una línea para filtrar productos, o desplázate para ver todo nuestro catálogo exclusivo.</p>
   </div>
   <div class="cat-grid">
-    <div class="cat-card" onclick="filterProducts('Edredones',this)">
-      <div class="cat-img" style="background-image:url('COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR BEIGE(1).jpeg');">
+    <div class="cat-card" data-cat="Edredones" onclick="filterProducts('Edredones',this)">
+      <div class="cat-img" data-cat-bg="Edredones">
         <div class="cat-overlay">
           <div class="cat-name">Edredones</div>
           <div class="cat-sub">Elegancia y confort · Todos los tamaños</div>
@@ -751,8 +929,8 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:3rem 2rem
         <div class="cat-arrow">→</div>
       </div>
     </div>
-    <div class="cat-card" onclick="filterProducts('Cobertores',this)">
-      <div class="cat-img" style="background-image:url('COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR AZUL(1).jpeg');">
+    <div class="cat-card" data-cat="Cobertores" onclick="filterProducts('Cobertores',this)">
+      <div class="cat-img" data-cat-bg="Cobertores">
         <div class="cat-overlay">
           <div class="cat-name">Cobertores</div>
           <div class="cat-sub">Personajes · Sherpa · Edición limitada</div>
@@ -760,8 +938,8 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:3rem 2rem
         <div class="cat-arrow">→</div>
       </div>
     </div>
-    <div class="cat-card" onclick="filterProducts('Almohadas',this)">
-      <div class="cat-img" style="background-image:url('COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR PLOMO.jpeg');">
+    <div class="cat-card" data-cat="Almohadas" onclick="filterProducts('Almohadas',this)">
+      <div class="cat-img" data-cat-bg="Almohadas">
         <div class="cat-overlay">
           <div class="cat-name">Almohadas</div>
           <div class="cat-sub">Suaves · Firmes · Viscoelásticas</div>
@@ -769,8 +947,8 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:3rem 2rem
         <div class="cat-arrow">→</div>
       </div>
     </div>
-    <div class="cat-card" onclick="filterProducts('Cobijas',this)">
-      <div class="cat-img" style="background-image:url('COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR ROJO(1).jpeg');">
+    <div class="cat-card" data-cat="Cobijas" onclick="filterProducts('Cobijas',this)">
+      <div class="cat-img" data-cat-bg="Cobijas">
         <div class="cat-overlay">
           <div class="cat-name">Cobijas</div>
           <div class="cat-sub">Sherpa · Polar · Felpa · 3D</div>
@@ -778,8 +956,8 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:3rem 2rem
         <div class="cat-arrow">→</div>
       </div>
     </div>
-    <div class="cat-card" onclick="filterProducts('Sábanas',this)">
-      <div class="cat-img" style="background-image:url('COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR CELESTE.jpeg');">
+    <div class="cat-card" data-cat="Sábanas" onclick="filterProducts('Sábanas',this)">
+      <div class="cat-img" data-cat-bg="Sábanas">
         <div class="cat-overlay">
           <div class="cat-name">Sábanas</div>
           <div class="cat-sub">Plaza · Queen · King · Algodón</div>
@@ -787,8 +965,8 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:3rem 2rem
         <div class="cat-arrow">→</div>
       </div>
     </div>
-    <div class="cat-card" onclick="filterProducts('Toallas',this)">
-      <div class="cat-img" style="background-image:url('TOALLAS/TOALLAS DE HOGAR CARPETA/TOALLAS DE HOGAR.png');">
+    <div class="cat-card" data-cat="Toallas" onclick="filterProducts('Toallas',this)">
+      <div class="cat-img" data-cat-bg="Toallas">
         <div class="cat-overlay">
           <div class="cat-name">Toallas</div>
           <div class="cat-sub">Baño · Manos · Cara · Hotel</div>
@@ -796,8 +974,8 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:3rem 2rem
         <div class="cat-arrow">→</div>
       </div>
     </div>
-    <div class="cat-card" onclick="filterProducts('Pijamas',this)">
-      <div class="cat-img" style="background-image:url('COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA.jpeg');">
+    <div class="cat-card" data-cat="Pijamas" onclick="filterProducts('Pijamas',this)">
+      <div class="cat-img" data-cat-bg="Pijamas">
         <div class="cat-overlay">
           <div class="cat-name">Pijamas</div>
           <div class="cat-sub">Dama · Caballero · Franela</div>
@@ -805,8 +983,8 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:3rem 2rem
         <div class="cat-arrow">→</div>
       </div>
     </div>
-    <div class="cat-card" onclick="filterProducts('Hotel',this)">
-      <div class="cat-img" style="background-image:url('COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR VINO(1).jpeg');">
+    <div class="cat-card" data-cat="Hotel" onclick="filterProducts('Hotel',this)">
+      <div class="cat-img" data-cat-bg="Hotel">
         <div class="cat-overlay">
           <div class="cat-name">Lencería Hotelera</div>
           <div class="cat-sub">Producción a medida · Por volumen</div>
@@ -814,8 +992,8 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:3rem 2rem
         <div class="cat-arrow">→</div>
       </div>
     </div>
-    <div class="cat-card" onclick="filterProducts('Personalizado',this)">
-      <div class="cat-img" style="background-image:url('COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR VERDE.jpeg');">
+    <div class="cat-card" data-cat="Personalizado" onclick="filterProducts('Personalizado',this)">
+      <div class="cat-img" data-cat-bg="Personalizado">
         <div class="cat-overlay">
           <div class="cat-name">Personalizados</div>
           <div class="cat-sub">Bordados · Estampados · Logos</div>
@@ -1218,7 +1396,6 @@ const products = [
 
   // EDREDÓN ALEJANDRINA - NUEVO PRODUCTO ESTRELLA
   {
-    {
     id: 61,
     name: "Edredón Alejandrina",
     cat: "Edredones",
@@ -2411,22 +2588,21 @@ function initNavbar() {
 // ===== MOBILE MENU =====
 function toggleMobileMenu() {
   const links = document.getElementById('navLinks');
-  if (links.style.display === 'flex') {
-    links.style.display = 'none';
+  if (links.classList.contains('mobile-open')) {
+    links.classList.remove('mobile-open');
   } else {
-    links.style.display = 'flex';
-    links.style.position = 'absolute';
-    links.style.top = '100%';
-    links.style.left = '0';
-    links.style.right = '0';
-    links.style.flexDirection = 'column';
-    links.style.background = 'var(--white)';
-    links.style.padding = '1rem 2rem';
-    links.style.boxShadow = 'var(--shadow-medium)';
-    links.style.gap = '1rem';
-    links.style.zIndex = '199';
+    links.classList.add('mobile-open');
   }
 }
+
+// Close mobile menu when clicking on a link
+document.addEventListener('click', (e) => {
+  const links = document.getElementById('navLinks');
+  const toggle = document.querySelector('.mobile-toggle');
+  if (links && toggle && !links.contains(e.target) && !toggle.contains(e.target)) {
+    links.classList.remove('mobile-open');
+  }
+});
 
 // ===== ADMIN PANEL =====
 function showStats() {
@@ -2484,9 +2660,74 @@ function initCarousel() {
   };
 }
 
+
+// ===== UPDATE CATEGORY IMAGES DYNAMICALLY =====
+function updateCategoryImages() {
+  // Category to display name mapping (internal cat name -> display name on card)
+  const catMapping = {
+    'Edredones': 'Edredones',
+    'Cobertores': 'Cobertores',
+    'Almohadas': 'Almohadas',
+    'Cobijas': 'Cobijas',
+    'Sábanas': 'Sábanas',
+    'Toallas': 'Toallas',
+    'Pijamas': 'Pijamas',
+    'Hotel': 'Hotel',
+    'Personalizado': 'Personalizado'
+  };
+
+  // For each category, find the best product image
+  Object.keys(catMapping).forEach(catName => {
+    // 1. Try to find a product with isNewCollection: true (most recent)
+    let catProducts = products.filter(p => p.cat === catName);
+
+    if (catProducts.length === 0) return;
+
+    // Sort: isNewCollection first, then highest id
+    catProducts.sort((a, b) => {
+      if (a.isNewCollection && !b.isNewCollection) return -1;
+      if (!a.isNewCollection && b.isNewCollection) return 1;
+      return b.id - a.id; // Higher ID = more recent
+    });
+
+    // Find the first product with a valid colors[0].image
+    let selectedProduct = null;
+    for (const p of catProducts) {
+      if (p.colors && p.colors[0] && p.colors[0].image) {
+        selectedProduct = p;
+        break;
+      }
+    }
+
+    // If no product with image found, use the first one
+    if (!selectedProduct) {
+      selectedProduct = catProducts[0];
+    }
+
+    // Get the image URL
+    let imageUrl = null;
+    if (selectedProduct.colors && selectedProduct.colors[0]) {
+      // Prefer the product with isNewCollection that has image
+      const colorWithImage = selectedProduct.colors.find(c => c.image);
+      if (colorWithImage) {
+        imageUrl = colorWithImage.image;
+      }
+    }
+
+    // Update the DOM element
+    if (imageUrl) {
+      const catImgEl = document.querySelector('[data-cat-bg="' + catName + '"]');
+      if (catImgEl) {
+        catImgEl.style.backgroundImage = "url('" + imageUrl + "')";
+      }
+    }
+  });
+}
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
+  updateCategoryImages();
   initReveal();
   initNavbar();
   initCarousel();
