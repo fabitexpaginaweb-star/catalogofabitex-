@@ -310,6 +310,7 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:3rem 2rem
 .modal-gallery-nav{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;gap:0.6rem;z-index:10}
 .gallery-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.4);cursor:pointer;transition:all 0.3s}
 .gallery-dot.active{background:var(--white);width:28px;border-radius:4px}
+.modal-scroll-hint{display:flex;flex-direction:column;align-items:center;gap:0.3rem;margin-top:1.5rem;padding:0.8rem 0;color:var(--gray);font-size:0.85rem;animation:scrollBounce 2s infinite;border-top:1px dashed var(--gray-light);cursor:pointer;transition:color 0.3s}.modal-scroll-hint:hover{color:var(--teal)}.modal-scroll-hint svg{stroke:currentColor}@keyframes scrollBounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(6px)}60%{transform:translateY(3px)}}
 
 .modal-right{width:45%;padding:2rem 2.5rem;display:flex;flex-direction:column;gap:1rem;overflow-y:auto;max-height:95vh}
 .modal-cat{font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);font-weight:600}
@@ -1031,6 +1032,10 @@ img { max-width: 100%; height: auto; }
     <p class="section-subtitle">@fabitex_edredones — Fotos reales de nuestros productos. Toca para ver más.</p>
   </div>
   <div class="instagram-grid" id="instagramGrid">
+    <div class="insta-card" onclick="openModal(63)">
+      <img src="COBERTORES/COBERTOR LUMINOSO/COBERTOR LUMINOSO PORTADA.jpeg" alt="Cobertor Luminoso" loading="lazy">
+      <div class="insta-overlay"><div class="insta-info"><p>🌙 Brilla en la oscuridad</p></div></div>
+    </div>
     <div class="insta-card">
       <img src="COBERTORES/COBERTOR DELUXE/COBERTOR LUCIFER.jpg" alt="Cobertor Lucifer">
       <div class="insta-overlay"><div class="insta-info"><p>❤️ Colección Disney</p></div></div>
@@ -1308,6 +1313,11 @@ img { max-width: 100%; height: auto; }
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         Agregar al carrito
       </button>
+      <!-- Indicador de scroll -->
+      <div class="modal-scroll-hint" id="modalScrollHint">
+        <span>Más información</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
     </div>
   </div>
 </div>
@@ -1357,27 +1367,10 @@ const products = [
     name: "Cobertor de Personajes Premium",
     cat: "Cobertores",
     shortDesc: "Cobertor de tela velvet con reverso sherpa. Incluye 2 cojines bordados + 1 cojín sublimado.",
-    desc: `<div style="font-size:1rem;line-height:1.8;color:var(--gray-dark);">
-      <p style="font-size:1.2rem;font-weight:600;color:var(--navy);margin-bottom:1rem;font-family:'Cormorant Garamond',serif;">✨ Transforma cada noche en una aventura mágica ✨</p>
-      <p style="margin-bottom:1rem;"><strong style="color:var(--navy);">¿Imaginas dormir abrazado por tu personaje favorito?</strong> Nuestros cobertores de personajes no son solo mantas... son <em style="color:var(--teal);font-weight:500;">portales hacia mundos de fantasía</em> donde cada noche se convierte en una experiencia única.</p>
-      <div style="background:linear-gradient(135deg,rgba(89,193,212,0.08),rgba(196,151,90,0.05));border-radius:12px;padding:1.2rem;margin:1rem 0;border-left:3px solid var(--teal);">
-        <p style="font-weight:600;color:var(--navy);margin-bottom:0.5rem;">🧵 Tela Principal: Velvet Premium</p>
-        <p style="font-size:0.9rem;">Una tela tipo gamuza ultra suave al tacto que envuelve tu cama en elegancia y confort. El lujo que tus sueños merecen.</p>
-      </div>
-      <div style="background:linear-gradient(135deg,rgba(89,193,212,0.08),rgba(196,151,90,0.05));border-radius:12px;padding:1.2rem;margin:1rem 0;border-left:3px solid var(--gold);">
-        <p style="font-weight:600;color:var(--navy);margin-bottom:0.5rem;">🐑 Reverso: Sherpa Premium</p>
-        <p style="font-size:0.9rem;">Máximo abrigo para las noches más frías. Como un abrazo cálido que nunca termina.</p>
-      </div>
-      <p style="font-weight:600;color:var(--navy);margin:1rem 0;">🎁 Incluye de REGALO:</p>
-      <ul style="margin-left:1.2rem;margin-bottom:1rem;">
-        <li>2 cojines decorativos con bordados de alta definición</li>
-        <li>1 cojín sublimado con el personaje estrella</li>
-      </ul>
-      <div style="background:linear-gradient(135deg,var(--navy),var(--navy-light));color:var(--white);border-radius:12px;padding:1rem;text-align:center;margin:1rem 0;">
-        <p style="font-weight:600;font-size:0.95rem;">💎 EDICIÓN LIMITADA — Solo 6 diseños disponibles</p>
-        <p style="font-size:0.85rem;opacity:1;">¡Cada uno es único! No esperes a que se agoten.</p>
-      </div>
-      <p style="font-size:0.9rem;color:var(--gray);margin-top:1rem;">🏠 <strong>Ideal para:</strong> Habitaciones infantiles, juveniles, o cualquier fan que quiera dormir rodeado de su personaje favorito.</p>
+    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
+      <p style="margin-bottom:0.8rem;">Cobertor de <strong>tela velvet</strong> con <strong>reverso sherpa</strong>. Incluye <strong>2 cojines bordados + 1 cojín sublimado</strong> de regalo.</p>
+      <p style="font-size:0.9rem;color:var(--gray);margin-bottom:0.5rem;">✨ Edición limitada — 6 personajes disponibles.</p>
+      <p style="font-size:0.9rem;color:var(--gray);">🏠 Ideal para habitaciones infantiles y juveniles.</p>
     </div>`,
     prices: {"2 Plazas": 55, "2 1/2 Plazas": 55, "3 Plazas": 55},
     bulkTiers: [{min: 3, price: 50}, {min: 6, price: 48}],
@@ -1401,31 +1394,10 @@ const products = [
     name: "Edredón Alejandrina",
     cat: "Edredones",
     shortDesc: "✨ Donde el lujo abraza tus sueños. Tela damasco premium con reverso térmico. Incluye 3 cojines decorativos de regalo.",
-    desc: `<div style="font-size:1rem;line-height:1.8;color:var(--gray-dark);">
-      <p style="font-size:1.3rem;font-weight:600;color:var(--navy);margin-bottom:1rem;font-family:'Cormorant Garamond',serif;">✨ Edredón Alejandrina — Elegancia que abraza tus sueños ✨</p>
-      <p style="margin-bottom:1rem;"><strong style="color:var(--navy);">El Edredón Alejandrina</strong> es la pieza central que tu dormitorio merece. Confeccionado con <em style="color:var(--teal);font-weight:500;">tela damasco premium</em> y un <em style="color:var(--teal);font-weight:500;">reverso térmico súper abrigado</em>, este edredón transforma cada noche en una experiencia de lujo y calidez.</p>
-      <div style="background:linear-gradient(135deg,rgba(89,193,212,0.08),rgba(196,151,90,0.05));border-radius:12px;padding:1.2rem;margin:1rem 0;border-left:3px solid var(--teal);">
-        <p style="font-weight:600;color:var(--navy);margin-bottom:0.5rem;">🧵 Tela Principal: Damasco Premium</p>
-        <p style="font-size:0.9rem;">Elegante tela tipo damasco con hermosos diseños estampados que realzan la decoración de tu dormitorio. Suave al tacto y visualmente impactante.</p>
-      </div>
-      <div style="background:linear-gradient(135deg,rgba(89,193,212,0.08),rgba(196,151,90,0.05));border-radius:12px;padding:1.2rem;margin:1rem 0;border-left:3px solid var(--gold);">
-        <p style="font-weight:600;color:var(--navy);margin-bottom:0.5rem;">❄️ Reverso: Tela Térmica Super Abrigada</p>
-        <p style="font-size:0.9rem;">Máximo abrigo para las noches más frías. Mantiene el calor sin pesar, ideal para el clima andino de Ecuador.</p>
-      </div>
-      <p style="font-weight:600;color:var(--navy);margin:1rem 0;">🎁 Incluye de REGALO:</p>
-      <ul style="margin-left:1.2rem;margin-bottom:1rem;">
-        <li>3 cojines decorativos a juego con el edredón</li>
-        <li>Combinación perfecta para un look completo en tu cama</li>
-      </ul>
-      <div style="background:linear-gradient(135deg,var(--navy),var(--navy-light));color:var(--white);border-radius:12px;padding:1rem;text-align:center;margin:1rem 0;">
-        <p style="font-weight:600;font-size:1rem;">💰 $36 UNIDAD · $32 POR MAYOR (3+ uds)</p>
-        <p style="font-size:0.85rem;opacity:0.8;">Disponible en todas las plazas: Plaza · Plaza y media · 2 Plazas · 2 1/2 Plazas · 3 Plazas · Queen · King</p>
-      </div>
-      <div style="background:linear-gradient(135deg,var(--navy),var(--navy-light));color:var(--white);border-radius:12px;padding:1rem;text-align:center;margin:1rem 0;">
-        <p style="font-weight:600;font-size:0.95rem;">🎨 6 COLORES EXCLUSIVOS</p>
-        <p style="font-size:0.85rem;opacity:1;">Azul, Beige, Rojo, Rosa, Turquesa y Vino.</p>
-      </div>
-      <p style="font-size:0.9rem;color:var(--gray);margin-top:1rem;">🏠 <strong>Ideal para:</strong> Dormitorios principales, habitaciones de invitados o cualquier espacio donde busques elegancia y calidez.</p>
+    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
+      <p style="margin-bottom:0.8rem;">Edredón en <strong>tela damasco premium</strong> con <strong>reverso térmico abrigado</strong>. Incluye <strong>3 cojines decorativos</strong> de regalo.</p>
+      <p style="font-size:0.9rem;color:var(--gray);margin-bottom:0.5rem;">💰 <strong>$36</strong> unidad · <strong>$32</strong> por mayor (3+ uds)</p>
+      <p style="font-size:0.9rem;color:var(--gray);">🎨 6 colores: Azul, Beige, Rojo, Rosa, Turquesa, Vino.</p>
     </div>`,
     prices: {Plaza: 36, "Plaza y media": 36, "2 Plazas": 36, "2 1/2 Plazas": 36, "3 Plazas": 36, Queen: 36, King: 36},
     bulkPrice: 32,
@@ -1448,31 +1420,10 @@ const products = [
     name: "Cobertor Alejandrina",
     cat: "Cobertores",
     shortDesc: "✨ Elegancia que abraza tus sueños. Tela damasco premium con reverso térmico. Incluye 3 cojines decorativos. Solo disponible en 2 plazas.",
-    desc: `<div style="font-size:1rem;line-height:1.8;color:var(--gray-dark);">
-      <p style="font-size:1.3rem;font-weight:600;color:var(--navy);margin-bottom:1rem;font-family:'Cormorant Garamond',serif;">✨ Elegancia que abraza tus sueños ✨</p>
-      <p style="margin-bottom:1rem;"><strong style="color:var(--navy);">El Cobertor Alejandrina</strong> es la pieza central que tu dormitorio merece. Confeccionado con <em style="color:var(--teal);font-weight:500;">tela damasco premium</em> y un <em style="color:var(--teal);font-weight:500;">reverso térmico súper abrigado</em>, este cobertor transforma cada noche en una experiencia de lujo y calidez.</p>
-      <div style="background:linear-gradient(135deg,rgba(89,193,212,0.08),rgba(196,151,90,0.05));border-radius:12px;padding:1.2rem;margin:1rem 0;border-left:3px solid var(--teal);">
-        <p style="font-weight:600;color:var(--navy);margin-bottom:0.5rem;">🧵 Tela Principal: Damasco Premium</p>
-        <p style="font-size:0.9rem;">Elegante tela tipo damasco con hermosos diseños estampados que realzan la decoración de tu dormitorio. Suave al tacto y visualmente impactante.</p>
-      </div>
-      <div style="background:linear-gradient(135deg,rgba(89,193,212,0.08),rgba(196,151,90,0.05));border-radius:12px;padding:1.2rem;margin:1rem 0;border-left:3px solid var(--gold);">
-        <p style="font-weight:600;color:var(--navy);margin-bottom:0.5rem;">❄️ Reverso: Tela Térmica Super Abrigada</p>
-        <p style="font-size:0.9rem;">Máximo abrigo para las noches más frías. Mantiene el calor sin pesar, ideal para el clima andino de Ecuador.</p>
-      </div>
-      <p style="font-weight:600;color:var(--navy);margin:1rem 0;">🎁 Incluye de REGALO:</p>
-      <ul style="margin-left:1.2rem;margin-bottom:1rem;">
-        <li>3 cojines decorativos a juego con el cobertor</li>
-        <li>Combinación perfecta para un look completo en tu cama</li>
-      </ul>
-      <div style="background:linear-gradient(135deg,var(--navy),var(--navy-light));color:var(--white);border-radius:12px;padding:1rem;text-align:center;margin:1rem 0;">
-        <p style="font-weight:600;font-size:1rem;">💰 $36 UNIDAD · $32 POR MAYOR (3+ uds)</p>
-        <p style="font-size:0.85rem;opacity:0.8;">Disponible solo en 2 Plazas</p>
-      </div>
-      <div style="background:linear-gradient(135deg,var(--navy),var(--navy-light));color:var(--white);border-radius:12px;padding:1rem;text-align:center;margin:1rem 0;">
-        <p style="font-weight:600;font-size:0.95rem;">🎨 6 COLORES EXCLUSIVOS</p>
-        <p style="font-size:0.85rem;opacity:1;">Azul, Beige, Rojo, Rosa, Turquesa y Vino.</p>
-      </div>
-      <p style="font-size:0.9rem;color:var(--gray);margin-top:1rem;">🏠 <strong>Ideal para:</strong> Dormitorios principales, habitaciones de invitados o cualquier espacio donde busques elegancia y calidez.</p>
+    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
+      <p style="margin-bottom:0.8rem;">Cobertor en <strong>tela damasco premium</strong> con <strong>reverso térmico abrigado</strong>. Incluye <strong>3 cojines decorativos</strong> de regalo.</p>
+      <p style="font-size:0.9rem;color:var(--gray);margin-bottom:0.5rem;">💰 <strong>$36</strong> unidad · <strong>$32</strong> por mayor (3+ uds)</p>
+      <p style="font-size:0.9rem;color:var(--gray);">🎨 6 colores: Azul, Beige, Rojo, Rosa, Turquesa, Vino.</p>
     </div>`,
     prices: {"2 Plazas": 36},
     bulkPrice: 32,
@@ -1501,32 +1452,10 @@ const products = [
     name: "Cobertor Deluxe",
     cat: "Cobertores",
     shortDesc: "Tela velvet premium con reverso ovejero sherpa. Incluye 3 cojines decorativos. 13 colores disponibles.",
-    desc: `<div style="font-size:1rem;line-height:1.8;color:var(--gray-dark);">
-      <p style="font-size:1.2rem;font-weight:600;color:var(--navy);margin-bottom:1rem;font-family:'Cormorant Garamond',serif;">✨ Elegancia y confort en tu dormitorio ✨</p>
-      <p style="margin-bottom:1rem;"><strong style="color:var(--navy);">El cobertor que transforma tu habitación en un santuario de descanso.</strong> Confeccionado con los mejores materiales para brindarte <em style="color:var(--teal);font-weight:500;">suavidad, calidez y estilo</em> en cada noche.</p>
-      <div style="background:linear-gradient(135deg,rgba(89,193,212,0.08),rgba(196,151,90,0.05));border-radius:12px;padding:1.2rem;margin:1rem 0;border-left:3px solid var(--teal);">
-        <p style="font-weight:600;color:var(--navy);margin-bottom:0.5rem;">🧵 Tela Principal: Velvet Premium</p>
-        <p style="font-size:0.9rem;">Tela tipo gamuza de alta densidad, ultra suave al tacto y con acabado elegante que realza la decoración de tu dormitorio.</p>
-      </div>
-      <div style="background:linear-gradient(135deg,rgba(89,193,212,0.08),rgba(196,151,90,0.05));border-radius:12px;padding:1.2rem;margin:1rem 0;border-left:3px solid var(--gold);">
-        <p style="font-weight:600;color:var(--navy);margin-bottom:0.5rem;">🐑 Reverso: Ovejero Sherpa</p>
-        <p style="font-size:0.9rem;">Máximo abrigo y confort. La suavidad del ovejero te envuelve en las noches más frías como un abrazo cálido.</p>
-      </div>
-      <p style="font-weight:600;color:var(--navy);margin:1rem 0;">🎁 Incluye de REGALO:</p>
-      <ul style="margin-left:1.2rem;margin-bottom:1rem;">
-        <li>3 cojines decorativos a juego con el cobertor</li>
-        <li>Combinación perfecta para un look completo en tu cama</li>
-      </ul>
-      <div style="background:linear-gradient(135deg,var(--navy),var(--navy-light));color:var(--white);border-radius:12px;padding:1rem;text-align:center;margin:1rem 0;">
-        <p style="font-weight:600;font-size:0.95rem;">💰 PRECIOS POR VOLUMEN</p>
-        <p style="font-size:0.9rem;opacity:1;margin:0.3rem 0;">1–2 unidades: <strong>$55</strong> c/u · 3–5 unidades: <strong>$50</strong> c/u · 6+ unidades: <strong>$48</strong> c/u</p>
-        <p style="font-size:0.85rem;opacity:0.7;">Todos los tamaños al mismo precio: 2 Plazas · 2 1/2 Plazas · 3 Plazas</p>
-      </div>
-      <div style="background:linear-gradient(135deg,var(--navy),var(--navy-light));color:var(--white);border-radius:12px;padding:1rem;text-align:center;margin:1rem 0;">
-        <p style="font-weight:600;font-size:0.95rem;">🎨 13 COLORES EXCLUSIVOS — Elige el que combine con tu estilo</p>
-        <p style="font-size:0.85rem;opacity:1;">Abano, Azul, Azul Marino, Bige, Blanco, Café Claro, Café, Celeste, Ladrillo, Negro, Púrpura, Rosa Claro y Turquesa.</p>
-      </div>
-      <p style="font-size:0.9rem;color:var(--gray);margin-top:1rem;">🏠 <strong>Ideal para:</strong> Dormitorios principales, habitaciones de invitados o cualquier espacio donde busques elegancia y calidez.</p>
+    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
+      <p style="margin-bottom:0.8rem;">Cobertor <strong>velvet premium</strong> con <strong>reverso ovejero sherpa</strong>. Incluye <strong>3 cojines decorativos</strong> de regalo.</p>
+      <p style="font-size:0.9rem;color:var(--gray);margin-bottom:0.5rem;">💰 1–2 uds: <strong>$55</strong> · 3–5 uds: <strong>$50</strong> · 6+ uds: <strong>$48</strong></p>
+      <p style="font-size:0.9rem;color:var(--gray);">🎨 13 colores disponibles.</p>
     </div>`,
     prices: {"2 Plazas": 55, "2 1/2 Plazas": 55, "3 Plazas": 55},
     bulkTiers: [{min: 3, price: 50}, {min: 6, price: 48}],
@@ -1941,6 +1870,44 @@ const products = [
     colors: [{name: "Púrpura", hex: "#9B59B6", image: "COBIJAS/COBIJA TEXTURIZADA PURPURA.jpeg"}],
     badge: "Nuevo", emoji: "💜", isNewCollection: true
   }
+,
+
+  {
+    id: 63,
+    name: "Cobertor Luminoso",
+    cat: "Cobertores",
+    shortDesc: "✨🌙 ¡Cobertores Luminosos que brillan en la oscuridad! 🌙✨ Incluyen 2 cojines decorativos. Súper calientitos y suaves. Stock limitado.",
+    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
+      <p style="margin-bottom:0.8rem;">✨🌙 <strong>¡Cobertores Luminosos que brillan en la oscuridad!</strong> 🌙✨</p>
+      <p style="margin-bottom:0.5rem;">🛏️ Disponibles en una gran variedad de diseños y personajes favoritos.</p>
+      <p style="margin-bottom:0.5rem;">🧸 Incluyen <strong>2 cojines decorativos</strong> con el personaje.</p>
+      <p style="margin-bottom:0.5rem;">🔥 Súper calientitos y suaves, ideales para las noches frías.</p>
+      <p style="margin-bottom:0.5rem;">📏 Disponibles en medidas de <strong>1½ y 2 plazas</strong>.</p>
+      <p style="font-size:0.9rem;color:var(--gray);margin-top:1rem;">⚡ ¡Dale un toque mágico y acogedor a tu habitación!</p>
+      <p style="font-size:0.9rem;color:var(--teal);font-weight:600;">📢 Stock limitado. ¡Disponibles hasta agotar existencias!</p>
+    </div>`,
+    prices: {"1 1/2 Plazas": 0, "2 Plazas": 0},
+    colors: [
+      {name: "Colección Portada", hex: "#1A1235", image: "COBERTORES/COBERTOR LUMINOSO/COBERTOR LUMINOSO PORTADA.jpeg"},
+      {name: "Ada", hex: "#E8A0C0", image: "COBERTORES/COBERTOR LUMINOSO/COBERTOR LUMINOSO ADA.jpeg"},
+      {name: "Alien", hex: "#7BA7BC", image: "COBERTORES/COBERTOR LUMINOSO/COBERTOR LUMINOSO ALIEN.jpeg"},
+      {name: "Avión", hex: "#5BA8A0", image: "COBERTORES/COBERTOR LUMINOSO/COBERTOR LUMINOSO AVION.jpeg"},
+      {name: "Búho", hex: "#4A7BA7", image: "COBERTORES/COBERTOR LUMINOSO/COBERTOR LUMINOSO BUHO.jpeg"},
+      {name: "Capibara", hex: "#D4A574", image: "COBERTORES/COBERTOR LUMINOSO/COBERTOR LUMINOSO CAPIBARA.jpeg"},
+      {name: "Conejito", hex: "#FF69B4", image: "COBERTORES/COBERTOR LUMINOSO/COBERTOR LUMINOSO CONEJITO.jpeg"},
+      {name: "Dinosaurio", hex: "#228B22", image: "COBERTORES/COBERTOR LUMINOSO/COBERTOR LUMINOSO DINOSAURIO.jpeg"},
+      {name: "Espacio", hex: "#2E5AAC", image: "COBERTORES/COBERTOR LUMINOSO/COBERTOR LUMINOSO ESPACIO.jpeg"},
+      {name: "Estrellas", hex: "#9B59B6", image: "COBERTORES/COBERTOR LUMINOSO/COBERTOR LUMINOSO ESTRELLAS.jpeg"},
+      {name: "Gatito", hex: "#C41E3A", image: "COBERTORES/COBERTOR LUMINOSO/COBERTOR LUMINOSO GATITO.jpeg"},
+      {name: "Gordito", hex: "#D4869A", image: "COBERTORES/COBERTOR LUMINOSO/COBERTOR LUMINOSO GORDITO.jpeg"},
+      {name: "Mariposa", hex: "#40B5AD", image: "COBERTORES/COBERTOR LUMINOSO/COBERTOR LUMINOSO MARIPOSA.jpeg"},
+      {name: "Perrito", hex: "#4169E1", image: "COBERTORES/COBERTOR LUMINOSO/COBERTOR LUMINOSO PERRITO.jpeg"},
+      {name: "Unicornio", hex: "#B19CD9", image: "COBERTORES/COBERTOR LUMINOSO/COBERTOR LUMINOSO UNICORNIO.jpeg"}
+    ],
+    badge: "Nuevo",
+    emoji: "🌙",
+    isNewCollection: true
+  }
 ];
 
 // ===== BASE DE DATOS PARA ANÁLISIS =====
@@ -1998,6 +1965,8 @@ let currentProduct = null;
 let selectedSize = null;
 let selectedColor = null;
 let qty = 1;
+let modalAutoSlide = null;       // interval del cambio automático
+let modalCurrentImageIndex = 0;  // índice de imagen actual
 
 // ===== RENDER PRODUCTS =====
 function renderProducts(filter, customList) {
@@ -2336,6 +2305,98 @@ function openModal(id) {
 
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
+  // Mostrar/ocultar indicador de scroll
+  const scrollHint = document.getElementById('modalScrollHint');
+  if (scrollHint) scrollHint.style.display = 'flex';
+  const modalRight = document.querySelector('.modal-right');
+  if (modalRight && scrollHint) {
+    modalRight.onscroll = () => {
+      if (modalRight.scrollTop > 30) {
+        scrollHint.style.opacity = '0';
+        setTimeout(() => { scrollHint.style.display = 'none'; }, 300);
+      }
+    };
+  }
+  // Iniciar cambio automático de imágenes cada 3 segundos
+  startModalAutoSlide();
+}
+
+function startModalAutoSlide() {
+  stopModalAutoSlide(); // limpiar anterior si existe
+  modalCurrentImageIndex = 0;
+
+  // Solo auto-slide si el producto tiene colores con imágenes
+  if (!currentProduct || !currentProduct.colors || currentProduct.colors.length <= 1) return;
+
+  // Actualizar dots visuales
+  updateModalDots();
+
+  modalAutoSlide = setInterval(() => {
+    if (!currentProduct || !currentProduct.colors) return;
+    modalCurrentImageIndex = (modalCurrentImageIndex + 1) % currentProduct.colors.length;
+    const nextColor = currentProduct.colors[modalCurrentImageIndex];
+    if (nextColor && nextColor.image) {
+      selectedColor = nextColor;
+      // Actualizar imagen con transición suave
+      const modalImg = document.getElementById('modalImg');
+      modalImg.style.opacity = '0';
+      setTimeout(() => {
+        modalImg.innerHTML = `<img src="${nextColor.image}" alt="${currentProduct.name}" style="width:100%;height:100%;object-fit:contain">`;
+        modalImg.style.opacity = '1';
+      }, 200);
+      // Actualizar dot seleccionado visualmente
+      updateModalDotActive();
+      // Actualizar color seleccionado en los swatches
+      document.querySelectorAll('.color-opt').forEach((c, i) => {
+        c.classList.toggle('selected', i === modalCurrentImageIndex);
+      });
+    }
+  }, 3000);
+}
+
+function stopModalAutoSlide() {
+  if (modalAutoSlide) {
+    clearInterval(modalAutoSlide);
+    modalAutoSlide = null;
+  }
+}
+
+function updateModalDots() {
+  const nav = document.querySelector('.modal-gallery-nav');
+  if (!nav || !currentProduct || !currentProduct.colors) return;
+  nav.innerHTML = currentProduct.colors.map((c, i) => 
+    `<div class="gallery-dot${i === 0 ? ' active' : ''}" data-index="${i}" onclick="manualSelectModalImage(${i})"></div>`
+  ).join('');
+}
+
+function updateModalDotActive() {
+  document.querySelectorAll('.gallery-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === modalCurrentImageIndex);
+  });
+}
+
+function manualSelectModalImage(index) {
+  if (!currentProduct || !currentProduct.colors) return;
+  stopModalAutoSlide();
+  modalCurrentImageIndex = index;
+  const colorData = currentProduct.colors[index];
+  if (colorData) {
+    selectedColor = colorData;
+    const modalImg = document.getElementById('modalImg');
+    modalImg.style.opacity = '0';
+    setTimeout(() => {
+      if (colorData.image) {
+        modalImg.innerHTML = `<img src="${colorData.image}" alt="${currentProduct.name}" style="width:100%;height:100%;object-fit:contain">`;
+      }
+      modalImg.style.opacity = '1';
+    }, 200);
+    updateModalDotActive();
+    document.querySelectorAll('.color-opt').forEach((c, i) => {
+      c.classList.toggle('selected', i === index);
+    });
+  }
+  // Reiniciar auto-slide después de 5 segundos de inactividad
+  setTimeout(() => { if (currentProduct) startModalAutoSlide(); }, 5000);
 }
 
 function updateModalImage() {
@@ -2387,8 +2448,10 @@ function selectColor(color, el) {
 }
 
 function selectColorWithImage(colorName, el) {
+  stopModalAutoSlide(); // Pausar auto-slide al interactuar manualmente
   const colorData = currentProduct.colors.find(c => c.name === colorName);
   if (colorData) {
+    modalCurrentImageIndex = currentProduct.colors.indexOf(colorData);
     selectedColor = colorData;
     document.querySelectorAll('.color-opt').forEach(c => c.classList.remove('selected'));
     el.classList.add('selected');
@@ -2399,6 +2462,9 @@ function selectColorWithImage(colorName, el) {
       modalImg.innerHTML = `<img src="${colorData.image}" alt="${currentProduct.name}" style="width:100%;height:100%;object-fit:contain">`;
       modalImg.style.opacity = '1';
     }, 200);
+    updateModalDotActive();
+    // Reiniciar auto-slide después de 5 segundos
+    setTimeout(() => { if (currentProduct) startModalAutoSlide(); }, 5000);
   }
 }
 
@@ -2409,8 +2475,12 @@ function changeQty(d) {
 }
 
 function closeModalBtn() {
+  stopModalAutoSlide(); // Detener cambio automático
   document.getElementById('modalOverlay').classList.remove('open');
   document.body.style.overflow = '';
+  // Limpiar scroll handler
+  const modalRight = document.querySelector('.modal-right');
+  if (modalRight) modalRight.onscroll = null;
 }
 
 function closeModal(e) {
