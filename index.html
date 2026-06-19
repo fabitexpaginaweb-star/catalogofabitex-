@@ -75,16 +75,16 @@ nav.scrolled .nav-logo-img{height:70px}
 
 .mobile-toggle{display:none;background:none;border:none;font-size:1.8rem;color:var(--navy);cursor:pointer;padding:0.5rem}
 
-.new-collection-banner{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 50%,var(--teal-dark) 100%);padding:1.4rem 2rem;position:fixed;top:166px;left:0;right:0;z-index:190;text-align:center;overflow:hidden;animation:slideDownNav 0.6s ease-out 0.8s both}
-.new-collection-banner::before{content:'';position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');background-size:30px 30px;opacity:0.5}
-.new-collection-inner{position:relative;z-index:1;max-width:1600px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap}
-.new-collection-text{color:var(--white);font-size:1.05rem;font-weight:500}
-.new-collection-text strong{color:var(--gold);font-weight:700}
-.new-collection-badge{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--white);padding:0.5rem 1.2rem;border-radius:100px;font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;animation:glow 2s infinite}
-.new-collection-btn{background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.3);color:var(--white);padding:0.6rem 1.4rem;border-radius:100px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all 0.3s;text-decoration:none}
-.new-collection-btn:hover{background:rgba(255,255,255,0.25);transform:translateY(-2px)}
 
-.hero{min-height:90vh;padding-top:220px;position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;align-items:center;max-width:1600px;margin:0 auto}
+
+
+
+
+
+
+
+
+.hero{min-height:90vh;padding-top:170px;position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;align-items:center;max-width:1600px;margin:0 auto}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(89,193,212,0.08) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(196,151,90,0.06) 0%,transparent 50%);pointer-events:none;z-index:0}
 .hero-content{padding:2rem 3rem 2rem 4rem;position:relative;z-index:1;animation:slideUpHero 1s ease-out 0.6s both}
 .hero-badge{display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg,rgba(89,193,212,0.15),rgba(196,151,90,0.1));border:1px solid rgba(89,193,212,0.25);padding:0.6rem 1.4rem;border-radius:100px;margin-bottom:1.5rem;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--navy-light);font-weight:600;backdrop-filter:blur(10px);animation:fadeInStagger 0.8s ease 1s both}
@@ -418,9 +418,9 @@ footer{background:var(--navy-dark);color:rgba(255,255,255,0.6);padding:3rem 2rem
 .wa-float:hover .wa-tooltip{opacity:1;transform:translateX(-8px)}
 
 @media(max-width:1200px){.cat-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:1024px){.hero{grid-template-columns:1fr}.hero-visual{display:none}.hotel-inner{grid-template-columns:1fr;gap:2rem}.contact-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr;gap:2rem}.modal{grid-template-columns:1fr}.new-collection-banner{top:146px}.cat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1024px){.hero{grid-template-columns:1fr}.hero-visual{display:none}.hotel-inner{grid-template-columns:1fr;gap:2rem}.contact-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr;gap:2rem}.modal{grid-template-columns:1fr}.cat-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:768px){
-  .topbar-info span{display:none}.nav-links{display:none}.mobile-toggle{display:block}.search-input{width:160px}.search-input:focus{width:200px}.hero-content{padding:2rem 1.5rem;padding-top:6rem}.hero-stats{flex-wrap:wrap;gap:1.5rem}.products-toolbar{flex-direction:column;align-items:flex-start}.cat-grid{grid-template-columns:repeat(2,1fr)}.reviews-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr}.cart-drawer{width:100%}.modal{max-height:95vh}.trust-bar-inner{gap:1rem}.trust-divider{display:none}section{padding:3rem 1rem}.new-collection-banner{top:146px;padding:0.8rem}.new-collection-inner{flex-direction:column;gap:0.8rem}.hero{padding-top:190px}.hero-cta{flex-direction:column}.hero-cta a{width:100%;justify-content:center}
+  .topbar-info span{display:none}.nav-links{display:none}.mobile-toggle{display:block}.search-input{width:160px}.search-input:focus{width:200px}.hero-content{padding:2rem 1.5rem;padding-top:6rem}.hero-stats{flex-wrap:wrap;gap:1.5rem}.products-toolbar{flex-direction:column;align-items:flex-start}.cat-grid{grid-template-columns:repeat(2,1fr)}.reviews-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr}.cart-drawer{width:100%}.modal{max-height:95vh}.trust-bar-inner{gap:1rem}.trust-divider{display:none}section{padding:3rem 1rem}.hero{padding-top:140px}.hero-cta{flex-direction:column}.hero-cta a{width:100%;justify-content:center}
   .product-img{height:280px}
   .products-grid{grid-template-columns:1fr}
   .product-name{font-size:1.3rem}
@@ -759,13 +759,7 @@ img { max-width: 100%; height: auto; }
 </div>
 
 <!-- NEW COLLECTION BANNER -->
-<div class="new-collection-banner" id="newCollectionBanner">
-  <div class="new-collection-inner">
-    <span class="new-collection-badge">✨ NUEVA COLECCIÓN</span>
-    <span class="new-collection-text">¡Descubre nuestros <strong>cobertores de personajes</strong>! Snoopy, Mario, Hello Kitty y más. Edición limitada.</span>
-    <a href="#productos" class="new-collection-btn" onclick="filterProducts('Cobertores'); document.getElementById('newCollectionBanner').style.display='none';">Ver colección →</a>
-  </div>
-</div>
+
 
 <!-- NAVIGATION -->
 <nav id="navbar">
@@ -827,42 +821,42 @@ img { max-width: 100%; height: auto; }
       <div class="hero-carousel-badge">✨ Nueva Colección</div>
       <div class="hero-carousel-inner" id="heroCarousel">
         <div class="hero-carousel-slide active">
-          <img src="COBERTORES/COBERTOR DELUXE/COBERTOR LUCIFER.jpg" alt="Cobertor Lucifer Rosa">
+          <img src="COBERTORES/COBERTOR EVEREST BORDADO/COBERTOR LUCIFER.jpg" alt="Cobertor Lucifer Rosa">
           <div class="hero-carousel-caption">
             <h4>Lucifer Rosa</h4>
             <p>Edición Disney · 2 Plazas</p>
           </div>
         </div>
         <div class="hero-carousel-slide">
-          <img src="COBERTORES/COBERTOR DELUXE/COBERTOR BRONCO.jpg" alt="Cobertor Bronco Dorado">
+          <img src="COBERTORES/COBERTOR EVEREST BORDADO/COBERTOR BRONCO.jpg" alt="Cobertor Bronco Dorado">
           <div class="hero-carousel-caption">
             <h4>Bronco Dorado</h4>
             <p>Edición Especial · 2 Plazas</p>
           </div>
         </div>
         <div class="hero-carousel-slide">
-          <img src="COBERTORES/COBERTOR DELUXE/COBERTOR SNOOPY Y.jpg" alt="Cobertor Snoopy Gris">
+          <img src="COBERTORES/COBERTOR EVEREST BORDADO/COBERTOR SNOOPY Y.jpg" alt="Cobertor Snoopy Gris">
           <div class="hero-carousel-caption">
             <h4>Snoopy Gris</h4>
             <p>Snoopy Collection · 2 Plazas</p>
           </div>
         </div>
         <div class="hero-carousel-slide">
-          <img src="COBERTORES/COBERTOR DELUXE/COBERTOR SNOOPY.jpg" alt="Cobertor Snoopy Rosa">
+          <img src="COBERTORES/COBERTOR EVEREST BORDADO/COBERTOR SNOOPY.jpg" alt="Cobertor Snoopy Rosa">
           <div class="hero-carousel-caption">
             <h4>Snoopy Rosa</h4>
             <p>Rosa Edition · 2 Plazas</p>
           </div>
         </div>
         <div class="hero-carousel-slide">
-          <img src="COBERTORES/COBERTOR DELUXE/COBERTOR SUPER MARIO GALAXI.jpg" alt="Cobertor Mario">
+          <img src="COBERTORES/COBERTOR EVEREST BORDADO/COBERTOR SUPER MARIO GALAXI.jpg" alt="Cobertor Mario">
           <div class="hero-carousel-caption">
             <h4>Mario Galaxy</h4>
             <p>Nintendo x Fabitex · 2 Plazas</p>
           </div>
         </div>
         <div class="hero-carousel-slide">
-          <img src="COBERTORES/COBERTOR DELUXE/COBERTOR HELLO KITTY.jpg" alt="Cobertor Hello Kitty">
+          <img src="COBERTORES/COBERTOR EVEREST BORDADO/COBERTOR HELLO KITTY.jpg" alt="Cobertor Hello Kitty">
           <div class="hero-carousel-caption">
             <h4>Hello Kitty</h4>
             <p>Hello Kitty Special · 2 Plazas</p>
@@ -988,7 +982,7 @@ img { max-width: 100%; height: auto; }
     <div class="cat-card" data-cat="Hotel" onclick="filterProducts('Hotel',this)">
       <div class="cat-img" data-cat-bg="Hotel">
         <div class="cat-overlay">
-          <div class="cat-name">Lencería Hotelera</div>
+          <div class="cat-name">Línea Hotelera</div>
           <div class="cat-sub">Producción a medida · Por volumen</div>
         </div>
         <div class="cat-arrow">→</div>
@@ -1037,27 +1031,27 @@ img { max-width: 100%; height: auto; }
       <div class="insta-overlay"><div class="insta-info"><p>🌙 Brilla en la oscuridad</p></div></div>
     </div>
     <div class="insta-card">
-      <img src="COBERTORES/COBERTOR DELUXE/COBERTOR LUCIFER.jpg" alt="Cobertor Lucifer">
+      <img src="COBERTORES/COBERTOR EVEREST BORDADO/COBERTOR LUCIFER.jpg" alt="Cobertor Lucifer">
       <div class="insta-overlay"><div class="insta-info"><p>❤️ Colección Disney</p></div></div>
     </div>
     <div class="insta-card">
-      <img src="COBERTORES/COBERTOR DELUXE/COBERTOR BRONCO.jpg" alt="Cobertor Bronco">
+      <img src="COBERTORES/COBERTOR EVEREST BORDADO/COBERTOR BRONCO.jpg" alt="Cobertor Bronco">
       <div class="insta-overlay"><div class="insta-info"><p>🐴 Edición Especial</p></div></div>
     </div>
     <div class="insta-card">
-      <img src="COBERTORES/COBERTOR DELUXE/COBERTOR SNOOPY Y.jpg" alt="Cobertor Snoopy Gris">
+      <img src="COBERTORES/COBERTOR EVEREST BORDADO/COBERTOR SNOOPY Y.jpg" alt="Cobertor Snoopy Gris">
       <div class="insta-overlay"><div class="insta-info"><p>🐶 Snoopy Collection</p></div></div>
     </div>
     <div class="insta-card">
-      <img src="COBERTORES/COBERTOR DELUXE/COBERTOR SNOOPY.jpg" alt="Cobertor Snoopy Rosa">
+      <img src="COBERTORES/COBERTOR EVEREST BORDADO/COBERTOR SNOOPY.jpg" alt="Cobertor Snoopy Rosa">
       <div class="insta-overlay"><div class="insta-info"><p>🌸 Rosa Edition</p></div></div>
     </div>
     <div class="insta-card">
-      <img src="COBERTORES/COBERTOR DELUXE/COBERTOR SUPER MARIO GALAXI.jpg" alt="Cobertor Mario">
+      <img src="COBERTORES/COBERTOR EVEREST BORDADO/COBERTOR SUPER MARIO GALAXI.jpg" alt="Cobertor Mario">
       <div class="insta-overlay"><div class="insta-info"><p>🎮 Nintendo x Fabitex</p></div></div>
     </div>
     <div class="insta-card">
-      <img src="COBERTORES/COBERTOR DELUXE/COBERTOR HELLO KITTY.jpg" alt="Cobertor Hello Kitty">
+      <img src="COBERTORES/COBERTOR EVEREST BORDADO/COBERTOR HELLO KITTY.jpg" alt="Cobertor Hello Kitty">
       <div class="insta-overlay"><div class="insta-info"><p>🎀 Hello Kitty Special</p></div></div>
     </div>
   </div>
@@ -1364,7 +1358,7 @@ img { max-width: 100%; height: auto; }
 const products = [
   {
     id: 1,
-    name: "Cobertor de Personajes Premium",
+    name: "Cobertor Everest Bordado",
     cat: "Cobertores",
     shortDesc: "Cobertor de tela velvet con reverso sherpa. Incluye 2 cojines bordados + 1 cojín sublimado.",
     desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
@@ -1375,12 +1369,12 @@ const products = [
     prices: {"2 Plazas": 55, "2 1/2 Plazas": 55, "3 Plazas": 55},
     bulkTiers: [{min: 3, price: 50}, {min: 6, price: 48}],
     colors: [
-      {name: "Lucifer Rosa", hex: "#E8B4B4", image: "COBERTORES/COBERTOR DELUXE/COBERTOR LUCIFER.jpg"},
-      {name: "Bronco Dorado", hex: "#C4A35A", image: "COBERTORES/COBERTOR DELUXE/COBERTOR BRONCO.jpg"},
-      {name: "Snoopy Gris", hex: "#8A8A8A", image: "COBERTORES/COBERTOR DELUXE/COBERTOR SNOOPY Y.jpg"},
-      {name: "Snoopy Rosa", hex: "#E8A4C5", image: "COBERTORES/COBERTOR DELUXE/COBERTOR SNOOPY.jpg"},
-      {name: "Mario Azul", hex: "#2E5AAC", image: "COBERTORES/COBERTOR DELUXE/COBERTOR SUPER MARIO GALAXI.jpg"},
-      {name: "Hello Kitty Rojo", hex: "#C41E3A", image: "COBERTORES/COBERTOR DELUXE/COBERTOR HELLO KITTY.jpg"}
+      {name: "Lucifer Rosa", hex: "#E8B4B4", image: "COBERTORES/COBERTOR EVEREST BORDADO/COBERTOR LUCIFER.jpg"},
+      {name: "Bronco Dorado", hex: "#C4A35A", image: "COBERTORES/COBERTOR EVEREST BORDADO/COBERTOR BRONCO.jpg"},
+      {name: "Snoopy Gris", hex: "#8A8A8A", image: "COBERTORES/COBERTOR EVEREST BORDADO/COBERTOR SNOOPY Y.jpg"},
+      {name: "Snoopy Rosa", hex: "#E8A4C5", image: "COBERTORES/COBERTOR EVEREST BORDADO/COBERTOR SNOOPY.jpg"},
+      {name: "Mario Azul", hex: "#2E5AAC", image: "COBERTORES/COBERTOR EVEREST BORDADO/COBERTOR SUPER MARIO GALAXI.jpg"},
+      {name: "Hello Kitty Rojo", hex: "#C41E3A", image: "COBERTORES/COBERTOR EVEREST BORDADO/COBERTOR HELLO KITTY.jpg"}
     ],
     badge: "Nuevo",
     emoji: "🎭",
@@ -1737,7 +1731,9 @@ const products = [
     id: 44, name: "Cobija 3D", cat: "Cobijas",
     shortDesc: "Diseño floral en relieve 3D que transforma tu dormitorio. Promoción especial por tiempo limitado.",
     desc: "🌸 Arte textil en tres dimensiones. Diseño floral en relieve tridimensional que aporta elegancia y profundidad visual. Promoción especial: $13",
-    prices: {"2 Plazas": 13},
+    prices: {"2 Plazas": 17},
+    bulkPrice: 14,
+    bulkMin: 3,
     colors: [{name: "Beige Floral", hex: "#D4A574", image: "COBIJAS/COBIJA 3D.jpeg"}],
     badge: "Oferta", emoji: "🌸", isNewCollection: true
   },
@@ -1753,7 +1749,7 @@ const products = [
     id: 46, name: "Cobija Ovejera Wolly", cat: "Cobijas",
     shortDesc: "Ovejera premium color guayaba. Suavidad irresistible y abrigo perfecto.",
     desc: "🧶 Suavidad que enamora. Textura ovejera premium en color guayaba exclusivo. Cada fibra está diseñada para brindar calidez sin pesar. $15 unidad · $12 por mayor (3+ uds)",
-    prices: {"2 Plazas": 15}, bulkPrice: 12, bulkMin: 3,
+    prices: {"2 Plazas": 16}, bulkPrice: 13, bulkMin: 3,
     colors: [{name: "Guayaba", hex: "#D4869A", image: "COBIJAS/COBIJA OVEJERA WOLLY COLOR GUAYABA.jpeg"}],
     badge: "Nuevo", emoji: "🧶", isNewCollection: true
   },
@@ -1777,7 +1773,7 @@ const products = [
     id: 49, name: "Cobija Peluche Especial Niño", cat: "Cobijas",
     shortDesc: "Diseño espacial con cohetes y astronautas. La favorita de los pequeños exploradores.",
     desc: "🚀 Aventuras espaciales cada noche. Diseño con cohetes, astronautas y planetas en tela peluche ultra suave. $10 unidad · $7.50 por mayor (3+ uds)",
-    prices: {"2 Plazas": 10}, bulkPrice: 7.50, bulkMin: 3,
+    prices: {"2 Plazas": 10}, bulkPrice: 8.50, bulkMin: 3,
     colors: [{name: "Espacial", hex: "#4169E1", image: "COBIJAS/COBIJA PELUCHE ESPECIAL NIÑO.jpeg"}],
     badge: "Nuevo", emoji: "🚀", isNewCollection: true
   },
@@ -1785,7 +1781,7 @@ const products = [
     id: 50, name: "Cobija Peluche Especial Niña", cat: "Cobijas",
     shortDesc: "Hello Kitty en tela peluche rosa. La compañera perfecta para las princesas del hogar.",
     desc: "🎀 Magia rosa en cada rincón. Tela peluche rosa ultra suave con Hello Kitty. $10 unidad · $7.50 por mayor (3+ uds)",
-    prices: {"2 Plazas": 10}, bulkPrice: 7.50, bulkMin: 3,
+    prices: {"2 Plazas": 10}, bulkPrice: 8.50, bulkMin: 3,
     colors: [{name: "Hello Kitty Rosa", hex: "#FF69B4", image: "COBIJAS/COBIJA PELUCHE ESPECIAL NIÑA.jpeg"}],
     badge: "Nuevo", emoji: "🎀", isNewCollection: true
   },
@@ -1794,6 +1790,8 @@ const products = [
     shortDesc: "Elegancia francesa en tono habano. Sofisticación atemporal para dormitorios de lujo.",
     desc: "🥐 El arte de dormir con estilo. Tono habano cálido con textura fina que evoca los interiores parisinos más refinados. Plaza 1/2: $16 ($14 mayor) · 2 Plazas: $18 ($16 mayor) · 2 1/2 Plazas: $21 ($19 mayor)",
     prices: {"Plaza y media": 16, "2 Plazas": 18, "2 1/2 Plazas": 21},
+    bulkPrice: 16,
+    bulkMin: 3,
     colors: [{name: "Habano", hex: "#C4A882", image: "COBIJAS/COBIJA FRANCESA COLOR HABANO.jpeg"}],
     badge: "Nuevo", emoji: "🥐", isNewCollection: true
   },
@@ -1818,6 +1816,8 @@ const products = [
     shortDesc: "Líneas verticales Jackard en azul jean moderno. Textura ribeteada que aporta dimensión.",
     desc: "🔷 Estilo urbano, abrigo premium. Líneas verticales ribeteadas que crean dimensión visual. Plaza 1/2: $20.50 ($18.50 mayor) · 2 Plazas: $22.50 ($20.50 mayor) · 2 1/2 Plazas: $27 ($24 mayor) · 3 Plazas: $30 ($27 mayor)",
     prices: {"Plaza y media": 20.5, "2 Plazas": 22.5, "2 1/2 Plazas": 27, "3 Plazas": 30},
+    bulkPrice: 19.5,
+    bulkMin: 3,
     colors: [{name: "Azul Jean", hex: "#1E3A5F", image: "COBIJAS/COBIJA JACKARD LINES AZUL JEAN.jpeg"}],
     badge: "Nuevo", emoji: "🔷", isNewCollection: true
   },
@@ -1826,6 +1826,8 @@ const products = [
     shortDesc: "Líneas verticales Jackard en habano elegante. La misma textura premium en tono cálido.",
     desc: "🟤 Sofisticación en cada línea. Textura ribeteada premium en tono habano cálido. Plaza 1/2: $20.50 ($18.50 mayor) · 2 Plazas: $22.50 ($20.50 mayor) · 2 1/2 Plazas: $27 ($24 mayor) · 3 Plazas: $30 ($27 mayor)",
     prices: {"Plaza y media": 20.5, "2 Plazas": 22.5, "2 1/2 Plazas": 27, "3 Plazas": 30},
+    bulkPrice: 19.5,
+    bulkMin: 3,
     colors: [{name: "Habano", hex: "#C4A882", image: "COBIJAS/COBIJA JACKARD LINES HABANO.jpeg"}],
     badge: "Nuevo", emoji: "🟤", isNewCollection: true
   },
@@ -1833,7 +1835,7 @@ const products = [
     id: 56, name: "Cobija Ovejera Luminosa", cat: "Cobijas",
     shortDesc: "Ovejera con efecto luminoso que brilla en la oscuridad. Magia para los pequeños.",
     desc: "✨ Brilla mientras sueñas. Textura ovejera suave con fibras luminosas que se cargan con la luz del día. $9 unidad · $7.50 por mayor (3+ uds)",
-    prices: {"2 Plazas": 9}, bulkPrice: 7.50, bulkMin: 3,
+    prices: {"2 Plazas": 0},
     colors: [{name: "Luminosa", hex: "#E8E0F0"}],
     badge: "Nuevo", emoji: "✨", isNewCollection: true
   },
@@ -1842,6 +1844,8 @@ const products = [
     shortDesc: "Textura de piña en tono habano clásico. Diseño geométrico atemporal.",
     desc: "🍍 Clásico que perdura. Patrón geométrico de piña en tono habano. Plaza 1/2: $13 ($11 mayor) · 2 Plazas: $15 ($13 mayor) · 2 1/2 Plazas: $18 ($17 mayor) · 3 Plazas: $23 ($21 mayor)",
     prices: {"Plaza y media": 13, "2 Plazas": 15, "2 1/2 Plazas": 18, "3 Plazas": 23},
+    bulkPrice: 13,
+    bulkMin: 3,
     colors: [{name: "Habano", hex: "#C4A882", image: "COBIJAS/COBIJA PIÑA HABANO.jpeg"}],
     badge: "Nuevo", emoji: "🍍", isNewCollection: true
   },
@@ -1850,6 +1854,8 @@ const products = [
     shortDesc: "Textura de piña en tono café intenso. El mismo diseño atemporal en color cálido profundo.",
     desc: "🍍 Intensidad que abraza. Patrón geométrico de piña en tono café intenso. Plaza 1/2: $13 ($11 mayor) · 2 Plazas: $15 ($13 mayor) · 2 1/2 Plazas: $18 ($17 mayor) · 3 Plazas: $23 ($21 mayor)",
     prices: {"Plaza y media": 13, "2 Plazas": 15, "2 1/2 Plazas": 18, "3 Plazas": 23},
+    bulkPrice: 13,
+    bulkMin: 3,
     colors: [{name: "Café", hex: "#6B4E3D", image: "COBIJAS/COBIJA PIÑA CAFE.jpeg"}],
     badge: "Nuevo", emoji: "🍍", isNewCollection: true
   },
@@ -1857,8 +1863,7 @@ const products = [
     id: 59, name: "Cobija Térmica", cat: "Cobijas",
     shortDesc: "Eficiencia térmica al mejor precio. A partir de 6 unidades, precio irresistible.",
     desc: "🔥 Calor inteligente, precio mínimo. Tela térmica eficiente que retiene el calor corporal sin ser abultada. $4.80 unidad · $3.80 desde 6 unidades.",
-    prices: {"2 Plazas": 4.80},
-    bulkTiers: [{min: 6, price: 3.80}],
+    prices: {"2 Plazas": 0},
     colors: [{name: "Térmica", hex: "#D5D0C8"}],
     badge: "Nuevo", emoji: "🔥", isNewCollection: true
   },
@@ -1866,7 +1871,7 @@ const products = [
     id: 60, name: "Cobija Texturizada Lila", cat: "Cobijas",
     shortDesc: "Geometría texturizada en lila púrpura. Diseño moderno que aporta dimensión única.",
     desc: "💜 Geometría que se siente. Patrones geométricos en relieve con tono púrpura relajante. $9 unidad · $7.50 por mayor (3+ uds)",
-    prices: {"2 Plazas": 9}, bulkPrice: 7.50, bulkMin: 3,
+    prices: {"2 Plazas": 0},
     colors: [{name: "Púrpura", hex: "#9B59B6", image: "COBIJAS/COBIJA TEXTURIZADA PURPURA.jpeg"}],
     badge: "Nuevo", emoji: "💜", isNewCollection: true
   }
@@ -1907,7 +1912,199 @@ const products = [
     badge: "Nuevo",
     emoji: "🌙",
     isNewCollection: true
+  },
+
+  {
+    id: 64,
+    name: "MUNDIAL",
+    cat: "Personalizado",
+    shortDesc: "🌎⚽ ¡Vive la emoción del Mundial 2026 desde la comodidad de tu hogar! Cobertor con reverso térmico extra calientito. Edición limitada.",
+    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
+      <p style="margin-bottom:0.8rem;">🌎⚽ <strong>¡Vive la emoción del Mundial 2026 desde la comodidad de tu hogar!</strong> ⚽🌎</p>
+      <p style="margin-bottom:0.5rem;">✨ Cobertor del Mundial 2026</p>
+      <p style="margin-bottom:0.5rem;">🔥 Con reverso térmico extra calientito para las noches frías.</p>
+      <p style="margin-bottom:0.5rem;">🛏️ Disponible en 1½ y 2 plazas.</p>
+      <p style="margin-bottom:0.5rem;">🎨 Diseños exclusivos inspirados en la pasión del fútbol.</p>
+      <p style="margin-bottom:0.5rem;">💯 Suavidad, confort y máxima calidez.</p>
+      <p style="font-size:0.9rem;color:var(--teal);font-weight:600;">📢 EDICIÓN LIMITADA</p>
+    </div>`,
+    prices: {"1 1/2 Plazas": 0, "2 Plazas": 0},
+    colors: [
+      {name: "Mundial 2026", hex: "#1A5F2A", image: "PERSONALIZADOS/MUNDIAL.jpeg"}
+    ],
+    badge: "Edición Limitada",
+    emoji: "⚽",
+    isNewCollection: true
+  },
+  {
+    id: 70,
+    name: "Toalla Hotelera Jacquard Hojas",
+    cat: "Hotel",
+    subcat: "Toallas",
+    shortDesc: "Alta capacidad de secado gracias a su densidad de fibras. Diseñada para uso hotelero intensivo.",
+    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
+      <p style="margin-bottom:0.8rem;"><strong>◉ Toalla Jacquard Hojas</strong></p>
+      <p style="margin-bottom:0.5rem;"><strong>Medidas:</strong><br>140 cm x 75 cm<br>80 cm x 50 cm</p>
+      <p style="margin-bottom:0.5rem;"><strong>◉ Presentación:</strong><br>– Toalla de Cuerpo<br>– Toalla Tocador<br>– Toalla Mediana</p>
+      <p style="margin-bottom:0.5rem;"><strong>◉ Información Adicional:</strong><br>Alta capacidad de secado gracias a su densidad de fibras. Diseñada para uso hotelero intensivo (lavados frecuentes sin perder calidad).</p>
+    </div>`,
+    prices: {"140x75 cm": 0, "80x50 cm": 0},
+    colors: [
+      {name: "Blanco Natural", hex: "#FAFAF5", image: "LINEA HOTELERA/TOALLAS/TOALLA JACQUARD HOJAS .jpeg"}
+    ],
+    badge: "Nuevo",
+    emoji: "🌿",
+    isNewCollection: true
+  },
+  {
+    id: 71,
+    name: "Toalla Hotelera Premium",
+    cat: "Hotel",
+    subcat: "Toallas",
+    shortDesc: "Color blanco estándar hotelero. Diseñada para uso hotelero intensivo, lavados frecuentes sin perder calidad.",
+    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
+      <p style="margin-bottom:0.8rem;"><strong>◉ Toalla Premium</strong></p>
+      <p style="margin-bottom:0.5rem;"><strong>Medidas:</strong><br>140 cm x 70 cm<br>100 cm x 50 cm<br>70 cm x 40 cm</p>
+      <p style="margin-bottom:0.5rem;"><strong>◉ Presentación:</strong><br>– Toalla de Cuerpo<br>– Toalla Mediana<br>– Toalla Tocador</p>
+      <p style="margin-bottom:0.5rem;"><strong>◉ Información Adicional:</strong><br>Color: Principalmente blanco (estándar hotelero). Diseñada para uso hotelero intensivo (lavados frecuentes sin perder calidad).</p>
+    </div>`,
+    prices: {"140x70 cm": 0, "100x50 cm": 0, "70x40 cm": 0},
+    colors: [
+      {name: "Blanco Premium", hex: "#FFFFFF", image: "LINEA HOTELERA/TOALLAS/TOALLA PREMIUM.jpeg"}
+    ],
+    badge: "Nuevo",
+    emoji: "⭐",
+    isNewCollection: true
+  },
+  {
+    id: 72,
+    name: "Toalla Hotelera Selina",
+    cat: "Hotel",
+    subcat: "Toallas",
+    shortDesc: "380 gr · 90% Algodón · 10% Polyester. Amplia variedad de colores sólidos. Ideal para diferenciar ambientes o categorías.",
+    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
+      <p style="margin-bottom:0.8rem;"><strong>◉ Toalla Selina</strong></p>
+      <p style="margin-bottom:0.5rem;"><strong>Medidas:</strong><br>140 cm x 70 cm<br>Medida Standard</p>
+      <p style="margin-bottom:0.5rem;"><strong>◉ Presentación:</strong><br>Toalla de Cuerpo</p>
+      <p style="margin-bottom:0.5rem;"><strong>◉ Información Adicional:</strong><br>Amplia variedad de colores sólidos y diseños (ideal para diferenciar ambientes o categorías).</p>
+      <p style="margin-bottom:0.5rem;"><strong>Toalla Selina | Gramaje:</strong><br>380 gr<br>90% Algodón<br>10% Polyester</p>
+    </div>`,
+    prices: {"140x70 cm": 0},
+    colors: [
+      {name: "Multicolor", hex: "#9B59B6", image: "LINEA HOTELERA/TOALLAS/TOALLA SELINA.jpeg"}
+    ],
+    badge: "Nuevo",
+    emoji: "🌈",
+    isNewCollection: true
+  },
+  {
+    id: 73,
+    name: "Sábana Bramante Dubai",
+    cat: "Hotel",
+    subcat: "Sábanas",
+    shortDesc: "50% algodón / 50% poliéster. 144 hilos. Suave, ligera y fresca. Alta resistencia al uso hotelero.",
+    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
+      <p style="margin-bottom:0.8rem;"><strong>◉ Sábana Bramante Dubai</strong></p>
+      <p style="margin-bottom:0.5rem;"><strong>Composición:</strong> 50% algodón / 50% poliéster (polialgodón)</p>
+      <p style="margin-bottom:0.5rem;"><strong>Cantidad de hilos:</strong> 144 hilos (tejido resistente y funcional)</p>
+      <p style="margin-bottom:0.5rem;"><strong>Textura:</strong> Suave, ligera y fresca al tacto</p>
+      <p style="margin-bottom:0.5rem;"><strong>Transpirabilidad:</strong> Permite buena circulación de aire, ideal para uso continuo</p>
+      <p style="margin-bottom:0.5rem;"><strong>Durabilidad:</strong> Alta resistencia al uso y lavados frecuentes (uso hotelero)</p>
+      <p style="margin-bottom:0.5rem;">Disponible en todas las plazas</p>
+      <p style="margin-bottom:0.5rem;"><strong>◉ Presentación:</strong><br>– 2 Fundas de Almohada<br>– 1 Sábana Sobresabana<br>– 1 Sábana Plana</p>
+    </div>`,
+    prices: {Plaza: 0, "Plaza y media": 0, "2 Plazas": 0, "2 1/2 Plazas": 0, "3 Plazas": 0, Queen: 0, King: 0},
+    colors: [
+      {name: "Blanco Hotel", hex: "#F5F5F0", image: "LINEA HOTELERA/SABANAS/SABANAS BRAMANTE DUBAI.jpeg"}
+    ],
+    badge: "Nuevo",
+    emoji: "🛏️",
+    isNewCollection: true
+  },
+  {
+    id: 74,
+    name: "Sábana Piel de Durazno Hotelera Dubai",
+    cat: "Hotel",
+    subcat: "Sábanas",
+    shortDesc: "Buena circulación de aire, no da calor excesivo. Resistente a lavados frecuentes. No se arruga fácilmente, secado rápido.",
+    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
+      <p style="margin-bottom:0.8rem;"><strong>◉ Sábana Piel de Durazno Hotelera Dubai</strong></p>
+      <p style="margin-bottom:0.5rem;"><strong>Transpirabilidad:</strong> Buena circulación de aire, no da calor excesivo</p>
+      <p style="margin-bottom:0.5rem;"><strong>Durabilidad:</strong> Resistente a lavados frecuentes, ideal para uso hotelero</p>
+      <p style="margin-bottom:0.5rem;"><strong>Mantenimiento:</strong> No se arruga fácilmente, secado rápido.</p>
+      <p style="margin-bottom:0.5rem;"><strong>◉ Presentación:</strong><br>1 sábana superior<br>1 sábana ajustable<br>2 fundas de almohada</p>
+      <p style="margin-bottom:0.5rem;"><strong>◉ Información Adicional:</strong><br>Presentación: Generalmente en color blanco o colores sólidos y estampados o florales (estilo hotel).</p>
+    </div>`,
+    prices: {Plaza: 0, "Plaza y media": 0, "2 Plazas": 0, "2 1/2 Plazas": 0, "3 Plazas": 0, Queen: 0, King: 0},
+    colors: [
+      {name: "Blanco Dubai", hex: "#FAFAFA", image: "LINEA HOTELERA/SABANAS/SABANA PIEL DE DURAZNO HOTELERA DUBAI .jpeg"}
+    ],
+    badge: "Nuevo",
+    emoji: "🍑",
+    isNewCollection: true
+  },
+  {
+    id: 75,
+    name: "Cobertor Hotelero Dubai Acolchado Bordado",
+    cat: "Hotel",
+    subcat: "Edredones",
+    shortDesc: "Microfibra 100% poliéster. Relleno fibra siliconada / guata 150-220 g/m². Incluye 2 cojines rellenos de fibra.",
+    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
+      <p style="margin-bottom:0.8rem;"><strong>◉ Cobertor Hotelero Dubai Acolchado Bordado</strong></p>
+      <p style="margin-bottom:0.5rem;"><strong>Material:</strong> Microfibra 100% poliéster o mezcla polialgodón (suave y resistente)</p>
+      <p style="margin-bottom:0.5rem;"><strong>Relleno:</strong> Fibra siliconada / guata (150 a 220 g/m² aprox.) que brinda abrigo uniforme.</p>
+      <p style="margin-bottom:0.5rem;"><strong>◉ Presentación:</strong><br>Cobertor<br>2 Cojines rellenos de fibra</p>
+      <p style="margin-bottom:0.5rem;"><strong>◉ Información Adicional:</strong><br>Presentación: Generalmente en color blanco o colores sólidos y estampados o florales (estilo hotel).</p>
+    </div>`,
+    prices: {"2 Plazas": 0, "2 1/2 Plazas": 0, "3 Plazas": 0},
+    colors: [
+      {name: "Blanco Bordado", hex: "#F8F8F5", image: "LINEA HOTELERA/COBERTORES/COBERTOR HOTELERO DUBAI BORDADO.jpeg"}
+    ],
+    badge: "Nuevo",
+    emoji: "🏨",
+    isNewCollection: true
+  },
+  {
+    id: 76,
+    name: "Protector de Colchón Blanco",
+    cat: "Hotel",
+    subcat: "Protectores",
+    shortDesc: "Microfibra, rizo felpa o tela bramante. Capa impermeable PU 100% que bloquea líquidos y fluidos.",
+    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
+      <p style="margin-bottom:0.8rem;"><strong>◉ Protector de Colchón</strong></p>
+      <p style="margin-bottom:0.5rem;"><strong>Material superior:</strong> Microfibra, rizo felpa o tela bramante (suave y confortable)</p>
+      <p style="margin-bottom:0.5rem;"><strong>Capa impermeable:</strong> Membrana de poliuretano (PU) 100% impermeable, bloquea líquidos y fluidos.</p>
+    </div>`,
+    prices: {Plaza: 0, "Plaza y media": 0, "2 Plazas": 0, "2 1/2 Plazas": 0, "3 Plazas": 0, Queen: 0, King: 0},
+    colors: [
+      {name: "Blanco", hex: "#FFFFFF", image: "LINEA HOTELERA/PROTECTOR DE COLCHON/PROTECTOR DE COLCHON BLANCO .jpeg"}
+    ],
+    badge: "Nuevo",
+    emoji: "🛡️",
+    isNewCollection: true
+  },
+  {
+    id: 77,
+    name: "Almohada Dubai Hotelera",
+    cat: "Hotel",
+    subcat: "Almohadas",
+    shortDesc: "Fibra siliconada 100% poliéster. Firmeza baja a media. Hipoalergénica, antiácaros y antibacteriana.",
+    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
+      <p style="margin-bottom:0.8rem;"><strong>◉ Almohada Dubai Hotelera</strong></p>
+      <p style="margin-bottom:0.5rem;"><strong>Relleno:</strong> Fibra siliconada / fibra hueca 100% poliéster (suave, esponjosa y con excelente recuperación)</p>
+      <p style="margin-bottom:0.5rem;"><strong>Firmeza:</strong> Baja a media (adaptable a cabeza y cuello)</p>
+      <p style="margin-bottom:0.5rem;"><strong>◉ Presentación:</strong><br>Hipoalergénica<br>Antiácaros y antibacteriana<br>Alta transpirabilidad (evita humedad y malos olores)</p>
+      <p style="margin-bottom:0.5rem;"><strong>◉ Información Adicional:</strong><br>Medidas: 90x50 cm · 75x95 cm · 75x50 cm · 60x40 cm</p>
+    </div>`,
+    prices: {"90x50 cm": 0, "75x95 cm": 0, "75x50 cm": 0, "60x40 cm": 0},
+    colors: [
+      {name: "Blanco Hotel", hex: "#F5F5F0", image: "LINEA HOTELERA/ALMOHADAS/ALMOHADA DUBAI .jpeg"}
+    ],
+    badge: "Nuevo",
+    emoji: "🛏️",
+    isNewCollection: true
   }
+
 ];
 
 // ===== BASE DE DATOS PARA ANÁLISIS =====
@@ -2044,7 +2241,23 @@ function renderProducts(filter, customList) {
 
 function filterProducts(cat, btn) {
   const backBtn = document.getElementById('towelBackBtn');
+  const hotelBackBtn = document.getElementById('hotelBackBtn');
   if (backBtn && cat !== 'Toallas') backBtn.style.display = 'none';
+  if (hotelBackBtn && cat !== 'Hotel') hotelBackBtn.style.display = 'none';
+
+  if (cat === 'Hotel') {
+    showHotelSubcategories();
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
+    if (btn) {
+      btn.classList.add('active');
+      const parentCard = btn.closest('.cat-card');
+      if (parentCard) parentCard.classList.add('active');
+    }
+    const productosSection = document.getElementById('productos');
+    if (productosSection) productosSection.scrollIntoView({ behavior: 'smooth' });
+    return;
+  }
 
   renderProducts(cat);
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -2061,10 +2274,7 @@ function filterProducts(cat, btn) {
     productosSection.scrollIntoView({ behavior: 'smooth' });
   }
 
-  const banner = document.getElementById('newCollectionBanner');
-  if (banner && cat !== 'Cobertores' && cat !== 'todos') {
-    banner.style.display = 'none';
-  }
+
 }
 
 // ===== TOALLAS SUBMENU =====
@@ -2142,6 +2352,105 @@ function showTowelProducts(type) {
     backBtn.style.cssText = 'background:linear-gradient(135deg,var(--navy),var(--navy-light));color:var(--white);border-color:transparent;';
     backBtn.innerHTML = '← Volver a Toallas';
     backBtn.onclick = () => showTowelSubcategories();
+    toolbar.appendChild(backBtn);
+  } else {
+    backBtn.style.display = 'inline-flex';
+  }
+
+  renderProductList(filtered);
+  document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });
+}
+
+
+// ===== HOTEL SUBMENU =====
+function showHotelSubcategories() {
+  const grid = document.getElementById('productsGrid');
+  const submenu = document.getElementById('towelSubmenu');
+  grid.style.display = 'none';
+  if (submenu) submenu.style.display = 'block';
+
+  const almohadas = products.filter(p => p.cat === 'Hotel' && p.subcat === 'Almohadas');
+  const sabanas = products.filter(p => p.cat === 'Hotel' && p.subcat === 'Sábanas');
+  const edredones = products.filter(p => p.cat === 'Hotel' && p.subcat === 'Edredones');
+  const protectores = products.filter(p => p.cat === 'Hotel' && p.subcat === 'Protectores');
+  const toallas = products.filter(p => p.cat === 'Hotel' && p.subcat === 'Toallas');
+
+  const makePreview = (arr) => arr.slice(0, 4).map(p => 
+    p.colors && p.colors[0] && p.colors[0].image ? `<img src="${p.colors[0].image}" alt="${p.name}" loading="lazy" title="${p.name}">` : ''
+  ).join('');
+
+  submenu.innerHTML = `
+    <div class="section-header" style="margin-bottom:2rem;text-align:center;">
+      <p class="section-eyebrow">Línea Institucional</p>
+      <h2 class="section-title">Línea <em>Hotelera</em></h2>
+      <p class="section-subtitle">Selecciona la categoría que necesitas para tu negocio. Calidad profesional, precio de fábrica.</p>
+    </div>
+    <div class="towel-submenu-grid">
+      <div class="towel-submenu-card" onclick="showHotelProducts('Almohadas')">
+        <div class="towel-badge-hotel">🛏️ Almohadas</div>
+        <div class="towel-submenu-icon">🛏️</div>
+        <h3>Almohadas</h3>
+        <p>Fibra siliconada, hipoalergénicas y antiácaros. Confort de hotel para tu negocio.</p>
+        <div style="margin-top:0.8rem;font-size:0.9rem;color:var(--teal);font-weight:600;">${almohadas.length} productos disponibles</div>
+        <div class="towel-submenu-preview">${makePreview(almohadas)}</div>
+      </div>
+      <div class="towel-submenu-card" onclick="showHotelProducts('Sábanas')">
+        <div class="towel-badge-hotel">🛏️ Sábanas</div>
+        <div class="towel-submenu-icon">🛏️</div>
+        <h3>Sábanas</h3>
+        <p>Bramante y piel de durazno. Resistentes a lavados frecuentes. Disponibles en todas las plazas.</p>
+        <div style="margin-top:0.8rem;font-size:0.9rem;color:var(--teal);font-weight:600;">${sabanas.length} productos disponibles</div>
+        <div class="towel-submenu-preview">${makePreview(sabanas)}</div>
+      </div>
+      <div class="towel-submenu-card" onclick="showHotelProducts('Edredones')">
+        <div class="towel-badge-hotel">🛏️ Edredones</div>
+        <div class="towel-submenu-icon">🛏️</div>
+        <h3>Edredones</h3>
+        <p>Cobertores acolchados bordados. Microfibra premium con relleno de fibra siliconada.</p>
+        <div style="margin-top:0.8rem;font-size:0.9rem;color:var(--teal);font-weight:600;">${edredones.length} productos disponibles</div>
+        <div class="towel-submenu-preview">${makePreview(edredones)}</div>
+      </div>
+      <div class="towel-submenu-card" onclick="showHotelProducts('Protectores')">
+        <div class="towel-badge-hotel">🛡️ Protectores</div>
+        <div class="towel-submenu-icon">🛡️</div>
+        <h3>Protectores de Colchón</h3>
+        <p>Capa impermeable PU 100%. Bloquea líquidos y fluidos. Higiene garantizada.</p>
+        <div style="margin-top:0.8rem;font-size:0.9rem;color:var(--teal);font-weight:600;">${protectores.length} productos disponibles</div>
+        <div class="towel-submenu-preview">${makePreview(protectores)}</div>
+      </div>
+      <div class="towel-submenu-card" onclick="showHotelProducts('Toallas')">
+        <div class="towel-badge-hotel">🛁 Toallas</div>
+        <div class="towel-submenu-icon">🛁</div>
+        <h3>Toallas</h3>
+        <p>Jacquard, premium y Selina. Alta absorción y durabilidad para uso hotelero intensivo.</p>
+        <div style="margin-top:0.8rem;font-size:0.9rem;color:var(--teal);font-weight:600;">${toallas.length} productos disponibles</div>
+        <div class="towel-submenu-preview">${makePreview(toallas)}</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;">
+      <button class="btn-back" onclick="filterProducts('todos')">← Ver todos los productos</button>
+    </div>
+  `;
+}
+
+function showHotelProducts(subcat) {
+  const grid = document.getElementById('productsGrid');
+  const submenu = document.getElementById('towelSubmenu');
+  if (submenu) submenu.style.display = 'none';
+  grid.style.display = 'grid';
+
+  const filtered = products.filter(p => p.cat === 'Hotel' && p.subcat === subcat);
+  document.getElementById('toolbarTitle').textContent = 'Hotel · ' + subcat;
+
+  const toolbar = document.querySelector('.products-toolbar');
+  let backBtn = document.getElementById('hotelBackBtn');
+  if (!backBtn) {
+    backBtn = document.createElement('button');
+    backBtn.id = 'hotelBackBtn';
+    backBtn.className = 'filter-btn';
+    backBtn.style.cssText = 'background:linear-gradient(135deg,var(--navy),var(--navy-light));color:var(--white);border-color:transparent;';
+    backBtn.innerHTML = '← Volver a Hotel';
+    backBtn.onclick = () => showHotelSubcategories();
     toolbar.appendChild(backBtn);
   } else {
     backBtn.style.display = 'inline-flex';
@@ -2640,14 +2949,11 @@ function initReveal() {
 // ===== NAVBAR SCROLL =====
 function initNavbar() {
   const nav = document.getElementById('navbar');
-  const banner = document.getElementById('newCollectionBanner');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
       nav.classList.add('scrolled');
-      if (banner) banner.style.top = nav.classList.contains('scrolled') ? '90px' : '110px';
     } else {
       nav.classList.remove('scrolled');
-      if (banner) banner.style.top = '166px';
     }
   });
 }
@@ -2803,6 +3109,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   console.log('🎉 Fabitex v7 cargado. Edredón Premium Damasco activo. Escribe fabitex.showStats() en la consola para ver estadísticas.');
 });
+
+
+
 </script>
 </body>
 </html>
