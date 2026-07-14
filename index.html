@@ -730,6 +730,41 @@ img { max-width: 100%; height: auto; }
   background-image: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, var(--teal-dark) 100%);
 }
 
+/* ===== PLAZAS Y STOCK ===== */
+.product-sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+.product-size-tag {
+  font-size: 0.72rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  background: rgba(89,193,212,0.1);
+  color: var(--teal-dark);
+  font-weight: 600;
+  border: 1px solid rgba(89,193,212,0.2);
+  letter-spacing: 0.02em;
+}
+.product-stock-status {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}
+.stock-available { color: #16a34a; }
+.stock-unavailable { color: #dc2626; }
+.stock-order { color: #ea580c; }
+.product-size-tag.unavailable {
+  background: rgba(156,163,175,0.15);
+  color: var(--gray);
+  border-color: rgba(156,163,175,0.25);
+  text-decoration: line-through;
+}
+
 </style>
 </head>
 <body>
@@ -2185,6 +2220,36 @@ const products = [
     isNewCollection: true
   },
 
+  // ===== EDREDÓN CIELO =====
+  {
+    id: 83,
+    name: "Edredón Cielo",
+    cat: "Edredones",
+    shortDesc: "🎀 Combinación de elegancia con vuelo decorativo, fundas de almohada con vuelo y reverso térmico tipo borreguito. Ideal para esta temporada.",
+    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
+      <p style="margin-bottom:0.8rem;">🎀 El <strong>Edredón Cielo</strong> combina un acabado elegante con <strong>vuelo decorativo</strong>, fundas de almohada con vuelo y un acogedor <strong>reverso térmico tipo borreguito</strong> para que disfrutes cada noche como nunca.</p>
+      <p style="margin-bottom:0.5rem;">✨ <strong>Ideal para esta temporada.</strong></p>
+      <p style="font-size:0.9rem;color:var(--gray);margin-bottom:0.5rem;">💰 <strong>$28</strong> unidad · <strong>$25</strong> por mayor (3+ uds)</p>
+      <p style="font-size:0.9rem;color:var(--gray);">🎨 8 colores disponibles.</p>
+    </div>`,
+    prices: {"2 Plazas": 28},
+    bulkPrice: 25,
+    bulkMin: 3,
+    colors: [
+      {name: "Avano", hex: "#A0937D", image: "EDREDONES/EDREDON CIELO/EDREDON CIELO AVANO.jpeg"},
+      {name: "Azul", hex: "#4A7BA7", image: "EDREDONES/EDREDON CIELO/EDREDON CIELO AZUL.jpeg"},
+      {name: "Blanco", hex: "#F5F5F0", image: "EDREDONES/EDREDON CIELO/EDREDON CIELO BLANCO.jpeg"},
+      {name: "Café Oscuro", hex: "#4A3C31", image: "EDREDONES/EDREDON CIELO/EDREDON CIELO CAFE OSCURO.jpeg"},
+      {name: "Café", hex: "#6B4E3D", image: "EDREDONES/EDREDON CIELO/EDREDON CIELO CAFE.jpeg"},
+      {name: "Durazno", hex: "#E8A080", image: "EDREDONES/EDREDON CIELO/EDREDON CIELO DURAZNO.jpeg"},
+      {name: "Morado", hex: "#8B6BB5", image: "EDREDONES/EDREDON CIELO/EDREDON CIELO MORADO.jpeg"},
+      {name: "Rosado Claro", hex: "#E8A4B8", image: "EDREDONES/EDREDON CIELO/EDREDON CIELO ROSADO CLARO.jpeg"}
+    ],
+    badge: "Nuevo",
+    emoji: "🎀",
+    isNewCollection: true
+  },
+
   {
     id: 81,
     name: "Cobertor Muñeca",
@@ -2354,10 +2419,21 @@ function renderProducts(filter, customList) {
     let badgeClass = p.badge ? `badge-${p.badge.toLowerCase().replace(/\s+/g,'')}` : '';
     if (min === 0) badgeClass = 'badge-pending';
 
+    // Plazas y stock
+    const priceEntries = Object.entries(p.prices);
+    const availableSizes = priceEntries.filter(([k,v]) => v > 0).map(([k]) => k);
+    const allZero = priceEntries.every(([k,v]) => v === 0);
+    const sizesHtml = availableSizes.length > 0
+      ? `<div class="product-sizes">${availableSizes.map(s => `<span class="product-size-tag">${s}</span>`).join('')}</div>`
+      : '';
+    const stockHtml = allZero
+      ? `<div class="product-stock-status stock-order">📝 Solo bajo pedido</div>`
+      : `<div class="product-stock-status stock-available">✅ En stock</div>`;
+
     return `<div class="product-card reveal ${p.isNewCollection ? 'new-collection-item' : ''}" style="transition-delay:${idx * 0.1}s" data-id="${p.id}">
       <div class="product-img" onclick="openModal(${p.id})">
         ${imgHtml}
-        ${p.badge ? `<div class="product-badge ${badgeClass}">${min === 0 ? 'Precio x Confirmar' : p.badge}</div>` : ''}
+        ${p.badge ? `<div class="product-badge ${badgeClass}">${allZero ? 'Solo bajo pedido' : p.badge}</div>` : ''}
       </div>
       <div class="product-body">
         <div class="product-cat">${p.cat}${p.subcat ? ' · ' + p.subcat : ''}${p.isNewCollection ? ' · Edición Limitada' : ''}</div>
@@ -2367,6 +2443,8 @@ function renderProducts(filter, customList) {
           <div class="product-price">${priceHtml}</div>
         </div>
         ${priceNote}
+        ${sizesHtml}
+        ${stockHtml}
         <div class="product-actions">
           <button class="btn-add" onclick="quickAdd(${p.id})">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
@@ -2634,10 +2712,21 @@ function renderProductList(filtered) {
     let badgeClass = p.badge ? `badge-${p.badge.toLowerCase().replace(/\s+/g,'')}` : '';
     if (min === 0) badgeClass = 'badge-pending';
 
+    // Plazas y stock
+    const priceEntries = Object.entries(p.prices);
+    const availableSizes = priceEntries.filter(([k,v]) => v > 0).map(([k]) => k);
+    const allZero = priceEntries.every(([k,v]) => v === 0);
+    const sizesHtml = availableSizes.length > 0
+      ? `<div class="product-sizes">${availableSizes.map(s => `<span class="product-size-tag">${s}</span>`).join('')}</div>`
+      : '';
+    const stockHtml = allZero
+      ? `<div class="product-stock-status stock-order">📝 Solo bajo pedido</div>`
+      : `<div class="product-stock-status stock-available">✅ En stock</div>`;
+
     return `<div class="product-card reveal ${p.isNewCollection ? 'new-collection-item' : ''}" style="transition-delay:${idx * 0.1}s" data-id="${p.id}">
       <div class="product-img" onclick="openModal(${p.id})">
         ${imgHtml}
-        ${p.badge ? `<div class="product-badge ${badgeClass}">${min === 0 ? 'Precio x Confirmar' : p.badge}</div>` : ''}
+        ${p.badge ? `<div class="product-badge ${badgeClass}">${allZero ? 'Solo bajo pedido' : p.badge}</div>` : ''}
       </div>
       <div class="product-body">
         <div class="product-cat">${p.cat}${p.subcat ? ' · ' + p.subcat : ''}${p.isNewCollection ? ' · Edición Limitada' : ''}</div>
@@ -2647,6 +2736,8 @@ function renderProductList(filtered) {
           <div class="product-price">${priceHtml}</div>
         </div>
         ${priceNote}
+        ${sizesHtml}
+        ${stockHtml}
         <div class="product-actions">
           <button class="btn-add" onclick="quickAdd(${p.id})">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
