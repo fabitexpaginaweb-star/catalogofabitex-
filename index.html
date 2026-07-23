@@ -1404,70 +1404,13 @@ img { max-width: 100%; height: auto; }
 
 // ===== BASE DE DATOS DE PRODUCTOS =====
 const products = [
-  {id: 2, name: "Sábanas 100% Algodón Premium", cat: "Sábanas", shortDesc: "Juego de sábanas en algodón peinado. Suaves, frescas y duraderas.", desc: "Juego de sábanas premium en algodón peinado. Suaves, frescas y duraderas. Disponibles en todos los tamaños.", prices: {Plaza: 28, "Plaza y media": 32, "2 Plazas": 36, Queen: 42, King: 48}, colors: [{name: "Rosa", hex: "#e8c5c5"}, {name: "Azul", hex: "#c5d4e8"}, {name: "Verde", hex: "#c5e8c9"}, {name: "Crema", hex: "#f0e6c5"}, {name: "Lila", hex: "#d5c5e8"}], badge: "Popular", emoji: "🛏️"},
-
-  // ===== EDREDÓN ALEJANDRINA =====
-  {
-    id: 61,
-    name: "Edredón Alejandrina",
-    cat: "Edredones",
-    shortDesc: "✨ Donde el lujo abraza tus sueños. Tela damasco premium con reverso térmico. Incluye 3 cojines decorativos de regalo.",
-    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
-      <p style="margin-bottom:0.8rem;">Edredón en <strong>tela damasco premium</strong> con <strong>reverso térmico abrigado</strong>. Incluye <strong>3 cojines decorativos</strong> de regalo.</p>
-      <p style="font-size:0.9rem;color:var(--gray);margin-bottom:0.5rem;">💰 <strong>$36</strong> unidad · <strong>$32</strong> por mayor (3+ uds)</p>
-      <p style="font-size:0.9rem;color:var(--gray);">🎨 6 colores: Azul, Beige, Rojo, Rosa, Turquesa, Vino.</p>
-    </div>`,
-    prices: {Plaza: 36, "Plaza y media": 36, "2 Plazas": 36, "2 1/2 Plazas": 36, "3 Plazas": 36, Queen: 36, King: 36},
-    bulkPrice: 32,
-    bulkMin: 3,
-    colors: [
-      {name: "Azul", hex: "#4A7BA7", image: "EDREDONES/EDREDON ALEJANDRINA/EDREDON ALEJANDRINA COLOR AZUL.jpeg"},
-      {name: "Beige", hex: "#D4C4A8", image: "EDREDONES/EDREDON ALEJANDRINA/EDREDON ALEJANDRINA COLOR BEIGE.jpeg"},
-      {name: "Rojo", hex: "#C41E3A", image: "EDREDONES/EDREDON ALEJANDRINA/EDREDON ALEJANDRINA COLOR ROJO.jpeg"},
-      {name: "Rosa", hex: "#D4869A", image: "EDREDONES/EDREDON ALEJANDRINA/EDREDON ALEJANDRINA COLOR ROSA.jpeg"},
-      {name: "Turquesa", hex: "#40B5AD", image: "EDREDONES/EDREDON ALEJANDRINA/EDREDON ALEJANDRINA COLOR TURQUESA.jpeg"},
-      {name: "Vino", hex: "#8B1538", image: "EDREDONES/EDREDON ALEJANDRINA/EDREDON ALEJANDRINA COLOR VINO.jpeg"}
-    ],
-    badge: "Nuevo",
-    emoji: "🛏️",
-    isNewCollection: true
-  },
-
-  {
-    id: 62,
-    name: "Cobertor Alejandrina",
-    cat: "Cobertores",
-    shortDesc: "❌ PRODUCTO NO DISPONIBLE — Elegancia que abraza tus sueños. Tela damasco premium con reverso térmico. Incluye 3 cojines decorativos. Solo disponible en 2 plazas. Actualmente fuera de stock.",
-    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
-      <p style="margin-bottom:0.8rem;font-size:1.1rem;color:#EF4444;font-weight:700;">❌ PRODUCTO NO DISPONIBLE — FUERA DE STOCK</p>
-      <p style="margin-bottom:0.8rem;">Cobertor en <strong>tela damasco premium</strong> con <strong>reverso térmico abrigado</strong>. Incluye <strong>3 cojines decorativos</strong> de regalo.</p>
-      <p style="font-size:0.9rem;color:var(--gray);margin-bottom:0.5rem;">💰 <strong>$36</strong> unidad · <strong>$32</strong> por mayor (3+ uds)</p>
-      <p style="font-size:0.9rem;color:var(--gray);">🎨 6 colores: Azul, Beige, Rojo, Rosa, Turquesa, Vino.</p>
-      <p style="font-size:0.9rem;color:var(--gray);margin-top:0.8rem;font-style:italic;">Contáctanos por WhatsApp para consultar reposición o alternativas similares.</p>
-    </div>`,
-    prices: {"2 Plazas": 0},
-    bulkPrice: 0,
-    bulkMin: 3,
-    colors: [
-      {name: "Azul", hex: "#4A7BA7", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR AZUL.jpeg"},
-      {name: "Beige", hex: "#D4C4A8", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR BEIGE.jpeg"},
-      {name: "Rojo", hex: "#C41E3A", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR ROJO.jpeg"},
-      {name: "Rosa", hex: "#D4869A", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR ROSA.jpeg"},
-      {name: "Turquesa", hex: "#40B5AD", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR TURQUESA.jpeg"},
-      {name: "Vino", hex: "#8B1538", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR VINO.jpeg"}
-    ],
-    badge: "No Disponible",
-    emoji: "🛏️",
-    isNewCollection: false
-  },
-
-  {id: 5, name: "Sábanas Satin Premium", cat: "Sábanas", shortDesc: "Sábanas satinadas de alta suavidad. Tacto sedoso y durabilidad.", desc: "Sábanas en tela satinada de alta suavidad. Tacto sedoso, colores brillantes y gran durabilidad.", prices: {Plaza: 35, "Plaza y media": 40, "2 Plazas": 45, Queen: 52, King: 60}, colors: [{name: "Vino", hex: "#8B3A52"}, {name: "Morado", hex: "#3D3378"}, {name: "Verde", hex: "#4a8a5c"}, {name: "Dorado", hex: "#c4975a"}, {name: "Azul", hex: "#3a6a8a"}], badge: null, emoji: "✨"},
-  {id: 6, name: "Toallas de Baño Premium", cat: "Toallas", shortDesc: "Toallas 100% algodón de alta absorción. Suaves y resistentes.", desc: "Toallas en 100% algodón de alta absorción. Suaves, resistentes y en múltiples colores. Ideales para hogar y hotel.", prices: {Manos: 8, Cara: 10, Cuerpo: 16, Jumbo: 22, "Set x3": 40}, colors: [{name: "Turquesa", hex: "#59C1D4"}, {name: "Vino", hex: "#8B3A52"}, {name: "Verde", hex: "#4a8a5c"}, {name: "Dorado", hex: "#c4975a"}, {name: "Morado", hex: "#3D3378"}], badge: "Oferta", emoji: "🛁"},
-  {id: 7, name: "Almohadas Suaves Premium", cat: "Almohadas", shortDesc: "Almohadas en fibra suave con funda de algodón. Soporte perfecto.", desc: "Almohadas en fibra suave con funda de algodón. Soporte perfecto para un descanso sin interrupciones.", prices: {Estándar: 18, Queen: 22, King: 26, "Set x2": 38}, colors: [{name: "Blanco", hex: "#f0ede8"}, {name: "Crema", hex: "#e8e0d5"}, {name: "Beige", hex: "#d5ccc2"}, {name: "Arena", hex: "#c4b8aa"}], badge: null, emoji: "😴"},
-  {id: 8, name: "Pijama Dama Franela", cat: "Pijamas", shortDesc: "Pijama femenino en franela suave. Varios diseños y colores.", desc: "Pijama femenino en franela suave y abrigada. Varios diseños y colores disponibles. Tallas S, M, L, XL.", prices: {S: 22, M: 22, L: 24, XL: 26}, colors: [{name: "Rosa", hex: "#d4869a"}, {name: "Dusty", hex: "#c9a4ae"}, {name: "Azul", hex: "#8ab4c4"}, {name: "Verde", hex: "#a8c9a4"}, {name: "Blush", hex: "#f0dde2"}], badge: "Nuevo", emoji: "🌙"},
-  {id: 9, name: "Kit Lencería Hotel", cat: "Hotel", shortDesc: "Kit completo para habitación de hotel. Acabado profesional.", desc: "Kit completo para habitación de hotel: sábanas, almohadas y toallas con acabado profesional.", prices: {"Habitación simple": 85, "Habitación doble": 140, Suite: 220}, colors: [{name: "Blanco", hex: "#fff"}, {name: "Crema", hex: "#f0ede8"}, {name: "Ivory", hex: "#e8e4de"}, {name: "Lino", hex: "#d5d0c8"}], badge: "Pro", emoji: "🏨"},
-
-  {
+{id: 2, name: "Sábanas 100% Algodón Premium", cat: "Sábanas", shortDesc: "Juego de sábanas en algodón peinado. Suaves, frescas y duraderas.", desc: "Juego de sábanas premium en algodón peinado. Suaves, frescas y duraderas. Disponibles en todos los tamaños.", prices: {Plaza: 28, "Plaza y media": 32, "2 Plazas": 36, Queen: 42, King: 48}, colors: [{name: "Rosa", hex: "#e8c5c5"}, {name: "Azul", hex: "#c5d4e8"}, {name: "Verde", hex: "#c5e8c9"}, {name: "Crema", hex: "#f0e6c5"}, {name: "Lila", hex: "#d5c5e8"}], badge: "Popular", emoji: "🛏️"},
+{id: 5, name: "Sábanas Satin Premium", cat: "Sábanas", shortDesc: "Sábanas satinadas de alta suavidad. Tacto sedoso y durabilidad.", desc: "Sábanas en tela satinada de alta suavidad. Tacto sedoso, colores brillantes y gran durabilidad.", prices: {Plaza: 35, "Plaza y media": 40, "2 Plazas": 45, Queen: 52, King: 60}, colors: [{name: "Vino", hex: "#8B3A52"}, {name: "Morado", hex: "#3D3378"}, {name: "Verde", hex: "#4a8a5c"}, {name: "Dorado", hex: "#c4975a"}, {name: "Azul", hex: "#3a6a8a"}], badge: null, emoji: "✨"},
+{id: 6, name: "Toallas de Baño Premium", cat: "Toallas", shortDesc: "Toallas 100% algodón de alta absorción. Suaves y resistentes.", desc: "Toallas en 100% algodón de alta absorción. Suaves, resistentes y en múltiples colores. Ideales para hogar y hotel.", prices: {Manos: 8, Cara: 10, Cuerpo: 16, Jumbo: 22, "Set x3": 40}, colors: [{name: "Turquesa", hex: "#59C1D4"}, {name: "Vino", hex: "#8B3A52"}, {name: "Verde", hex: "#4a8a5c"}, {name: "Dorado", hex: "#c4975a"}, {name: "Morado", hex: "#3D3378"}], badge: "Oferta", emoji: "🛁"},
+{id: 7, name: "Almohadas Suaves Premium", cat: "Almohadas", shortDesc: "Almohadas en fibra suave con funda de algodón. Soporte perfecto.", desc: "Almohadas en fibra suave con funda de algodón. Soporte perfecto para un descanso sin interrupciones.", prices: {Estándar: 18, Queen: 22, King: 26, "Set x2": 38}, colors: [{name: "Blanco", hex: "#f0ede8"}, {name: "Crema", hex: "#e8e0d5"}, {name: "Beige", hex: "#d5ccc2"}, {name: "Arena", hex: "#c4b8aa"}], badge: null, emoji: "😴"},
+{id: 8, name: "Pijama Dama Franela", cat: "Pijamas", shortDesc: "Pijama femenino en franela suave. Varios diseños y colores.", desc: "Pijama femenino en franela suave y abrigada. Varios diseños y colores disponibles. Tallas S, M, L, XL.", prices: {S: 22, M: 22, L: 24, XL: 26}, colors: [{name: "Rosa", hex: "#d4869a"}, {name: "Dusty", hex: "#c9a4ae"}, {name: "Azul", hex: "#8ab4c4"}, {name: "Verde", hex: "#a8c9a4"}, {name: "Blush", hex: "#f0dde2"}], badge: "Nuevo", emoji: "🌙"},
+{id: 9, name: "Kit Lencería Hotel", cat: "Hotel", shortDesc: "Kit completo para habitación de hotel. Acabado profesional.", desc: "Kit completo para habitación de hotel: sábanas, almohadas y toallas con acabado profesional.", prices: {"Habitación simple": 85, "Habitación doble": 140, Suite: 220}, colors: [{name: "Blanco", hex: "#fff"}, {name: "Crema", hex: "#f0ede8"}, {name: "Ivory", hex: "#e8e4de"}, {name: "Lino", hex: "#d5d0c8"}], badge: "Pro", emoji: "🏨"},
+{
     id: 10,
     name: "Cobertor Deluxe",
     cat: "Cobertores",
@@ -1498,9 +1441,7 @@ const products = [
     emoji: "✨",
     isNewCollection: true
   },
-
-  // ===== TOALLAS HOTELERAS =====
-  {
+{
     id: 14, name: "Toalla Hotelera Brasileña", cat: "Toallas", subcat: "Hotelera",
     shortDesc: "460 gramos de puro algodón. Acabado profesional que soporta lavados industriales.",
     desc: "🇧🇷 La tradición brasileña de secado perfecto. 460 gramos de puro algodón que absorbe al instante. Acabado profesional que soporta lavados industriales sin perder calidad.",
@@ -1508,7 +1449,7 @@ const products = [
     colors: [{name: "Blanco Hotel", hex: "#FFFFFF", image: "TOALLAS/TOALLAS HOTELERAS CARPETA/TOALLA HOTELERA BRASILEÑA.png"}],
     badge: "Nuevo", emoji: "🇧🇷", isNewCollection: true
   },
-  {
+{
     id: 15, name: "Toalla Hotelera Caricia", cat: "Toallas", subcat: "Hotelera",
     shortDesc: "390 gramos de suavidad irresistible. Ligera, absorbente y de secado rápido.",
     desc: "🤲 Como una caricia después del baño. 390 gramos de suavidad irresistible, diseñada para los negocios que buscan calidad premium sin sacrificar el presupuesto.",
@@ -1516,7 +1457,7 @@ const products = [
     colors: [{name: "Blanco Puro", hex: "#FAFAFA", image: "TOALLAS/TOALLAS HOTELERAS CARPETA/TOALLA HOTELERA CARICIA.png"}],
     badge: "Nuevo", emoji: "🤲", isNewCollection: true
   },
-  {
+{
     id: 16, name: "Toalla Hotelera Feeling", cat: "Toallas", subcat: "Hotelera",
     shortDesc: "La sensación de lujo en tres tamaños. 460 gramos en todos los formatos.",
     desc: "💫 La sensación de lujo en tres tamaños. Baño generoso, mediana versátil y tocadora práctica. Mismo peso premium de 460 gramos en todos los formatos.",
@@ -1524,7 +1465,7 @@ const products = [
     colors: [{name: "Blanco Feeling", hex: "#F5F5F0", image: "TOALLAS/TOALLAS HOTELERAS CARPETA/TOALLA HOTELERA FEELING.png"}],
     badge: "Nuevo", emoji: "💫", isNewCollection: true
   },
-  {
+{
     id: 17, name: "Toalla Hotelera Felpudo", cat: "Toallas", subcat: "Hotelera",
     shortDesc: "600 gramos de felpa densa. La toalla más gruesa y lujosa de nuestra colección.",
     desc: "🧸 El abrazo más cálido después del agua. Nuestra toalla más gruesa y lujosa: 600 gramos de felpa densa que envuelve como una manta.",
@@ -1532,7 +1473,7 @@ const products = [
     colors: [{name: "Blanco Felpudo", hex: "#F8F8F5", image: "TOALLAS/TOALLAS HOTELERAS CARPETA/TOALLA HOTELERA FELPUDO.png"}],
     badge: "Nuevo", emoji: "🧸", isNewCollection: true
   },
-  {
+{
     id: 18, name: "Toalla Hotelera Jacquard Cuadros", cat: "Toallas", subcat: "Hotelera",
     shortDesc: "Patrón clásico de cuadros en tejido Jacquard de alta definición. 550 gramos de prestigio.",
     desc: "⬜⬛ Elegancia geométrica para tu negocio. Patrón clásico de cuadros en tejido Jacquard de alta definición. 550 gramos de prestigio visual y funcional.",
@@ -1540,7 +1481,7 @@ const products = [
     colors: [{name: "Blanco Jacquard", hex: "#F5F5F0", image: "TOALLAS/TOALLAS HOTELERAS CARPETA/TOALLA HOTELERA JACQUARD CUADROS.png"}],
     badge: "Nuevo", emoji: "⬜", isNewCollection: true
   },
-  {
+{
     id: 19, name: "Toalla Hotelera Jacquard Hojas", cat: "Toallas", subcat: "Hotelera",
     shortDesc: "Motivo de hojas en relieve Jacquard. 500 gramos de armonía textil para eco-hoteles.",
     desc: "🌿 Naturaleza tejida en cada fibra. Motivo de hojas en relieve Jacquard que aporta frescura y sofisticación natural. 500 gramos de armonía textil.",
@@ -1548,7 +1489,7 @@ const products = [
     colors: [{name: "Blanco Natural", hex: "#FAFAF5", image: "TOALLAS/TOALLAS HOTELERAS CARPETA/TOALLA HOTELERA JACQUARD HOJAS.png"}],
     badge: "Nuevo", emoji: "🌿", isNewCollection: true
   },
-  {
+{
     id: 20, name: "Toalla Hotelera Premium", cat: "Toallas", subcat: "Hotelera",
     shortDesc: "El equilibrio perfecto entre calidad, durabilidad y precio. 390 gramos de confianza.",
     desc: "⭐ La estándar de oro de la hotelería. El equilibrio perfecto entre calidad, durabilidad y precio. 390 gramos de confianza probada en cientos de hoteles.",
@@ -1556,7 +1497,7 @@ const products = [
     colors: [{name: "Blanco Premium", hex: "#FFFFFF", image: "TOALLAS/TOALLAS HOTELERAS CARPETA/TOALLA HOTELERA PREMIUM.png"}],
     badge: "Nuevo", emoji: "⭐", isNewCollection: true
   },
-  {
+{
     id: 21, name: "Toalla Hotelera Unicolor", cat: "Toallas", subcat: "Hotelera",
     shortDesc: "Color sólido intenso que no destiñe. Borde reforzado. Uniformidad impecable.",
     desc: "🎨 Simplicidad que impresiona. Color sólido intenso que no destiñe, borde reforzado que no se deshilacha. La opción favorita de cadenas hoteleras.",
@@ -1564,9 +1505,7 @@ const products = [
     colors: [{name: "Blanco Puro", hex: "#FAFAFA", image: "TOALLAS/TOALLAS HOTELERAS CARPETA/TOALLA HOTELERA UNICOLOR.png"}],
     badge: "Nuevo", emoji: "🎨", isNewCollection: true
   },
-
-  // ===== TOALLAS DE HOGAR =====
-  {
+{
     id: 22, name: "Juego de Toalla Renata", cat: "Toallas", subcat: "Juego de Toallas",
     shortDesc: "460 gramos · 100% algodón. Set completo: Baño 140x70, Mediana 100x50, Tocador 70x40 cm.",
     desc: "🌿 Elegancia natural en cada fibra. El Juego Renata combina la suavidad del algodón premium con un diseño de rayas sutiles. 460 gramos de peso perfecto.",
@@ -1574,7 +1513,7 @@ const products = [
     colors: [{name: "Turquesa", hex: "#2E8B8B", image: "TOALLAS/TOALLAS DE HOGAR CARPETA/JUEGO DE TOALLA RENATA.png"}],
     badge: "Nuevo", emoji: "🌿", isNewCollection: true
   },
-  {
+{
     id: 23, name: "Juego de Toalla Verona", cat: "Toallas", subcat: "Juego de Toallas",
     shortDesc: "400 gramos de ligereza y suavidad. Set de 3 piezas en tonos aqua refrescantes.",
     desc: "💧 Frescura que perdura. El Juego Verona es ligereza hecha toalla. 400 gramos de algodón seleccionado, ofrece secado rápido sin sacrificar absorción.",
@@ -1582,7 +1521,7 @@ const products = [
     colors: [{name: "Aqua", hex: "#5FB3C3", image: "TOALLAS/TOALLAS DE HOGAR CARPETA/JUEGO DE TOALLA VERONA.png"}],
     badge: "Nuevo", emoji: "💧", isNewCollection: true
   },
-  {
+{
     id: 24, name: "Juego de Toallas Springfield", cat: "Toallas", subcat: "Juego de Toallas",
     shortDesc: "560 gramos de lujo supremo. La toalla más gruesa de nuestra colección hogareña.",
     desc: "🏆 El estándar de lujo en tu hogar. El Juego Springfield representa lo máximo en confort doméstico. 560 gramos de felpa densa que envuelve como una nube.",
@@ -1590,9 +1529,7 @@ const products = [
     colors: [{name: "Rosa Palo", hex: "#D4A5A5", image: "TOALLAS/TOALLAS DE HOGAR CARPETA/JUEGO DE TOALLAS SPRINGFIELD.png"}],
     badge: "Nuevo", emoji: "🏆", isNewCollection: true
   },
-
-  // ===== PIES DE BAÑO =====
-  {
+{
     id: 25, name: "Pie de Baño Jacquard Hoja", cat: "Toallas", subcat: "Pie de Baño",
     shortDesc: "Diseño Jacquard con delicado motivo de hojas. 100% algodón de alta absorción.",
     desc: "🍃 Pisa la suavidad de la naturaleza. Diseño Jacquard con delicado motivo de hojas que transforma tu baño en un oasis de tranquilidad.",
@@ -1600,7 +1537,7 @@ const products = [
     colors: [{name: "Blanco Natural", hex: "#F5F5F0", image: "TOALLAS/TOALLAS DE HOGAR CARPETA/PIE DE BAÑO JACQUARD HOJA.png"}],
     badge: "Nuevo", emoji: "🍃", isNewCollection: true
   },
-  {
+{
     id: 26, name: "Pie de Baño Mar y Sol", cat: "Toallas", subcat: "Pie de Baño",
     shortDesc: "Inspirado en los días de playa eternos. Textura suave que evoca la brisa del mar.",
     desc: "🌊☀️ Lleva la brisa del mar a tu hogar. Inspirado en los días de playa eternos, este pie de baño evoca la frescura del océano.",
@@ -1611,7 +1548,7 @@ const products = [
     ],
     badge: "Nuevo", emoji: "🌊", isNewCollection: true
   },
-  {
+{
     id: 27, name: "Pie de Baño Real", cat: "Toallas", subcat: "Pie de Baño",
     shortDesc: "El lujo de un hotel 5 estrellas en tu baño. Mayor tamaño para mayor cobertura.",
     desc: "👑 El lujo de un hotel 5 estrellas, en tu baño. Mayor tamaño para mayor cobertura y confort. Ribetes reforzados que garantizan durabilidad extrema.",
@@ -1619,9 +1556,7 @@ const products = [
     colors: [{name: "Blanco Real", hex: "#F8F8F5", image: "TOALLAS/TOALLAS DE HOGAR CARPETA/PIE DE BAÑO REAL.png"}],
     badge: "Nuevo", emoji: "👑", isNewCollection: true
   },
-
-  // ===== SET DE TOALLAS =====
-  {
+{
     id: 28, name: "Set de Toallas Savona", cat: "Toallas", subcat: "Set de Toallas",
     shortDesc: "460 gramos · 100% algodón. Set de 2 piezas de baño 140x70 cm con rayas rosadas.",
     desc: "🎀 Dulzura y distinción en rayas. El Set Savona combina la suavidad del algodón premium con un diseño de rayas rosadas que aporta feminidad y elegancia.",
@@ -1629,9 +1564,7 @@ const products = [
     colors: [{name: "Rayas Rosa", hex: "#D4A5B5", image: "TOALLAS/TOALLAS DE HOGAR CARPETA/SET DE TOALLAS SAVONA.png"}],
     badge: "Nuevo", emoji: "🎀", isNewCollection: true
   },
-
-  // ===== TOALLA COPA FACIAL =====
-  {
+{
     id: 29, name: "Toalla Copa Facial", cat: "Toallas", subcat: "Facial",
     shortDesc: "100% algodón · 30x30 cm. Pack de colores vibrantes para toda la familia.",
     desc: "🌈 Color para cada día de la semana. 100% algodón en formato práctico de 30x30 cm. Disponible en colores vibrantes que alegran tu baño.",
@@ -1639,9 +1572,7 @@ const products = [
     colors: [{name: "Multicolor", hex: "#E8A0C0", image: "TOALLAS/TOALLAS DE HOGAR CARPETA/TOALLA COPA FACIAL.png"}],
     badge: "Nuevo", emoji: "🌈", isNewCollection: true
   },
-
-  // ===== TOALLAS DE BAÑO INDIVIDUALES =====
-  {
+{
     id: 30, name: "Toalla de Baño Afelpado", cat: "Toallas", subcat: "Baño",
     shortDesc: "460 gramos · 150x90 cm. Textura afelpada con diseños en relieve únicos.",
     desc: "🌸 Arte textil que seca. 460 gramos con textura afelpada y diseños en relieve que transforman tu baño en una galería.",
@@ -1649,7 +1580,7 @@ const products = [
     colors: [{name: "Multicolor", hex: "#C4A882", image: "TOALLAS/TOALLAS DE HOGAR CARPETA/TOALLA DE BAÑO AFELPADO.png"}],
     badge: "Nuevo", emoji: "🌸", isNewCollection: true
   },
-  {
+{
     id: 31, name: "Toalla de Baño Kot", cat: "Toallas", subcat: "Baño",
     shortDesc: "360 gramos · 95% algodón, 5% poliéster. 145x78 cm en colores intensos.",
     desc: "🎨 Intensidad que no se destiñe. La Toalla Kot destaca por sus colores intensos y permanentes. Mezcla de algodón y poliéster que garantiza durabilidad cromática.",
@@ -1657,7 +1588,7 @@ const products = [
     colors: [{name: "Multicolor", hex: "#C41E6B", image: "TOALLAS/TOALLAS DE HOGAR CARPETA/TOALLA DE BAÑO KOT.png"}],
     badge: "Nuevo", emoji: "🎨", isNewCollection: true
   },
-  {
+{
     id: 32, name: "Toalla de Baño Matisse", cat: "Toallas", subcat: "Baño",
     shortDesc: "420 gramos · 100% algodón. Diseño artístico con rayas decorativas.",
     desc: "🖼️ El arte del baño. Inspirada en el colorismo de Matisse, esta toalla combina 420 gramos de algodón con rayas decorativas que convierten tu baño en una galería.",
@@ -1665,7 +1596,7 @@ const products = [
     colors: [{name: "Multicolor", hex: "#D4869A", image: "TOALLAS/TOALLAS DE HOGAR CARPETA/TOALLA DE BAÑO MATISSE.png"}],
     badge: "Nuevo", emoji: "🖼️", isNewCollection: true
   },
-  {
+{
     id: 33, name: "Toalla de Baño Milano", cat: "Toallas", subcat: "Baño",
     shortDesc: "460 gramos · 100% algodón. Elegancia italiana en tonos oscuros sofisticados.",
     desc: "🖤 Sofisticación milanesa. 460 gramos en tonos oscuros que exudan lujo discreto. La elegancia de la capital de la moda italiana en tu baño.",
@@ -1673,7 +1604,7 @@ const products = [
     colors: [{name: "Negro", hex: "#2C2C2C", image: "TOALLAS/TOALLAS DE HOGAR CARPETA/TOALLA DE BAÑO MILANO.png"}],
     badge: "Nuevo", emoji: "🖤", isNewCollection: true
   },
-  {
+{
     id: 34, name: "Toalla de Baño Premium", cat: "Toallas", subcat: "Baño",
     shortDesc: "390 gramos · 100% algodón. La favorita de Ecuador: colores para todos los gustos.",
     desc: "🇪🇨 La preferida de los ecuatorianos. 390 gramos de calidad accesible en una paleta de colores que abarca desde lo clásico hasta lo vibrante.",
@@ -1681,7 +1612,7 @@ const products = [
     colors: [{name: "Multicolor", hex: "#8B6BB5", image: "TOALLAS/TOALLAS DE HOGAR CARPETA/TOALLA DE BAÑO PREMIUM.png"}],
     badge: "Popular", emoji: "🇪🇨", isNewCollection: true
   },
-  {
+{
     id: 35, name: "Toalla de Baño Renata", cat: "Toallas", subcat: "Baño",
     shortDesc: "460 gramos · 100% algodón. Diseño clásico con rayas en colores cálidos.",
     desc: "☀️ Calidez que abraza. 460 gramos con rayas decorativas en tonos que evocan atardeceres. La versión individual del juego homónimo.",
@@ -1689,7 +1620,7 @@ const products = [
     colors: [{name: "Multicolor", hex: "#E8A040", image: "TOALLAS/TOALLAS DE HOGAR CARPETA/TOALLA DE BAÑO RENATA.png"}],
     badge: "Nuevo", emoji: "☀️", isNewCollection: true
   },
-  {
+{
     id: 36, name: "Toalla de Baño Safari", cat: "Toallas", subcat: "Baño",
     shortDesc: "560 gramos · 100% algodón. Diseño animal print en tonos tierra. La más gruesa.",
     desc: "🦁 El espíritu salvaje del confort. Nuestra toalla de baño más gruesa. 560 gramos con diseño animal print en tonos tierra que aportan carácter y calidez.",
@@ -1697,7 +1628,7 @@ const products = [
     colors: [{name: "Animal Print", hex: "#C4A882", image: "TOALLAS/TOALLAS DE HOGAR CARPETA/TOALLA DE BAÑO SAFARI.png"}],
     badge: "Nuevo", emoji: "🦁", isNewCollection: true
   },
-  {
+{
     id: 37, name: "Toalla de Baño Selina", cat: "Toallas", subcat: "Baño",
     shortDesc: "380 gramos · 90% algodón, 10% poliéster. Arcoíris de colores que alegran el día.",
     desc: "🌈 Alegría en cada fibra. 380 gramos en un arcoíris de colores que transforman tu rutina de baño en un momento de alegría.",
@@ -1705,7 +1636,7 @@ const products = [
     colors: [{name: "Multicolor", hex: "#9B59B6", image: "TOALLAS/TOALLAS DE HOGAR CARPETA/TOALLA DE BAÑO SELINA.png"}],
     badge: "Nuevo", emoji: "🌈", isNewCollection: true
   },
-  {
+{
     id: 38, name: "Toalla de Baño Springfield", cat: "Toallas", subcat: "Baño",
     shortDesc: "560 gramos · 100% algodón. La versión individual del lujo supremo.",
     desc: "🏆 Lujo en formato individual. 560 gramos de felpa densa para quienes no comparten su estándar de calidad.",
@@ -1713,7 +1644,7 @@ const products = [
     colors: [{name: "Multicolor", hex: "#5BA8D0", image: "TOALLAS/TOALLAS DE HOGAR CARPETA/TOALLA DE BAÑO SPRINGFIELD.png"}],
     badge: "Nuevo", emoji: "🏆", isNewCollection: true
   },
-  {
+{
     id: 39, name: "Toalla de Baño Verona", cat: "Toallas", subcat: "Baño",
     shortDesc: "400 gramos · 100% algodón. La versión individual de la ligereza refrescante.",
     desc: "💧 Frescura individual. 400 gramos perfectos para climas cálidos o uso diario. La misma ligereza refrescante del juego en formato personal.",
@@ -1721,9 +1652,7 @@ const products = [
     colors: [{name: "Multicolor", hex: "#C4A882", image: "TOALLAS/TOALLAS DE HOGAR CARPETA/TOALLA DE BAÑO VERONA.png"}],
     badge: "Nuevo", emoji: "💧", isNewCollection: true
   },
-
-  // ===== TOALLA DE COCINA =====
-  {
+{
     id: 40, name: "Toalla de Cocina San Pedro", cat: "Toallas", subcat: "Cocina",
     shortDesc: "100% algodón · 70x40 cm. Diseño clásico con rayas decorativas.",
     desc: "👨‍🍳 Tradición en tu cocina. 100% algodón con rayas decorativas que aportan calidez familiar. Ideal para secar manos o cubrir pan caliente.",
@@ -1731,9 +1660,7 @@ const products = [
     colors: [{name: "Blanco Rayas", hex: "#F5F5F0", image: "TOALLAS/TOALLAS DE HOGAR CARPETA/TOALLA DE COCINA SAN PEDRO.png"}],
     badge: "Nuevo", emoji: "👨‍🍳", isNewCollection: true
   },
-
-  // ===== TOALLÓN =====
-  {
+{
     id: 41, name: "Toallón Springfield", cat: "Toallas", subcat: "Toallón",
     shortDesc: "560 gramos · 100% algodón. 180x90 cm de confort gigante para playa o piscina.",
     desc: "🏖️ Gigante en tamaño, gigante en confort. 560 gramos en formato gigante de 180x90 cm. Perfecto para playa, piscina o como cobertor ligero.",
@@ -1741,9 +1668,7 @@ const products = [
     colors: [{name: "Multicolor", hex: "#5A8A5A", image: "TOALLAS/TOALLAS DE HOGAR CARPETA/TOALLON SPRINGFIELD.png"}],
     badge: "Nuevo", emoji: "🏖️", isNewCollection: true
   },
-
-  // ===== BANNER TOALLAS DE HOGAR =====
-  {
+{
     id: 42, name: "Colección Toallas de Hogar", cat: "Toallas", subcat: "Colección",
     shortDesc: "Descubre nuestra completa línea de toallas para el hogar. Calidad Fabitex en cada fibra.",
     desc: "🏠 Tu hogar merece lo mejor. Nuestra Colección Toallas de Hogar reúne todo lo que necesitas para equipar tu baño.",
@@ -1751,9 +1676,7 @@ const products = [
     colors: [{name: "Colección", hex: "#59C1D4", image: "TOALLAS/TOALLAS DE HOGAR CARPETA/TOALLAS DE HOGAR.png"}],
     badge: "Colección", emoji: "🏠", isNewCollection: true
   },
-
-  // ===== COBIJAS =====
-  {
+{
     id: 44, name: "Cobija 3D", cat: "Cobijas",
     shortDesc: "Diseño floral en relieve 3D que transforma tu dormitorio. Promoción especial por tiempo limitado.",
     desc: "🌸 Arte textil en tres dimensiones. Diseño floral en relieve tridimensional que aporta elegancia y profundidad visual. Promoción especial: $13",
@@ -1763,7 +1686,7 @@ const products = [
     colors: [{name: "Beige Floral", hex: "#D4A574", image: "COBIJAS/COBIJA 3D.jpeg"}],
     badge: "Oferta", emoji: "🌸", isNewCollection: true
   },
-  {
+{
     id: 45, name: "Cobija Borrego Café", cat: "Cobijas",
     shortDesc: "Máxima suavidad tipo borrego en tono café elegante. Precio por confirmar.",
     desc: "🐑 Abrigo que se siente como un abrazo. Suavidad característica de la lana de borrego sintética en un tono café sofisticado. Textura afelpada que retiene el calor.",
@@ -1773,7 +1696,7 @@ const products = [
     colors: [{name: "Café", hex: "#6B4E3D", image: "COBIJAS/COBIJA BORREGO CAFE.jpeg"}],
     badge: "Nuevo", emoji: "🐑", isNewCollection: true
   },
-  {
+{
     id: 46, name: "Cobija Ovejera Wolly", cat: "Cobijas",
     shortDesc: "Ovejera premium color guayaba. Suavidad irresistible y abrigo perfecto.",
     desc: "🧶 Suavidad que enamora. Textura ovejera premium en color guayaba exclusivo. Cada fibra está diseñada para brindar calidez sin pesar. $15 unidad · $12 por mayor (3+ uds)",
@@ -1781,7 +1704,7 @@ const products = [
     colors: [{name: "Guayaba", hex: "#D4869A", image: "COBIJAS/COBIJA OVEJERA WOLLY COLOR GUAYABA.jpeg"}],
     badge: "Nuevo", emoji: "🧶", isNewCollection: true
   },
-  {
+{
     id: 47, name: "Cobija Coreana Delgada", cat: "Cobijas",
     shortDesc: "Edición Deluxe ligera y versátil. El estilo coreano que conquistó Ecuador.",
     desc: "🇰🇷 La elegancia oriental en tu cama. Diseño ligero y versátil que caracteriza a la lencería coreana. $19 unidad · $17 por mayor (3+ uds)",
@@ -1789,7 +1712,7 @@ const products = [
     colors: [{name: "Deluxe Marrón", hex: "#8B4513", image: "COBIJAS/COBIJA COREANA DELGADA.jpeg"}],
     badge: "Nuevo", emoji: "🇰🇷", isNewCollection: true
   },
-  {
+{
     id: 48, name: "Cobija Coreana Gruesa", cat: "Cobijas",
     shortDesc: "Edición Premium gruesa con diseño floral vibrante. Máximo abrigo con estilo coreano.",
     desc: "🌺 Premium en cada fibra. La versión más abrigada de la línea coreana. Diseño floral vibrante en verde con peonías amarillas. $28 unidad · $24 por mayor (3+ uds)",
@@ -1797,7 +1720,7 @@ const products = [
     colors: [{name: "Premium Verde", hex: "#228B22", image: "COBIJAS/COBIJA COREANA GRUESA.jpeg"}],
     badge: "Nuevo", emoji: "🌺", isNewCollection: true
   },
-  {
+{
     id: 49, name: "Cobija Peluche Especial Niño", cat: "Cobijas",
     shortDesc: "Diseño espacial con cohetes y astronautas. La favorita de los pequeños exploradores.",
     desc: "🚀 Aventuras espaciales cada noche. Diseño con cohetes, astronautas y planetas en tela peluche ultra suave. $10 unidad · $7.50 por mayor (3+ uds)",
@@ -1805,7 +1728,7 @@ const products = [
     colors: [{name: "Espacial", hex: "#4169E1", image: "COBIJAS/COBIJA PELUCHE ESPECIAL NIÑO.jpeg"}],
     badge: "Nuevo", emoji: "🚀", isNewCollection: true
   },
-  {
+{
     id: 50, name: "Cobija Peluche Especial Niña", cat: "Cobijas",
     shortDesc: "Hello Kitty en tela peluche rosa. La compañera perfecta para las princesas del hogar.",
     desc: "🎀 Magia rosa en cada rincón. Tela peluche rosa ultra suave con Hello Kitty. $10 unidad · $7.50 por mayor (3+ uds)",
@@ -1813,7 +1736,7 @@ const products = [
     colors: [{name: "Hello Kitty Rosa", hex: "#FF69B4", image: "COBIJAS/COBIJA PELUCHE ESPECIAL NIÑA.jpeg"}],
     badge: "Nuevo", emoji: "🎀", isNewCollection: true
   },
-  {
+{
     id: 51, name: "Cobija Francesa Habano", cat: "Cobijas",
     shortDesc: "Elegancia francesa en tono habano. Sofisticación atemporal para dormitorios de lujo.",
     desc: "🥐 El arte de dormir con estilo. Tono habano cálido con textura fina que evoca los interiores parisinos más refinados. Plaza 1/2: $16 ($14 mayor) · 2 Plazas: $18 ($16 mayor) · 2 1/2 Plazas: $21 ($19 mayor)",
@@ -1823,7 +1746,7 @@ const products = [
     colors: [{name: "Habano", hex: "#C4A882", image: "COBIJAS/COBIJA FRANCESA COLOR HABANO.jpeg"}],
     badge: "Nuevo", emoji: "🥐", isNewCollection: true
   },
-  {
+{
     id: 52, name: "Cobija Iliniza Punto Lila", cat: "Cobijas",
     shortDesc: "Textura de punto en color lila relajante. El abrigo perfecto con toque artesanal.",
     desc: "⛰️ Confort inspirado en los Andes. Textura de punto que evoca la artesanía andina. Color lila relajante. $15 unidad · $12 por mayor (3+ uds)",
@@ -1831,7 +1754,7 @@ const products = [
     colors: [{name: "Lila", hex: "#B19CD9", image: "COBIJAS/COBIJA ILINIZA PUNTO LILA.jpeg"}],
     badge: "Nuevo", emoji: "⛰️", isNewCollection: true
   },
-  {
+{
     id: 53, name: "Cobija Iliniza Punto Habano", cat: "Cobijas",
     shortDesc: "Textura de punto en tono habano natural. Calidez artesanal para tus noches de descanso.",
     desc: "⛰️ Naturaleza tejida en tu cama. Textura artesanal de punto con tono habano natural. $15 unidad · $12 por mayor (3+ uds)",
@@ -1839,7 +1762,7 @@ const products = [
     colors: [{name: "Habano", hex: "#D4C4A8", image: "COBIJAS/COBIJA ILINIZA PUNTO HABANO.jpeg"}],
     badge: "Nuevo", emoji: "⛰️", isNewCollection: true
   },
-  {
+{
     id: 54, name: "Cobija Jackard Lines Azul Jean", cat: "Cobijas",
     shortDesc: "Líneas verticales Jackard en azul jean moderno. Textura ribeteada que aporta dimensión.",
     desc: "🔷 Estilo urbano, abrigo premium. Líneas verticales ribeteadas que crean dimensión visual. Plaza 1/2: $20.50 ($18.50 mayor) · 2 Plazas: $22.50 ($20.50 mayor) · 2 1/2 Plazas: $27 ($24 mayor) · 3 Plazas: $30 ($27 mayor)",
@@ -1849,7 +1772,7 @@ const products = [
     colors: [{name: "Azul Jean", hex: "#1E3A5F", image: "COBIJAS/COBIJA JACKARD LINES AZUL JEAN.jpeg"}],
     badge: "Nuevo", emoji: "🔷", isNewCollection: true
   },
-  {
+{
     id: 55, name: "Cobija Jackard Lines Habano", cat: "Cobijas",
     shortDesc: "Líneas verticales Jackard en habano elegante. La misma textura premium en tono cálido.",
     desc: "🟤 Sofisticación en cada línea. Textura ribeteada premium en tono habano cálido. Plaza 1/2: $20.50 ($18.50 mayor) · 2 Plazas: $22.50 ($20.50 mayor) · 2 1/2 Plazas: $27 ($24 mayor) · 3 Plazas: $30 ($27 mayor)",
@@ -1859,7 +1782,7 @@ const products = [
     colors: [{name: "Habano", hex: "#C4A882", image: "COBIJAS/COBIJA JACKARD LINES HABANO.jpeg"}],
     badge: "Nuevo", emoji: "🟤", isNewCollection: true
   },
-  {
+{
     id: 56, name: "Cobija Ovejera Luminosa", cat: "Cobijas",
     shortDesc: "Ovejera con efecto luminoso que brilla en la oscuridad. Magia para los pequeños.",
     desc: "✨ Brilla mientras sueñas. Textura ovejera suave con fibras luminosas que se cargan con la luz del día. $9 unidad · $7.50 por mayor (3+ uds)",
@@ -1869,7 +1792,7 @@ const products = [
     colors: [{name: "Luminosa", hex: "#E8E0F0"}],
     badge: "Nuevo", emoji: "✨", isNewCollection: true
   },
-  {
+{
     id: 57, name: "Cobija Piña Habano", cat: "Cobijas",
     shortDesc: "Textura de piña en tono habano clásico. Diseño geométrico atemporal.",
     desc: "🍍 Clásico que perdura. Patrón geométrico de piña en tono habano. Plaza 1/2: $13 ($11 mayor) · 2 Plazas: $15 ($13 mayor) · 2 1/2 Plazas: $18 ($17 mayor) · 3 Plazas: $23 ($21 mayor)",
@@ -1879,7 +1802,7 @@ const products = [
     colors: [{name: "Habano", hex: "#C4A882", image: "COBIJAS/COBIJA PIÑA HABANO.jpeg"}],
     badge: "Nuevo", emoji: "🍍", isNewCollection: true
   },
-  {
+{
     id: 58, name: "Cobija Piña Café", cat: "Cobijas",
     shortDesc: "Textura de piña en tono café intenso. El mismo diseño atemporal en color cálido profundo.",
     desc: "🍍 Intensidad que abraza. Patrón geométrico de piña en tono café intenso. Plaza 1/2: $13 ($11 mayor) · 2 Plazas: $15 ($13 mayor) · 2 1/2 Plazas: $18 ($17 mayor) · 3 Plazas: $23 ($21 mayor)",
@@ -1889,7 +1812,7 @@ const products = [
     colors: [{name: "Café", hex: "#6B4E3D", image: "COBIJAS/COBIJA PIÑA CAFE.jpeg"}],
     badge: "Nuevo", emoji: "🍍", isNewCollection: true
   },
-  {
+{
     id: 59, name: "Cobija Térmica", cat: "Cobijas",
     shortDesc: "Eficiencia térmica al mejor precio. A partir de 6 unidades, precio irresistible.",
     desc: "🔥 Calor inteligente, precio mínimo. Tela térmica eficiente que retiene el calor corporal sin ser abultada. $4.80 unidad · $3.80 desde 6 unidades.",
@@ -1897,17 +1820,67 @@ const products = [
     colors: [{name: "Térmica", hex: "#D5D0C8"}],
     badge: "Nuevo", emoji: "🔥", isNewCollection: true
   },
-  {
+{
     id: 60, name: "Cobija Texturizada Lila", cat: "Cobijas",
     shortDesc: "Geometría texturizada en lila púrpura. Diseño moderno que aporta dimensión única.",
     desc: "💜 Geometría que se siente. Patrones geométricos en relieve con tono púrpura relajante. $9 unidad · $7.50 por mayor (3+ uds)",
     prices: {"2 Plazas": 50, "2 1/2 Plazas": 55, "3 Plazas": 60},
     colors: [{name: "Púrpura", hex: "#9B59B6", image: "COBIJAS/COBIJA TEXTURIZADA PURPURA.jpeg"}],
     badge: "Nuevo", emoji: "💜", isNewCollection: true
-  }
-,
-
-  {
+  },
+{
+    id: 61,
+    name: "Edredón Alejandrina",
+    cat: "Edredones",
+    shortDesc: "✨ Donde el lujo abraza tus sueños. Tela damasco premium con reverso térmico. Incluye 3 cojines decorativos de regalo.",
+    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
+      <p style="margin-bottom:0.8rem;">Edredón en <strong>tela damasco premium</strong> con <strong>reverso térmico abrigado</strong>. Incluye <strong>3 cojines decorativos</strong> de regalo.</p>
+      <p style="font-size:0.9rem;color:var(--gray);margin-bottom:0.5rem;">💰 <strong>$36</strong> unidad · <strong>$32</strong> por mayor (3+ uds)</p>
+      <p style="font-size:0.9rem;color:var(--gray);">🎨 6 colores: Azul, Beige, Rojo, Rosa, Turquesa, Vino.</p>
+    </div>`,
+    prices: {Plaza: 36, "Plaza y media": 36, "2 Plazas": 36, "2 1/2 Plazas": 36, "3 Plazas": 36, Queen: 36, King: 36},
+    bulkPrice: 32,
+    bulkMin: 3,
+    colors: [
+      {name: "Azul", hex: "#4A7BA7", image: "EDREDONES/EDREDON ALEJANDRINA/EDREDON ALEJANDRINA COLOR AZUL.jpeg"},
+      {name: "Beige", hex: "#D4C4A8", image: "EDREDONES/EDREDON ALEJANDRINA/EDREDON ALEJANDRINA COLOR BEIGE.jpeg"},
+      {name: "Rojo", hex: "#C41E3A", image: "EDREDONES/EDREDON ALEJANDRINA/EDREDON ALEJANDRINA COLOR ROJO.jpeg"},
+      {name: "Rosa", hex: "#D4869A", image: "EDREDONES/EDREDON ALEJANDRINA/EDREDON ALEJANDRINA COLOR ROSA.jpeg"},
+      {name: "Turquesa", hex: "#40B5AD", image: "EDREDONES/EDREDON ALEJANDRINA/EDREDON ALEJANDRINA COLOR TURQUESA.jpeg"},
+      {name: "Vino", hex: "#8B1538", image: "EDREDONES/EDREDON ALEJANDRINA/EDREDON ALEJANDRINA COLOR VINO.jpeg"}
+    ],
+    badge: "Nuevo",
+    emoji: "🛏️",
+    isNewCollection: true
+  },
+{
+    id: 62,
+    name: "Cobertor Alejandrina",
+    cat: "Cobertores",
+    shortDesc: "❌ PRODUCTO NO DISPONIBLE — Elegancia que abraza tus sueños. Tela damasco premium con reverso térmico. Incluye 3 cojines decorativos. Solo disponible en 2 plazas. Actualmente fuera de stock.",
+    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
+      <p style="margin-bottom:0.8rem;font-size:1.1rem;color:#EF4444;font-weight:700;">❌ PRODUCTO NO DISPONIBLE — FUERA DE STOCK</p>
+      <p style="margin-bottom:0.8rem;">Cobertor en <strong>tela damasco premium</strong> con <strong>reverso térmico abrigado</strong>. Incluye <strong>3 cojines decorativos</strong> de regalo.</p>
+      <p style="font-size:0.9rem;color:var(--gray);margin-bottom:0.5rem;">💰 <strong>$36</strong> unidad · <strong>$32</strong> por mayor (3+ uds)</p>
+      <p style="font-size:0.9rem;color:var(--gray);">🎨 6 colores: Azul, Beige, Rojo, Rosa, Turquesa, Vino.</p>
+      <p style="font-size:0.9rem;color:var(--gray);margin-top:0.8rem;font-style:italic;">Contáctanos por WhatsApp para consultar reposición o alternativas similares.</p>
+    </div>`,
+    prices: {"2 Plazas": 0},
+    bulkPrice: 0,
+    bulkMin: 3,
+    colors: [
+      {name: "Azul", hex: "#4A7BA7", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR AZUL.jpeg"},
+      {name: "Beige", hex: "#D4C4A8", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR BEIGE.jpeg"},
+      {name: "Rojo", hex: "#C41E3A", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR ROJO.jpeg"},
+      {name: "Rosa", hex: "#D4869A", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR ROSA.jpeg"},
+      {name: "Turquesa", hex: "#40B5AD", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR TURQUESA.jpeg"},
+      {name: "Vino", hex: "#8B1538", image: "COBERTORES/COBERTOR ALEJANDRINA/COBERTOR ALEJANDRINA COLOR VINO.jpeg"}
+    ],
+    badge: "No Disponible",
+    emoji: "🛏️",
+    isNewCollection: false
+  },
+{
     id: 63,
     name: "Cobertor Luminoso",
     cat: "Cobertores",
@@ -1943,8 +1916,7 @@ const products = [
     emoji: "🌙",
     isNewCollection: true
   },
-
-  {
+{
     id: 64,
     name: "MUNDIAL",
     cat: "Personalizado",
@@ -1966,7 +1938,7 @@ const products = [
     emoji: "⚽",
     isNewCollection: true
   },
-  {
+{
     id: 70,
     name: "Toalla Hotelera Jacquard Hojas",
     cat: "Hotel",
@@ -1986,7 +1958,7 @@ const products = [
     emoji: "🌿",
     isNewCollection: true
   },
-  {
+{
     id: 71,
     name: "Toalla Hotelera Premium",
     cat: "Hotel",
@@ -2006,7 +1978,7 @@ const products = [
     emoji: "⭐",
     isNewCollection: true
   },
-  {
+{
     id: 72,
     name: "Toalla Hotelera Selina",
     cat: "Hotel",
@@ -2027,7 +1999,7 @@ const products = [
     emoji: "🌈",
     isNewCollection: true
   },
-  {
+{
     id: 73,
     name: "Sábana Bramante Dubai",
     cat: "Hotel",
@@ -2051,7 +2023,7 @@ const products = [
     emoji: "🛏️",
     isNewCollection: true
   },
-  {
+{
     id: 74,
     name: "Sábana Piel de Durazno Hotelera Dubai",
     cat: "Hotel",
@@ -2073,7 +2045,7 @@ const products = [
     emoji: "🍑",
     isNewCollection: true
   },
-  {
+{
     id: 75,
     name: "Cobertor Hotelero Dubai Acolchado Bordado",
     cat: "Hotel",
@@ -2094,7 +2066,7 @@ const products = [
     emoji: "🏨",
     isNewCollection: true
   },
-  {
+{
     id: 76,
     name: "Protector de Colchón Blanco",
     cat: "Hotel",
@@ -2113,7 +2085,7 @@ const products = [
     emoji: "🛡️",
     isNewCollection: true
   },
-  {
+{
     id: 77,
     name: "Almohada Dubai Hotelera",
     cat: "Hotel",
@@ -2133,10 +2105,8 @@ const products = [
     badge: "Nuevo",
     emoji: "🛏️",
     isNewCollection: true
-  }
-
-
-,  {
+  },
+{
     id: 78,
     name: "Cobertor Everest Bordado",
     cat: "Cobertores",
@@ -2159,9 +2129,8 @@ const products = [
     badge: "Nuevo",
     emoji: "🎭",
     isNewCollection: true
-  }
-,
-  {
+  },
+{
     id: 79,
     name: "Cobertor Peluzo",
     cat: "Cobertores",
@@ -2188,7 +2157,7 @@ const products = [
     emoji: "💙",
     isNewCollection: true
   },
-  {
+{
     id: 80,
     name: "Edredón Malú",
     cat: "Edredones",
@@ -2219,9 +2188,72 @@ const products = [
     emoji: "✨",
     isNewCollection: true
   },
+{
+    id: 81,
+    name: "Cobertor Muñeca",
+    cat: "Cobertores",
+    shortDesc: "✨ La comodidad que se merecen con un cobertor súper suave y acogedor. 🌸 Dos diseños en uno: hermosa tela estampada por un lado, y tela tipo borreguito extra suave y cálida por el otro.",
+    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
+      <p style="margin-bottom:0.8rem;">✨ La <strong>comodidad que se merecen</strong> con un cobertor súper suave y acogedor.</p>
+      <p style="margin-bottom:0.5rem;">🌸 <strong>Dos diseños en uno:</strong></p>
+      <p style="margin-bottom:0.3rem;padding-left:1rem;">🩷 Un lado con hermosa <strong>tela estampada</strong>.</p>
+      <p style="margin-bottom:0.8rem;padding-left:1rem;">🤍 El otro lado con <strong>tela tipo borreguito</strong>, extra suave y cálida.</p>
+      <p style="font-size:0.9rem;color:var(--teal);font-weight:600;margin-top:1rem;">🎨 15 colores disponibles para combinar con cualquier decoración.</p>
+    </div>`,
+    prices: {"2 Plazas": 26},
 
-  // ===== EDREDÓN CIELO =====
-  {
+  // ===== COBERTOR TROPICAL =====
+  bulkPrice: 22,
+    bulkMin: 3,
+    colors: [
+      {name: "Azul Rayas", hex: "#7BA7BC", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA AZUL RAYAS .jpeg"},
+      {name: "Azul", hex: "#4A7BA7", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA AZUL.jpeg"},
+      {name: "Beige Flores", hex: "#D4C4A8", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA BEIGE FLORES.jpeg"},
+      {name: "Beige", hex: "#C4A882", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA BEIGE.jpeg"},
+      {name: "Blanco", hex: "#F5F5F0", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA BLANCO.jpeg"},
+      {name: "Café", hex: "#6B4E3D", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA CAFE.jpeg"},
+      {name: "Celeste Flores", hex: "#8EC5C1", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA CELESTE FLORES.jpeg"},
+      {name: "Celeste", hex: "#5FB3C3", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA CELESTE.jpeg"},
+      {name: "Chocolate", hex: "#4A3C31", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA CHOCOLATE.jpeg"},
+      {name: "Naranja", hex: "#E8A040", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA NARANJA.jpeg"},
+      {name: "Plomo", hex: "#8A8A8A", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA PLOMO.jpeg"},
+      {name: "Puntos", hex: "#D4A5B5", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA PUNTOS.jpeg"},
+      {name: "Rosa", hex: "#E8A4C5", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA ROSA.jpeg"},
+      {name: "Verde", hex: "#4A8A5A", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA VERDE.jpeg"},
+      {name: "Vino", hex: "#8B1538", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA VINO.jpeg"}
+    ],
+    badge: "Nuevo",
+    emoji: "🧸",
+    isNewCollection: true
+  },
+{
+    id: 82,
+    name: "Cobertor Siberiano",
+    cat: "Cobertores",
+    shortDesc: "✨ La comodidad que se merecen con un cobertor súper suave y acogedor. Tela de alta calidad diseñada para brindar máximo calor y confort en las noches más frías.",
+    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
+      <p style="margin-bottom:0.8rem;">✨ La <strong>comodidad que se merecen</strong> con un cobertor súper suave y acogedor.</p>
+      <p style="margin-bottom:0.5rem;">🧶 Tela de alta calidad diseñada para brindar <strong>máximo calor y confort</strong> en las noches más frías.</p>
+      <p style="font-size:0.9rem;color:var(--teal);font-weight:600;margin-top:1rem;">🎨 10 colores disponibles para combinar con cualquier decoración.</p>
+    </div>`,
+    prices: {"2 Plazas": 50, "2 1/2 Plazas": 55, "3 Plazas": 60},
+    colors: [
+      {name: "Azul", hex: "#4A7BA7", image: "COBERTORES/COBERTOR SIBERIANO/COBERTOR SIBERIANO AZUL.jpeg"},
+      {name: "Beige", hex: "#C4A882", image: "COBERTORES/COBERTOR SIBERIANO/COBERTOR SIBERIANO BEIGE.jpeg"},
+      {name: "Café Claro", hex: "#A08B6B", image: "COBERTORES/COBERTOR SIBERIANO/COBERTOR SIBERIANO CAFE CLARO.jpeg"},
+      {name: "Chocolate", hex: "#4A3C31", image: "COBERTORES/COBERTOR SIBERIANO/COBERTOR SIBERIANO CHOCOLATE.jpeg"},
+      {name: "Gris", hex: "#8A8A8A", image: "COBERTORES/COBERTOR SIBERIANO/COBERTOR SIBERIANO GRIS.jpeg"},
+      {name: "Plomo", hex: "#7B7B7B", image: "COBERTORES/COBERTOR SIBERIANO/COBERTOR SIBERIANO PLOMO.jpeg"},
+      {name: "Púrpura", hex: "#8B6BB5", image: "COBERTORES/COBERTOR SIBERIANO/COBERTOR SIBERIANO PURPURA.jpeg"},
+      {name: "Rosa", hex: "#E8A4C5", image: "COBERTORES/COBERTOR SIBERIANO/COBERTOR SIBERIANO ROSA.jpeg"},
+      {name: "Verde Oscuro", hex: "#2A5A3A", image: "COBERTORES/COBERTOR SIBERIANO/COBERTOR SIBERIANO VERDE OSCURO.jpeg"},
+      {name: "Vino", hex: "#8B1538", image: "COBERTORES/COBERTOR SIBERIANO/COBERTOR SIBERIANO VINO.jpeg"}
+    ],
+    badge: "Nuevo",
+    emoji: "❄️",
+    isNewCollection: true
+  },
+{
     id: 83,
     name: "Edredón Cielo",
     cat: "Edredones",
@@ -2249,23 +2281,7 @@ const products = [
     emoji: "🎀",
     isNewCollection: true
   },
-
-  {
-    id: 81,
-    name: "Cobertor Muñeca",
-    cat: "Cobertores",
-    shortDesc: "✨ La comodidad que se merecen con un cobertor súper suave y acogedor. 🌸 Dos diseños en uno: hermosa tela estampada por un lado, y tela tipo borreguito extra suave y cálida por el otro.",
-    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
-      <p style="margin-bottom:0.8rem;">✨ La <strong>comodidad que se merecen</strong> con un cobertor súper suave y acogedor.</p>
-      <p style="margin-bottom:0.5rem;">🌸 <strong>Dos diseños en uno:</strong></p>
-      <p style="margin-bottom:0.3rem;padding-left:1rem;">🩷 Un lado con hermosa <strong>tela estampada</strong>.</p>
-      <p style="margin-bottom:0.8rem;padding-left:1rem;">🤍 El otro lado con <strong>tela tipo borreguito</strong>, extra suave y cálida.</p>
-      <p style="font-size:0.9rem;color:var(--teal);font-weight:600;margin-top:1rem;">🎨 15 colores disponibles para combinar con cualquier decoración.</p>
-    </div>`,
-    prices: {"2 Plazas": 26},
-
-  // ===== COBERTOR TROPICAL =====
-  {
+{
     id: 84,
     name: "Cobertor Tropical",
     cat: "Cobertores",
@@ -2298,83 +2314,7 @@ const products = [
     emoji: "🌴",
     isNewCollection: true
   },
-    bulkPrice: 22,
-    bulkMin: 3,
-    colors: [
-      {name: "Azul Rayas", hex: "#7BA7BC", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA AZUL RAYAS .jpeg"},
-      {name: "Azul", hex: "#4A7BA7", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA AZUL.jpeg"},
-      {name: "Beige Flores", hex: "#D4C4A8", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA BEIGE FLORES.jpeg"},
-      {name: "Beige", hex: "#C4A882", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA BEIGE.jpeg"},
-      {name: "Blanco", hex: "#F5F5F0", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA BLANCO.jpeg"},
-      {name: "Café", hex: "#6B4E3D", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA CAFE.jpeg"},
-      {name: "Celeste Flores", hex: "#8EC5C1", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA CELESTE FLORES.jpeg"},
-      {name: "Celeste", hex: "#5FB3C3", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA CELESTE.jpeg"},
-      {name: "Chocolate", hex: "#4A3C31", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA CHOCOLATE.jpeg"},
-      {name: "Naranja", hex: "#E8A040", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA NARANJA.jpeg"},
-      {name: "Plomo", hex: "#8A8A8A", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA PLOMO.jpeg"},
-      {name: "Puntos", hex: "#D4A5B5", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA PUNTOS.jpeg"},
-      {name: "Rosa", hex: "#E8A4C5", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA ROSA.jpeg"},
-      {name: "Verde", hex: "#4A8A5A", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA VERDE.jpeg"},
-      {name: "Vino", hex: "#8B1538", image: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA VINO.jpeg"}
-    ],
-    badge: "Nuevo",
-    emoji: "🧸",
-    isNewCollection: true
-  },
-
-  {
-    id: 82,
-    name: "Cobertor Siberiano",
-    cat: "Cobertores",
-    shortDesc: "✨ La comodidad que se merecen con un cobertor súper suave y acogedor. Tela de alta calidad diseñada para brindar máximo calor y confort en las noches más frías.",
-    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
-      <p style="margin-bottom:0.8rem;">✨ La <strong>comodidad que se merecen</strong> con un cobertor súper suave y acogedor.</p>
-      <p style="margin-bottom:0.5rem;">🧶 Tela de alta calidad diseñada para brindar <strong>máximo calor y confort</strong> en las noches más frías.</p>
-      <p style="font-size:0.9rem;color:var(--teal);font-weight:600;margin-top:1rem;">🎨 10 colores disponibles para combinar con cualquier decoración.</p>
-    </div>`,
-    prices: {"2 Plazas": 50, "2 1/2 Plazas": 55, "3 Plazas": 60},
-    colors: [
-      {name: "Azul", hex: "#4A7BA7", image: "COBERTORES/COBERTOR SIBERIANO/COBERTOR SIBERIANO AZUL.jpeg"},
-      {name: "Beige", hex: "#C4A882", image: "COBERTORES/COBERTOR SIBERIANO/COBERTOR SIBERIANO BEIGE.jpeg"},
-      {name: "Café Claro", hex: "#A08B6B", image: "COBERTORES/COBERTOR SIBERIANO/COBERTOR SIBERIANO CAFE CLARO.jpeg"},
-      {name: "Chocolate", hex: "#4A3C31", image: "COBERTORES/COBERTOR SIBERIANO/COBERTOR SIBERIANO CHOCOLATE.jpeg"},
-      {name: "Gris", hex: "#8A8A8A", image: "COBERTORES/COBERTOR SIBERIANO/COBERTOR SIBERIANO GRIS.jpeg"},
-      {name: "Plomo", hex: "#7B7B7B", image: "COBERTORES/COBERTOR SIBERIANO/COBERTOR SIBERIANO PLOMO.jpeg"},
-      {name: "Púrpura", hex: "#8B6BB5", image: "COBERTORES/COBERTOR SIBERIANO/COBERTOR SIBERIANO PURPURA.jpeg"},
-      {name: "Rosa", hex: "#E8A4C5", image: "COBERTORES/COBERTOR SIBERIANO/COBERTOR SIBERIANO ROSA.jpeg"},
-      {name: "Verde Oscuro", hex: "#2A5A3A", image: "COBERTORES/COBERTOR SIBERIANO/COBERTOR SIBERIANO VERDE OSCURO.jpeg"},
-      {name: "Vino", hex: "#8B1538", image: "COBERTORES/COBERTOR SIBERIANO/COBERTOR SIBERIANO VINO.jpeg"}
-    ],
-    badge: "Nuevo",
-    emoji: "❄️",
-    isNewCollection: true
-  }
-];
-
-// ===== BASE DE DATOS PARA ANÁLISIS =====
-const salesDB = {
-  orders: [],
-  addOrder: function(cartItems, total, customerInfo) {
-    const order = {
-      id: 'ORD-' + Date.now(),
-      date: new Date().toISOString(),
-      items: cartItems.map(i => ({
-        productId: i.product.id,
-        productName: i.product.name,
-        category: i.product.cat,
-        size: i.size,
-        color: i.color,
-        qty: i.qty,
-        unitPrice: i.product.prices[i.size] || i.product.bulkPrice,
-        total: (i.product.prices[i.size] || i.product.bulkPrice) * i.qty
-      })),
-      total: total,
-      customer: customerInfo || {phone: '0992909503'},
-      status: 'pending'
-    }
-
-  // ===== COBERTOR SUPERIOR ACOLCHADO BORDADO =====
-  {
+{
     id: 85,
     name: "Cobertor Superior Acolchado Bordado",
     cat: "Cobertores",
@@ -2401,37 +2341,43 @@ const salesDB = {
     badge: "Nuevo",
     emoji: "🌝",
     isNewCollection: true
-  },;
-    this.orders.push(order);
-    this.saveToLocal();
-    return order;
-  },
-  getTopProducts: function() {
-    const counts = {};
-    this.orders.forEach(o => o.items.forEach(i => {
-      counts[i.productName] = (counts[i.productName] || 0) + i.qty;
-    }));
-    return Object.entries(counts).sort((a,b) => b[1] - a[1]);
-  },
-  getTopCategories: function() {
-    const counts = {};
-    this.orders.forEach(o => o.items.forEach(i => {
-      counts[i.category] = (counts[i.category] || 0) + i.qty;
-    }));
-    return Object.entries(counts).sort((a,b) => b[1] - a[1]);
-  },
-  saveToLocal: function() {
-    localStorage.setItem('fabitex_sales', JSON.stringify(this.orders));
-  },
-  loadFromLocal: function() {
-    const data = localStorage.getItem('fabitex_sales');
-    if (data) this.orders = JSON.parse(data);
   }
-};
-salesDB.loadFromLocal();
 
-// ===== STATE =====
-let cart = [];
+
+  // ===== EDREDÓN LUCIANA =====
+  {
+    id: 86,
+    name: "Edredón Luciana",
+    cat: "Edredones",
+    shortDesc: "✨ Pie de cama decorativo con reverso en piel de borreguito, suave y extra cálido. Elegancia y confort para un descanso perfecto.",
+    desc: `<div style="font-size:1rem;line-height:1.7;color:var(--gray-dark);">
+      <p style="margin-bottom:0.8rem;">✨ <strong>Edredón Luciana</strong> — Pie de cama decorativo.</p>
+      <p style="margin-bottom:0.5rem;">🐑 <strong>Reverso en piel de borreguito</strong>, suave y extra cálido.</p>
+      <p style="margin-bottom:0.5rem;">💤 <strong>Elegancia y confort</strong> para un descanso perfecto.</p>
+      <p style="font-size:0.9rem;color:var(--gray);margin-bottom:0.5rem;">💰 Precio por confirmar</p>
+      <p style="font-size:0.9rem;color:var(--gray);">🎨 13 colores disponibles.</p>
+      <p style="font-size:0.85rem;color:var(--teal);margin-top:0.5rem;">📲 Pregunta por las plazas, colores y promociones en Fabitex. ¡Envíos a todo el Ecuador!</p>
+    </div>`,
+    prices: {"2 Plazas": 0},
+    colors: [
+      {name: "Blanco Púrpura", hex: "#E8D4E8", image: "EDREDONES/EDREDON LUCIANA/EDREDON LUCIANA BLANCO- PURPURA.jpeg"},
+      {name: "Blanco", hex: "#F5F5F0", image: "EDREDONES/EDREDON LUCIANA/EDREDON LUCIANA BLANCO.jpeg"},
+      {name: "Café Claro", hex: "#A08060", image: "EDREDONES/EDREDON LUCIANA/EDREDON LUCIANA CAFE CLARO.jpeg"},
+      {name: "Café", hex: "#6B4E3D", image: "EDREDONES/EDREDON LUCIANA/EDREDON LUCIANA CAFE.jpeg"},
+      {name: "Celeste", hex: "#87CEEB", image: "EDREDONES/EDREDON LUCIANA/EDREDON LUCIANA CELESTE.jpeg"},
+      {name: "Flores Azul", hex: "#4169E1", image: "EDREDONES/EDREDON LUCIANA/EDREDON LUCIANA FLORES AZUL.jpeg"},
+      {name: "Gris Azul", hex: "#708090", image: "EDREDONES/EDREDON LUCIANA/EDREDON LUCIANA GRIS- AZUL.jpeg"},
+      {name: "Gris Morado", hex: "#7B6888", image: "EDREDONES/EDREDON LUCIANA/EDREDON LUCIANA- GRIS MORADO.jpeg"},
+      {name: "Habano", hex: "#8B6914", image: "EDREDONES/EDREDON LUCIANA/EDREDON LUCIANA HABANO.jpeg"},
+      {name: "Hojas Habano", hex: "#5D4E37", image: "EDREDONES/EDREDON LUCIANA/EDREDON LUCIANA HOJAS HABANO.jpeg"},
+      {name: "Líneas Cafés", hex: "#8B7355", image: "EDREDONES/EDREDON LUCIANA/EDREDON LUCIANA LINEAS CAFES.jpeg"},
+      {name: "Plomo y Azul", hex: "#5A6B7A", image: "EDREDONES/EDREDON LUCIANA/EDREDON LUCIANA PLOMO Y AZUL.jpeg"},
+      {name: "Rosado", hex: "#E8A4B8", image: "EDREDONES/EDREDON LUCIANA/EDREDON LUCIANA ROSADO.jpeg"}
+    ],
+    badge: "Nuevo",
+    emoji: "✨",
+    isNewCollection: true
+  },];
 let currentProduct = null;
 let selectedSize = null;
 let selectedColor = null;
