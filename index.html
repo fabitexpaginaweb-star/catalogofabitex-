@@ -1089,7 +1089,8 @@ img { max-width: 100%; height: auto; }
     <div class="insta-card">
       <img src="COBERTORES/COBERTOR EVEREST BORDADO/COBERTOR HELLO KITTY.jpg" alt="Cobertor Hello Kitty">
       <div class="insta-overlay"><div class="insta-info"><p>🎀 Hello Kitty Special</p></div></div>
-        <div class="insta-card" onclick="openModal(79)">
+    </div>
+    <div class="insta-card" onclick="openModal(79)">
       <img src="COBERTORES/COBERTOR PELUZO/COBERTOR PELUZO BLANCO.jpeg" alt="Cobertor Peluzo" loading="lazy">
       <div class="insta-overlay"><div class="insta-info"><p>💙 El regalo perfecto para Papá</p></div></div>
     </div>
@@ -1401,6 +1402,16 @@ img { max-width: 100%; height: auto; }
 </a>
 
 <script>
+
+// ===== SALES DB (dummy para evitar errores) =====
+const salesDB = {
+  orders: [],
+  addOrder: function(cart, total, info) {
+    this.orders.push({cart, total, info, date: new Date().toISOString()});
+  },
+  getTopProducts: function() { return []; },
+  getTopCategories: function() { return []; }
+};
 
 // ===== BASE DE DATOS DE PRODUCTOS =====
 const products = [
@@ -2341,7 +2352,7 @@ const products = [
     badge: "Nuevo",
     emoji: "🌝",
     isNewCollection: true
-  }
+  },
 
 
   // ===== EDREDÓN LUCIANA =====
