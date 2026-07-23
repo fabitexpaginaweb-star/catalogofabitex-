@@ -2411,7 +2411,7 @@ function renderProducts(filter, customList) {
 
     let imgHtml;
     if (hasImage) {
-      imgHtml = `<img src="${p.colors[0].image}" alt="${p.name}" loading="lazy">`;
+      imgHtml = `<img src="${encodeURI(p.colors[0].image)}" alt="${p.name}" loading="lazy">`;
     } else {
       imgHtml = `<div class="product-img-placeholder">${p.emoji}</div>`;
     }
@@ -2530,11 +2530,11 @@ function showTowelSubcategories() {
   const homeProducts = products.filter(isHomeTowel);
 
   const hotelPreview = hotelProducts.slice(0, 8).map(p => 
-    p.colors && p.colors[0] && p.colors[0].image ? `<img src="${p.colors[0].image}" alt="${p.name}" loading="lazy" title="${p.name}">` : ''
+    p.colors && p.colors[0] && p.colors[0].image ? `<img src="${encodeURI(p.colors[0].image)}" alt="${p.name}" loading="lazy" title="${p.name}">` : ''
   ).join('');
 
   const homePreview = homeProducts.slice(0, 8).map(p => 
-    p.colors && p.colors[0] && p.colors[0].image ? `<img src="${p.colors[0].image}" alt="${p.name}" loading="lazy" title="${p.name}">` : ''
+    p.colors && p.colors[0] && p.colors[0].image ? `<img src="${encodeURI(p.colors[0].image)}" alt="${p.name}" loading="lazy" title="${p.name}">` : ''
   ).join('');
 
   submenu.innerHTML = `
@@ -2609,7 +2609,7 @@ function showHotelSubcategories() {
   const toallas = products.filter(p => p.cat === 'Hotel' && p.subcat === 'Toallas');
 
   const makePreview = (arr) => arr.slice(0, 4).map(p => 
-    p.colors && p.colors[0] && p.colors[0].image ? `<img src="${p.colors[0].image}" alt="${p.name}" loading="lazy" title="${p.name}">` : ''
+    p.colors && p.colors[0] && p.colors[0].image ? `<img src="${encodeURI(p.colors[0].image)}" alt="${p.name}" loading="lazy" title="${p.name}">` : ''
   ).join('');
 
   submenu.innerHTML = `
@@ -2704,7 +2704,7 @@ function renderProductList(filtered) {
 
     let imgHtml;
     if (hasImage) {
-      imgHtml = `<img src="${p.colors[0].image}" alt="${p.name}" loading="lazy">`;
+      imgHtml = `<img src="${encodeURI(p.colors[0].image)}" alt="${p.name}" loading="lazy">`;
     } else {
       imgHtml = `<div class="product-img-placeholder">${p.emoji}</div>`;
     }
@@ -2792,7 +2792,7 @@ searchInput.addEventListener('input', (e) => {
       const min = Math.min(...prices);
       const hasImg = p.colors && p.colors[0] && p.colors[0].image;
       return `<div class="search-result-item" onclick="openModal(${p.id}); searchResults.classList.remove('active'); searchInput.value = '';">
-        <div class="search-result-img">${hasImg ? `<img src="${p.colors[0].image}" style="width:100%;height:100%;object-fit:cover">` : p.emoji}</div>
+        <div class="search-result-img">${hasImg ? `<img src="${encodeURI(p.colors[0].image)}" style="width:100%;height:100%;object-fit:cover">` : p.emoji}</div>
         <div class="search-result-info">
           <div class="search-result-name">${p.name}</div>
           <div class="search-result-cat">${p.cat}${p.subcat ? ' · ' + p.subcat : ''} · ${min === 0 ? 'Precio x confirmar' : 'Desde $' + min}</div>
@@ -2896,7 +2896,7 @@ function startModalAutoSlide() {
       const modalImg = document.getElementById('modalImg');
       modalImg.style.opacity = '0';
       setTimeout(() => {
-        modalImg.innerHTML = `<img src="${nextColor.image}" alt="${currentProduct.name}" style="width:100%;height:100%;object-fit:contain">`;
+        modalImg.innerHTML = `<img src="${encodeURI(nextColor.image)}" alt="${currentProduct.name}" style="width:100%;height:100%;object-fit:contain">`;
         modalImg.style.opacity = '1';
       }, 200);
       // Actualizar dot seleccionado visualmente
@@ -2941,7 +2941,7 @@ function manualSelectModalImage(index) {
     modalImg.style.opacity = '0';
     setTimeout(() => {
       if (colorData.image) {
-        modalImg.innerHTML = `<img src="${colorData.image}" alt="${currentProduct.name}" style="width:100%;height:100%;object-fit:contain">`;
+        modalImg.innerHTML = `<img src="${encodeURI(colorData.image)}" alt="${currentProduct.name}" style="width:100%;height:100%;object-fit:contain">`;
       }
       modalImg.style.opacity = '1';
     }, 200);
@@ -2958,7 +2958,7 @@ function updateModalImage() {
   const modalImg = document.getElementById('modalImg');
   if (currentProduct.colors && currentProduct.colors[0] && currentProduct.colors[0].image) {
     const colorData = currentProduct.colors.find(c => c.name === (selectedColor.name || selectedColor)) || currentProduct.colors[0];
-    modalImg.innerHTML = `<img src="${colorData.image}" alt="${currentProduct.name}" onload="this.style.opacity=1" style="opacity:0;transition:opacity 0.3s ease">`;
+    modalImg.innerHTML = `<img src="${encodeURI(colorData.image)}" alt="${currentProduct.name}" onload="this.style.opacity=1" style="opacity:0;transition:opacity 0.3s ease">`;
   } else {
     modalImg.innerHTML = `<div style="font-size:6rem;color:var(--white);display:flex;align-items:center;justify-content:center;width:100%;height:100%">${currentProduct.emoji}</div>`;
   }
@@ -3014,7 +3014,7 @@ function selectColorWithImage(colorName, el) {
     const modalImg = document.getElementById('modalImg');
     modalImg.style.opacity = '0';
     setTimeout(() => {
-      modalImg.innerHTML = `<img src="${colorData.image}" alt="${currentProduct.name}" style="width:100%;height:100%;object-fit:contain">`;
+      modalImg.innerHTML = `<img src="${encodeURI(colorData.image)}" alt="${currentProduct.name}" style="width:100%;height:100%;object-fit:contain">`;
       modalImg.style.opacity = '1';
     }, 200);
     updateModalDotActive();
@@ -3124,7 +3124,7 @@ function updateCartUI() {
       const colorHex = typeof i.color === 'object' ? i.color.hex : i.color;
       const colorName = typeof i.color === 'object' ? i.color.name : '';
       return `<div class="cart-item">
-        <div class="cart-item-img">${i.product.colors && i.product.colors[0] && i.product.colors[0].image ? `<img src="${typeof i.color === 'object' ? i.color.image : i.product.colors[0].image}" style="width:100%;height:100%;object-fit:cover">` : i.product.emoji}</div>
+        <div class="cart-item-img">${i.product.colors && i.product.colors[0] && i.product.colors[0].image ? `<img src="${typeof i.color === 'object' ? encodeURI(i.color.image) : encodeURI(i.product.colors[0].image)}" style="width:100%;height:100%;object-fit:cover">` : i.product.emoji}</div>
         <div class="cart-item-info">
           <div class="cart-item-name">${i.product.name}</div>
           <div class="cart-item-meta">
