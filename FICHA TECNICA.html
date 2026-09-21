@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fabitex — Fichas Técnicas de Producción</title>
+<style>
+  :root {
+    --bg: #ffffff; --text: #1a1a1a; --text-sec: #555555; --text-ter: #888888;
+    --border: #d0d0d0; --border-light: #e5e5e5; --surface: #f7f7f7;
+    --accent: #2D1F5E; --accent-light: #3D3378; --teal: #59C1D4; --gold: #C4975A;
+    --danger: #c0392b; --warning: #f39c12; --success: #27ae60;
+    --radius-sm: 6px; --radius-md: 10px; --radius-lg: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08); --shadow-lg: 0 4px 16px rgba(0,0,0,0.10);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #FAF8F5; color: var(--text); line-height: 1.5;
+    padding: 24px; max-width: 1400px; margin: 0 auto;
+  }
+  .header {
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    color: #fff; padding: 20px 28px;
+    border-radius: var(--radius-lg); margin-bottom: 20px;
+    box-shadow: var(--shadow-lg); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+  }
+  .header h1 { font-size: 22px; font-weight: 600; letter-spacing: 0.5px; }
+  .header p { font-size: 13px; opacity: 0.75; margin-top: 4px; }
+  .btn {
+    padding: 8px 16px; border-radius: var(--radius-md); font-size: 13px; font-weight: 500;
+    font-family: inherit; cursor: pointer; border: 1px solid var(--border); background: var(--bg);
+    color: var(--text); transition: all 0.15s; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn:hover { background: var(--surface); border-color: var(--accent); }
+  .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .btn-primary:hover { background: var(--accent-light); }
+  .btn-danger { color: var(--danger); border-color: var(--danger); }
+  .btn-danger:hover { background: var(--danger); color: #fff; }
+  .btn-success { color: var(--success); border-color: var(--success); }
+  .btn-success:hover { background: var(--success); color: #fff; }
+  .btn-ghost { background: transparent; border: 1px solid rgba(255,255,255,0.4); color: #fff; }
+  .btn-ghost:hover { background: rgba(255,255,255,0.15); border-color: #fff; }
+
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .stat-card {
+    background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius-lg);
+    padding: 16px; text-align: center;
+  }
+  .stat-card .value { font-size: 26px; font-weight: 600; color: var(--accent); }
+  .stat-card .label { font-size: 12px; color: var(--text-sec); margin-top: 4px; }
+
+  .cat-filter { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+  .cat-pill {
+    padding: 8px 18px; border-radius: 100px; border: 2px solid var(--border-light);
+    background: var(--bg); cursor: pointer; font-size: 13px; font-weight: 500; transition: all 0.2s;
+  }
+  .cat-pill:hover { border-color: var(--teal); color: var(--accent); }
+  .cat-pill.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  .toolbar { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
+  .search-box { flex: 1; min-width: 240px; position: relative; }
+  .search-box input {
+    width: 100%; padding: 10px 14px 10px 38px; border: 1px solid var(--border);
+    border-radius: var(--radius-md); font-size: 14px; font-family: inherit;
+    background: var(--bg); transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .search-box input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(45,31,94,0.08); }
+  .search-box svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); stroke: var(--text-ter); width: 16px; height: 16px; }
+
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .product-card {
+    background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 16px; cursor: pointer; transition: all 0.15s; position: relative;
+    box-shadow: var(--shadow); overflow: hidden;
+  }
+  .product-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .product-card .badge {
+    position: absolute; top: 12px; right: 12px; font-size: 10px; font-weight: 600;
+    padding: 3px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.3px;
+  }
+  .badge-edredones { background: #e3f2fd; color: #1565c0; }
+  .badge-cobertores { background: #fff3e0; color: #ef6c00; }
+  .badge-cobijas { background: #fce4ec; color: #c2185b; }
+  .badge-sabanas { background: #e8f5e9; color: #2e7d32; }
+  .badge-almohadas { background: #f3e5f5; color: #7b1fa2; }
+  .badge-hotel { background: #e0f2f1; color: #00695c; }
+  .product-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 4px; padding-right: 60px; }
+  .product-card .meta { font-size: 12px; color: var(--text-sec); margin-bottom: 8px; }
+  .product-card .dims { font-size: 13px; color: var(--text-ter); margin-bottom: 12px; }
+  .product-card .footer { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border-light); }
+  .product-card .date { font-size: 11px; color: var(--text-ter); }
+  .empty-state { text-align: center; padding: 60px 20px; color: var(--text-ter); }
+  .empty-state h3 { font-size: 18px; color: var(--text); margin-bottom: 8px; }
+  .empty-state p { font-size: 14px; }
+
+  .product-card-img {
+    width: calc(100% + 32px);
+    height: 180px;
+    margin: -16px -16px 12px -16px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-light);
+    background: linear-gradient(135deg, var(--surface), #f0ece4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .product-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .product-card:hover .product-card-img img {
+    transform: scale(1.05);
+  }
+
+  .section {
+    background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    margin-bottom: 20px; overflow: hidden; box-shadow: var(--shadow);
+  }
+  .section-header {
+    background: var(--surface); padding: 12px 20px; font-weight: 600; font-size: 14px;
+    border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 8px;
+  }
+  .section-header .num {
+    background: var(--accent); color: #fff; width: 24px; height: 24px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700;
+  }
+  .section-body { padding: 20px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
+  .field { display: flex; flex-direction: column; gap: 4px; }
+  .field label { font-size: 12px; font-weight: 500; color: var(--text-sec); text-transform: uppercase; letter-spacing: 0.3px; }
+  .field input, .field textarea, .field select {
+    padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--radius-md);
+    font-size: 14px; font-family: inherit; background: var(--bg); color: var(--text);
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus {
+    outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(45,31,94,0.08);
+  }
+  .field textarea { resize: vertical; min-height: 60px; }
+  .full-width { grid-column: 1 / -1; }
+  .readonly { background: var(--surface) !important; }
+  .highlight-box {
+    background: linear-gradient(135deg, rgba(89,193,212,0.08), rgba(196,151,90,0.05));
+    border: 1px solid rgba(89,193,212,0.25); border-radius: var(--radius-md);
+    padding: 16px; margin-bottom: 16px;
+  }
+  .highlight-box label { color: var(--accent); font-weight: 600; }
+
+  .bom-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .bom-table th { background: var(--accent); color: #fff; padding: 10px 8px; text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.3px; }
+  .bom-table th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+  .bom-table th:last-child { border-radius: 0 var(--radius-sm) 0 0; }
+  .bom-table td { padding: 8px; border-bottom: 1px solid var(--border-light); vertical-align: middle; }
+  .bom-table tr:last-child td { border-bottom: none; }
+  .bom-table tr:hover td { background: var(--surface); }
+  .bom-table input { width: 100%; padding: 6px 8px; border: 1px solid transparent; border-radius: var(--radius-sm); font-size: 13px; font-family: inherit; background: transparent; color: var(--text); }
+  .bom-table input:focus { outline: none; border-color: var(--accent); background: var(--bg); }
+  .bom-table .item-num { font-weight: 600; color: var(--text-ter); font-size: 12px; text-align: center; width: 36px; }
+  .bom-actions { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+
+  .process-list { list-style: none; counter-reset: step; }
+  .process-list li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border-light); }
+  .process-list li:last-child { border-bottom: none; }
+  .process-list li::before { counter-increment: step; content: counter(step) "."; font-weight: 600; color: var(--text-ter); min-width: 24px; }
+  .process-list input { flex: 1; padding: 8px 10px; border: 1px solid transparent; border-radius: var(--radius-sm); font-size: 14px; font-family: inherit; background: transparent; }
+  .process-list input:focus { outline: none; border-color: var(--accent); background: var(--bg); }
+
+  .care-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
+  .care-item { border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px 8px; text-align: center; cursor: pointer; transition: all 0.15s; background: var(--bg); }
+  .care-item:hover { border-color: var(--accent); }
+  .care-item.selected { border-color: var(--accent); background: var(--surface); box-shadow: 0 0 0 2px var(--accent); }
+  .care-item svg { width: 28px; height: 28px; margin-bottom: 6px; stroke: var(--text-sec); }
+  .care-item.selected svg { stroke: var(--accent); }
+  .care-item span { font-size: 11px; color: var(--text-sec); display: block; }
+  .care-item.selected span { color: var(--accent); font-weight: 500; }
+
+  .footer { text-align: center; font-size: 12px; color: var(--text-ter); margin-top: 24px; font-style: italic; }
+  .global-actions { display: flex; gap: 12px; justify-content: center; margin: 24px 0; flex-wrap: wrap; }
+  .page-title { font-size: 20px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .page-title .back { cursor: pointer; color: var(--text-ter); transition: color 0.15s; }
+  .page-title .back:hover { color: var(--accent); }
+
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); display: none; align-items: center; justify-content: center; z-index: 100; padding: 20px; }
+  .modal-overlay.active { display: flex; }
+  .modal { background: var(--bg); border-radius: var(--radius-lg); max-width: 480px; width: 100%; padding: 24px; box-shadow: var(--shadow-lg); }
+  .modal h3 { font-size: 18px; margin-bottom: 8px; }
+  .modal p { font-size: 14px; color: var(--text-sec); margin-bottom: 20px; }
+  .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
+
+  .catalog-img-wrap {
+    margin-top: 16px;
+    padding: 16px;
+    background: linear-gradient(135deg, rgba(89,193,212,0.05), rgba(196,151,90,0.03));
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-md);
+    text-align: center;
+  }
+  .catalog-img-wrap img {
+    max-width: 100%;
+    max-height: 320px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    object-fit: contain;
+  }
+  .catalog-img-label {
+    font-size: 11px;
+    color: var(--text-sec);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  @media print { body { padding: 0; background: #fff; } .section { box-shadow: none; border: 1px solid #ccc; } .btn, .bom-actions, .global-actions, .toolbar, .header .btn, .cat-filter { display: none !important; } input, textarea { border: none !important; background: transparent !important; } }
+  @media (max-width: 768px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } body { padding: 12px; } .header { flex-direction: column; align-items: flex-start; } }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<div id="page-dashboard">
+  <div class="header">
+    <div>
+      <h1>Fabitex — Fichas Técnicas de Producción</h1>
+      <p>Control técnico textil · Sábanas, Edredones, Cobijas, Cobertores y Línea Hotelera</p>
+    </div>
+    <div style="display:flex;gap:8px;">
+      <button class="btn btn-ghost" onclick="exportAllData()">📤 Exportar todo</button>
+      <input type="file" id="import-file" accept=".json" style="display:none" onchange="importAllData(this)">
+      <button class="btn btn-ghost" onclick="document.getElementById('import-file').click()">📥 Importar</button>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card"><div class="value" id="stat-total">0</div><div class="label">Fichas activas</div></div>
+    <div class="stat-card"><div class="value" id="stat-edredones">0</div><div class="label">Edredones</div></div>
+    <div class="stat-card"><div class="value" id="stat-cobertores">0</div><div class="label">Cobertores</div></div>
+    <div class="stat-card"><div class="value" id="stat-cobijas">0</div><div class="label">Cobijas</div></div>
+    <div class="stat-card"><div class="value" id="stat-sabanas">0</div><div class="label">Sábanas</div></div>
+    <div class="stat-card"><div class="value" id="stat-hotel">0</div><div class="label">Línea Hotel</div></div>
+  </div>
+
+  <div class="toolbar">
+    <div class="search-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search-input" placeholder="Buscar por nombre, código o categoría..." oninput="renderDashboard()">
+    </div>
+  </div>
+
+  <div class="cat-filter" id="catFilters"></div>
+  <div id="product-list"></div>
+</div>
+
+<div id="page-form" class="hidden">
+  <div class="page-title">
+    <span class="back" onclick="goDashboard()">←</span>
+    <span id="form-title">Ficha Técnica</span>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="num">1</span> Información General del Producto</div>
+    <div class="section-body">
+      <div class="grid-3">
+        <div class="field"><label>Código FT</label><input type="text" id="f-codigo" placeholder="Ej: FT-EDR-001"></div>
+        <div class="field"><label>Nombre del Producto</label><input type="text" id="f-nombre" placeholder="Ej: Edredón Alejandrina"></div>
+        <div class="field"><label>Categoría</label>
+          <select id="f-categoria">
+            <option value="">Seleccionar...</option>
+            <option value="Edredones">Edredones</option>
+            <option value="Cobertores">Cobertores</option>
+            <option value="Cobijas">Cobijas</option>
+            <option value="Sábanas">Sábanas</option>
+            <option value="Almohadas">Almohadas</option>
+            <option value="Hotel">Línea Hotelera</option>
+          </select>
+        </div>
+        <div class="field"><label>Fecha de Emisión</label><input type="date" id="f-fecha"></div>
+        <div class="field"><label>Versión</label><input type="text" id="f-version" value="v1.0"></div>
+        <div class="field"><label>Responsable Técnico</label><input type="text" id="f-responsable" placeholder="Nombre del responsable"></div>
+      </div>
+      <div class="field full-width" style="margin-top:12px;"><label>Descripción Comercial y Estructura</label>
+        <textarea rows="3" id="f-descripcion" placeholder="Describe la estructura del producto, tipo de tejido, acabados, componentes principales..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="num">2</span> Variante por Plaza / Tamaño</div>
+    <div class="section-body">
+      <div class="highlight-box">
+        <div class="grid-2">
+          <div class="field">
+            <label>Seleccionar Plaza o Tamaño</label>
+            <select id="f-plaza" onchange="cambiarPlaza()">
+              <option value="">-- Seleccione una plaza --</option>
+            </select>
+          </div>
+          <div class="field" style="display:flex;align-items:flex-end;gap:8px;">
+            <div style="flex:1;">
+              <label>Agregar Nueva Plaza</label>
+              <input type="text" id="f-nueva-plaza" placeholder="Ej: King Size, Super King...">
+            </div>
+            <button class="btn btn-success" onclick="agregarNuevaPlaza()" style="height:40px;">+ Agregar Plaza</button>
+          </div>
+        </div>
+        <p style="font-size:12px;color:var(--text-sec);margin-top:12px;">
+          💡 Al cambiar la plaza se actualizarán automáticamente las dimensiones y el consumo de materiales (BOM). 
+          La información general, proceso, cuidados y observaciones se mantienen iguales para todas las plazas.
+          <br>📝 <b>Tip:</b> Primero selecciona una plaza existente como base, luego modifica los datos y usa "Guardar consumos de esta plaza".
+        </p>
+      </div>
+      <div style="display:flex;justify-content:flex-end;margin-bottom:8px;">
+        <button class="btn btn-danger" onclick="eliminarPlazaActual()">🗑️ Eliminar plaza actual</button>
+      </div>
+      <div class="grid-4">
+        <div class="field"><label>Ancho Total (cm)</label><input type="number" id="f-ancho" placeholder="140" oninput="calcDims()"></div>
+        <div class="field"><label>Largo Total (cm)</label><input type="number" id="f-largo" placeholder="190" oninput="calcDims()"></div>
+        <div class="field"><label>Dimensiones Completas</label><input type="text" id="f-dimensiones" readonly class="readonly"></div>
+        <div class="field"><label>Talla / Plaza</label><input type="text" id="f-talla" placeholder="Ej: 2 Plazas"></div>
+      </div>
+      <div class="grid-2" style="margin-top:12px;">
+        <div class="field"><label>Cojines / Agregados Incluidos</label><input type="text" id="f-cojines" placeholder="Ej: 2 cojines decorativos 40×40 cm"></div>
+        <div class="field"><label>Peso Aproximado (kg)</label><input type="number" step="0.1" id="f-peso" placeholder="2.5"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="num">3</span> Materiales e Insumos (BOM) — Consumo por Plaza</div>
+    <div class="section-body">
+      <table class="bom-table" id="f-bom-table">
+        <thead><tr><th style="width:40px;">Ítem</th><th>Componente</th><th>Descripción / Material</th><th style="width:100px;">Ancho / Calibre</th><th style="width:90px;">Consumo</th><th style="width:80px;">Unidad</th></tr></thead>
+        <tbody id="f-bom-body"></tbody>
+      </table>
+      <div class="bom-actions">
+        <button class="btn" onclick="addBomRow()">+ Agregar fila</button>
+        <button class="btn btn-danger" onclick="removeBomRow()">− Eliminar última fila</button>
+        <button class="btn btn-success" onclick="guardarVarianteActual()">💾 Guardar consumos de esta plaza</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="num">4</span> Proceso de Manufactura y Costura</div>
+    <div class="section-body">
+      <ol class="process-list" id="f-proc"></ol>
+      <div class="bom-actions" style="margin-top:12px;">
+        <button class="btn" onclick="addProcessStep()">+ Agregar paso</button>
+        <button class="btn btn-danger" onclick="removeProcessStep()">− Eliminar último paso</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="num">5</span> Instrucciones de Cuidado y Lavado</div>
+    <div class="section-body">
+      <div class="care-grid" id="f-care">
+        <div class="care-item" data-value="lavado-mano" onclick="toggleCare(this)"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 11l-5-5-5 5M12 6v12"/></svg><span>Lavado a mano</span></div>
+        <div class="care-item" data-value="lavado-maquina" onclick="toggleCare(this)"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg><span>Lavado máquina</span></div>
+        <div class="care-item" data-value="no-lavar" onclick="toggleCare(this)"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg><span>No lavar</span></div>
+        <div class="care-item" data-value="no-secadora" onclick="toggleCare(this)"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/><circle cx="12" cy="12" r="3"/></svg><span>No usar secadora</span></div>
+        <div class="care-item" data-value="secado-sombra" onclick="toggleCare(this)"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><span>Secar a la sombra</span></div>
+        <div class="care-item" data-value="plancha-baja" onclick="toggleCare(this)"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h18l-2-8H5l-2 8z"/><path d="M4 14v6h16v-6"/></svg><span>Plancha baja</span></div>
+        <div class="care-item" data-value="no-bleach" onclick="toggleCare(this)"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 22h20L12 2z"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg><span>No usar blanqueador</span></div>
+        <div class="care-item" data-value="limpieza-seco" onclick="toggleCare(this)"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12h6"/></svg><span>Limpieza en seco</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="num">6</span> Observaciones y Notas Especiales</div>
+    <div class="section-body">
+      <div class="field"><textarea rows="4" id="f-obs" placeholder="Notas de calidad, restricciones de producción, tolerancias de medida, instrucciones especiales de empaque..."></textarea></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="num">7</span> Fotos del Producto y Esquemas Técnicos</div>
+    <div class="section-body">
+      <p style="font-size:13px;color:var(--text-sec);margin-bottom:12px;">Sube fotos del producto terminado, detalles de acabados o esquemas de corte.</p>
+      <div class="grid-3">
+        <div class="field"><label>Foto Principal / Vista Frontal</label><input type="file" id="f-img-1" accept="image/*" onchange="previewImage(this,'f-prev-1')"><img id="f-prev-1" style="max-width:100%;margin-top:8px;border-radius:8px;display:none;"></div>
+        <div class="field"><label>Foto Reverso / Detalle</label><input type="file" id="f-img-2" accept="image/*" onchange="previewImage(this,'f-prev-2')"><img id="f-prev-2" style="max-width:100%;margin-top:8px;border-radius:8px;display:none;"></div>
+        <div class="field"><label>Esquema de Corte / Medidas</label><input type="file" id="f-img-3" accept="image/*" onchange="previewImage(this,'f-prev-3')"><img id="f-prev-3" style="max-width:100%;margin-top:8px;border-radius:8px;display:none;"></div>
+      </div>
+      <div id="f-catalog-img-wrap" class="catalog-img-wrap hidden">
+        <div class="catalog-img-label">📷 Imagen de referencia del catálogo</div>
+        <img id="f-catalog-img" src="" alt="Imagen del producto" style="display:none;">
+      </div>
+    </div>
+  </div>
+
+  <div class="global-actions">
+    <button class="btn btn-primary" onclick="saveProduct()">💾 Guardar Ficha Técnica</button>
+    <button class="btn" onclick="window.print()">🖨️ Imprimir / PDF</button>
+    <button class="btn btn-danger" id="btn-delete" onclick="confirmDelete()">🗑️ Eliminar</button>
+    <button class="btn" onclick="goDashboard()">↩️ Cancelar</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-delete">
+  <div class="modal">
+    <h3>¿Eliminar ficha técnica?</h3>
+    <p>Esta acción no se puede deshacer. ¿Estás seguro de que deseas eliminar esta ficha técnica y todas sus variantes por plaza?</p>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal()">Cancelar</button>
+      <button class="btn btn-danger" onclick="doDelete()">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<div class="footer">Sistema de Fichas Técnicas Fabitex · Fábrica de Sábanas y Edredones · Ambato, Ecuador</div>
+
+<script>
+const catalogoBase = {
+  "edr-alejandrina": {
+    codigo: "FT-EDR-001", nombre: "Edredón Alejandrina", categoria: "Edredones",
+    descripcion: "Edredón en tela damasco premium con reverso térmico abrigado tipo borreguito. Incluye 3 cojines decorativos de regalo. Acabado con vuelo decorativo y costura reforzada.",
+    proceso: ["Recepción y revisión de telas","Extendido y marcado de moldes","Corte de tela damasco y térmica","Confección de fundas de cojín","Relleno de cojines","Ensamble de cuerpo principal con reverso","Acolchado en líneas o rombos","Pespunte de bordes y vuelo","Revisión de calidad (QC)","Limpieza y empaque final"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja","no-bleach"],
+    observaciones: "Verificar coincidencia de tonos entre tela principal y reverso. Tolerancia de medida: ±2 cm. Peso del relleno según especificación de cliente.",
+    variantes: {
+      "Plaza": { ancho: 140, largo: 190, talla: "Plaza", cojines: "3 cojines 40×40 cm", peso: 2.4,
+        materiales: [
+          {item:"01",componente:"Tela damasco",descripcion:"Tela damasco 180 g/m²",ancho:"1.50 m",consumo:"2.90",unidad:"m"},
+          {item:"02",componente:"Tela térmica",descripcion:"Polar borreguito 280 g/m²",ancho:"1.60 m",consumo:"2.90",unidad:"m"},
+          {item:"03",componente:"Relleno",descripcion:"Plumón sintético siliconado 150 g/m²",ancho:"1.50 m",consumo:"2.66",unidad:"m²"},
+          {item:"04",componente:"Cojines decorativos",descripcion:"Relleno fibra + funda damasco",ancho:"-",consumo:"3",unidad:"und"},
+          {item:"05",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"85",unidad:"m"},
+          {item:"06",componente:"Etiqueta",descripcion:"Etiqueta de composición y cuidado",ancho:"-",consumo:"1",unidad:"und"},
+          {item:"07",componente:"Bolsa",descripcion:"Bolsa de polipropileno con cierre",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "Plaza y media": { ancho: 150, largo: 200, talla: "Plaza y media", cojines: "3 cojines 40×40 cm", peso: 2.8,
+        materiales: [
+          {item:"01",componente:"Tela damasco",descripcion:"Tela damasco 180 g/m²",ancho:"1.50 m",consumo:"3.20",unidad:"m"},
+          {item:"02",componente:"Tela térmica",descripcion:"Polar borreguito 280 g/m²",ancho:"1.60 m",consumo:"3.20",unidad:"m"},
+          {item:"03",componente:"Relleno",descripcion:"Plumón sintético siliconado 150 g/m²",ancho:"1.50 m",consumo:"3.00",unidad:"m²"},
+          {item:"04",componente:"Cojines decorativos",descripcion:"Relleno fibra + funda damasco",ancho:"-",consumo:"3",unidad:"und"},
+          {item:"05",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"95",unidad:"m"},
+          {item:"06",componente:"Etiqueta",descripcion:"Etiqueta de composición y cuidado",ancho:"-",consumo:"1",unidad:"und"},
+          {item:"07",componente:"Bolsa",descripcion:"Bolsa de polipropileno con cierre",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "3 cojines 40×40 cm", peso: 3.2,
+        materiales: [
+          {item:"01",componente:"Tela damasco",descripcion:"Tela damasco 180 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Tela térmica",descripcion:"Polar borreguito 280 g/m²",ancho:"1.60 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Relleno",descripcion:"Plumón sintético siliconado 150 g/m²",ancho:"1.50 m",consumo:"3.36",unidad:"m²"},
+          {item:"04",componente:"Cojines decorativos",descripcion:"Relleno fibra + funda damasco",ancho:"-",consumo:"3",unidad:"und"},
+          {item:"05",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"105",unidad:"m"},
+          {item:"06",componente:"Etiqueta",descripcion:"Etiqueta de composición y cuidado",ancho:"-",consumo:"1",unidad:"und"},
+          {item:"07",componente:"Bolsa",descripcion:"Bolsa de polipropileno con cierre",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "Queen": { ancho: 180, largo: 220, talla: "Queen", cojines: "3 cojines 45×45 cm", peso: 3.8,
+        materiales: [
+          {item:"01",componente:"Tela damasco",descripcion:"Tela damasco 180 g/m²",ancho:"1.50 m",consumo:"4.20",unidad:"m"},
+          {item:"02",componente:"Tela térmica",descripcion:"Polar borreguito 280 g/m²",ancho:"1.60 m",consumo:"4.20",unidad:"m"},
+          {item:"03",componente:"Relleno",descripcion:"Plumón sintético siliconado 150 g/m²",ancho:"1.50 m",consumo:"3.96",unidad:"m²"},
+          {item:"04",componente:"Cojines decorativos",descripcion:"Relleno fibra + funda damasco",ancho:"-",consumo:"3",unidad:"und"},
+          {item:"05",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"120",unidad:"m"},
+          {item:"06",componente:"Etiqueta",descripcion:"Etiqueta de composición y cuidado",ancho:"-",consumo:"1",unidad:"und"},
+          {item:"07",componente:"Bolsa",descripcion:"Bolsa de polipropileno con cierre",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "King": { ancho: 200, largo: 230, talla: "King", cojines: "3 cojines 45×45 cm", peso: 4.3,
+        materiales: [
+          {item:"01",componente:"Tela damasco",descripcion:"Tela damasco 180 g/m²",ancho:"1.50 m",consumo:"4.80",unidad:"m"},
+          {item:"02",componente:"Tela térmica",descripcion:"Polar borreguito 280 g/m²",ancho:"1.60 m",consumo:"4.80",unidad:"m"},
+          {item:"03",componente:"Relleno",descripcion:"Plumón sintético siliconado 150 g/m²",ancho:"1.50 m",consumo:"4.60",unidad:"m²"},
+          {item:"04",componente:"Cojines decorativos",descripcion:"Relleno fibra + funda damasco",ancho:"-",consumo:"3",unidad:"und"},
+          {item:"05",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"135",unidad:"m"},
+          {item:"06",componente:"Etiqueta",descripcion:"Etiqueta de composición y cuidado",ancho:"-",consumo:"1",unidad:"und"},
+          {item:"07",componente:"Bolsa",descripcion:"Bolsa de polipropileno con cierre",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "edr-malu": {
+    codigo: "FT-EDR-002", nombre: "Edredón Malú", categoria: "Edredones",
+    descripcion: "Edredón con combinación de elegancia y vuelo decorativo. Incluye 2 cojines decorativos + 1 cojín en forma de corazón o caramelo. Reverso en piel de borreguito.",
+    proceso: ["Corte de tela estampada","Corte de reverso borreguito","Confección de cojines especiales","Ensamble de cuerpo con vuelo","Acolchado decorativo","Revisión de costuras","Empaque con etiqueta"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja","no-bleach"],
+    observaciones: "Coordinar diseño de estampado según temporada. El cojín especial requiere molde adicional.",
+    variantes: {
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "2 cojines 40×40 + 1 corazón", peso: 3.0,
+        materiales: [
+          {item:"01",componente:"Tela estampada",descripcion:"Microfibra estampada 120 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Tela borreguito",descripcion:"Polar borreguito 280 g/m²",ancho:"1.60 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Relleno",descripcion:"Plumón sintético 120 g/m²",ancho:"1.50 m",consumo:"3.36",unidad:"m²"},
+          {item:"04",componente:"Cojines",descripcion:"2 cojines cuadrados + 1 corazón",ancho:"-",consumo:"3",unidad:"und"},
+          {item:"05",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"100",unidad:"m"},
+          {item:"06",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "edr-cielo": {
+    codigo: "FT-EDR-003", nombre: "Edredón Cielo", categoria: "Edredones",
+    descripcion: "Edredón con acabado elegante con vuelo decorativo, fundas de almohada con vuelo y reverso térmico tipo borreguito. Ideal para temporada fría.",
+    proceso: ["Corte de tela principal","Corte de reverso térmico","Confección de fundas con vuelo","Ensamble de cuerpo","Acolchado","Pespunte de vuelo","Control de calidad","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja"],
+    observaciones: "El vuelo decorativo debe tener 15 cm de ancho uniforme. Verificar tensión de acolchado.",
+    variantes: {
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "2 fundas de almohada con vuelo", peso: 3.1,
+        materiales: [
+          {item:"01",componente:"Tela principal",descripcion:"Microfibra lisa 110 g/m²",ancho:"1.50 m",consumo:"3.60",unidad:"m"},
+          {item:"02",componente:"Reverso térmico",descripcion:"Polar borreguito 280 g/m²",ancho:"1.60 m",consumo:"3.60",unidad:"m"},
+          {item:"03",componente:"Relleno",descripcion:"Plumón sintético 130 g/m²",ancho:"1.50 m",consumo:"3.36",unidad:"m²"},
+          {item:"04",componente:"Fundas almohada",descripcion:"Fundas con vuelo decorativo",ancho:"-",consumo:"2",unidad:"und"},
+          {item:"05",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"110",unidad:"m"},
+          {item:"06",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "edr-luciana": {
+    codigo: "FT-EDR-004", nombre: "Edredón Luciana", categoria: "Edredones",
+    descripcion: "Pie de cama decorativo con reverso en piel de borreguito. Suave y extra cálido. Elegancia y confort para descanso perfecto.",
+    proceso: ["Corte de tela principal","Corte de borreguito","Confección de bordes","Ensamble y acolchado","Revisión final","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","no-bleach"],
+    observaciones: "Producto de alto margen. Control especial de pelusa en reverso borreguito.",
+    variantes: {
+      "1 1/2 Plazas": { ancho: 150, largo: 200, talla: "1 1/2 Plazas", cojines: "N/A", peso: 2.6,
+        materiales: [
+          {item:"01",componente:"Tela principal",descripcion:"Microfibra premium 120 g/m²",ancho:"1.50 m",consumo:"3.20",unidad:"m"},
+          {item:"02",componente:"Borreguito",descripcion:"Piel de borreguito sintética 300 g/m²",ancho:"1.60 m",consumo:"3.20",unidad:"m"},
+          {item:"03",componente:"Relleno",descripcion:"Plumón sintético 100 g/m²",ancho:"1.50 m",consumo:"3.00",unidad:"m²"},
+          {item:"04",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"90",unidad:"m"},
+          {item:"05",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 3.0,
+        materiales: [
+          {item:"01",componente:"Tela principal",descripcion:"Microfibra premium 120 g/m²",ancho:"1.50 m",consumo:"3.60",unidad:"m"},
+          {item:"02",componente:"Borreguito",descripcion:"Piel de borreguito sintética 300 g/m²",ancho:"1.60 m",consumo:"3.60",unidad:"m"},
+          {item:"03",componente:"Relleno",descripcion:"Plumón sintético 100 g/m²",ancho:"1.50 m",consumo:"3.36",unidad:"m²"},
+          {item:"04",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"100",unidad:"m"},
+          {item:"05",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "2 1/2 Plazas": { ancho: 180, largo: 220, talla: "2 1/2 Plazas", cojines: "N/A", peso: 3.4,
+        materiales: [
+          {item:"01",componente:"Tela principal",descripcion:"Microfibra premium 120 g/m²",ancho:"1.50 m",consumo:"4.00",unidad:"m"},
+          {item:"02",componente:"Borreguito",descripcion:"Piel de borreguito sintética 300 g/m²",ancho:"1.60 m",consumo:"4.00",unidad:"m"},
+          {item:"03",componente:"Relleno",descripcion:"Plumón sintético 100 g/m²",ancho:"1.50 m",consumo:"3.96",unidad:"m²"},
+          {item:"04",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"115",unidad:"m"},
+          {item:"05",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "3 Plazas": { ancho: 200, largo: 230, talla: "3 Plazas", cojines: "N/A", peso: 3.9,
+        materiales: [
+          {item:"01",componente:"Tela principal",descripcion:"Microfibra premium 120 g/m²",ancho:"1.50 m",consumo:"4.60",unidad:"m"},
+          {item:"02",componente:"Borreguito",descripcion:"Piel de borreguito sintética 300 g/m²",ancho:"1.60 m",consumo:"4.60",unidad:"m"},
+          {item:"03",componente:"Relleno",descripcion:"Plumón sintético 100 g/m²",ancho:"1.50 m",consumo:"4.60",unidad:"m²"},
+          {item:"04",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"130",unidad:"m"},
+          {item:"05",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+
+  "cob-deluxe": {
+    codigo: "FT-COB-001", nombre: "Cobertor Deluxe", categoria: "Cobertores",
+    imagen: "COBERTORES/COBERTOR DELUXE 2/cobertor deluxe color abano .jpeg",
+    descripcion: "Cobertor velvet premium con reverso ovejero sherpa. Incluye 3 cojines decorativos de regalo. Alta gama.",
+    proceso: ["Corte de velvet","Corte de sherpa","Confección de cojines","Ensamble cuerpo-reverso","Pespunte perimetral","Revisión QC","Empaque en bolsa"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja","no-bleach"],
+    observaciones: "Velvet requiere cuidado en manejo para no marcar. Sherpa debe estar libre de pelusa suelta antes de ensamble.",
+    variantes: {
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "3 cojines 40×40 cm", peso: 3.2,
+        materiales: [
+          {item:"01",componente:"Tela velvet",descripcion:"Velvet premium 220 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Sherpa",descripcion:"Ovejero sherpa 280 g/m²",ancho:"1.60 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Cojines",descripcion:"Relleno fibra + funda velvet",ancho:"-",consumo:"3",unidad:"und"},
+          {item:"04",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"95",unidad:"m"},
+          {item:"05",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "2 1/2 Plazas": { ancho: 180, largo: 220, talla: "2 1/2 Plazas", cojines: "3 cojines 40×40 cm", peso: 3.6,
+        materiales: [
+          {item:"01",componente:"Tela velvet",descripcion:"Velvet premium 220 g/m²",ancho:"1.50 m",consumo:"4.00",unidad:"m"},
+          {item:"02",componente:"Sherpa",descripcion:"Ovejero sherpa 280 g/m²",ancho:"1.60 m",consumo:"4.00",unidad:"m"},
+          {item:"03",componente:"Cojines",descripcion:"Relleno fibra + funda velvet",ancho:"-",consumo:"3",unidad:"und"},
+          {item:"04",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"110",unidad:"m"},
+          {item:"05",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "3 Plazas": { ancho: 200, largo: 230, talla: "3 Plazas", cojines: "3 cojines 45×45 cm", peso: 4.1,
+        materiales: [
+          {item:"01",componente:"Tela velvet",descripcion:"Velvet premium 220 g/m²",ancho:"1.50 m",consumo:"4.60",unidad:"m"},
+          {item:"02",componente:"Sherpa",descripcion:"Ovejero sherpa 280 g/m²",ancho:"1.60 m",consumo:"4.60",unidad:"m"},
+          {item:"03",componente:"Cojines",descripcion:"Relleno fibra + funda velvet",ancho:"-",consumo:"3",unidad:"und"},
+          {item:"04",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"125",unidad:"m"},
+          {item:"05",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "cob-luminoso": {
+    codigo: "FT-COB-002", nombre: "Cobertor Luminoso", categoria: "Cobertores",
+    imagen: "COBERTORES/COBERTOR LUMINOSO/COBERTOR LUMINOSO PORTADA.jpeg",
+    descripcion: "Cobertor con fibras luminosas que brillan en la oscuridad. Diseños de personajes. Incluye 2 cojines decorativos. Ideal para niños.",
+    proceso: ["Corte de tela luminosa","Corte de reverso","Confección de cojines personaje","Ensamble","Control de luminiscencia","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","no-bleach"],
+    observaciones: "No usar detergente con blanqueador óptico. Puede afectar la luminiscencia. Probar lavado antes de producción masiva.",
+    variantes: {
+      "1 1/2 Plazas": { ancho: 140, largo: 190, talla: "1 1/2 Plazas", cojines: "2 cojines personaje", peso: 2.2,
+        materiales: [
+          {item:"01",componente:"Tela luminosa",descripcion:"Microfibra luminosa 120 g/m²",ancho:"1.50 m",consumo:"2.90",unidad:"m"},
+          {item:"02",componente:"Reverso",descripcion:"Polar suave 180 g/m²",ancho:"1.60 m",consumo:"2.90",unidad:"m"},
+          {item:"03",componente:"Cojines",descripcion:"Cojines con forma de personaje",ancho:"-",consumo:"2",unidad:"und"},
+          {item:"04",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"75",unidad:"m"},
+          {item:"05",componente:"Etiqueta",descripcion:"Etiqueta de cuidado especial",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "2 cojines personaje", peso: 2.8,
+        materiales: [
+          {item:"01",componente:"Tela luminosa",descripcion:"Microfibra luminosa 120 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Reverso",descripcion:"Polar suave 180 g/m²",ancho:"1.60 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Cojines",descripcion:"Cojines con forma de personaje",ancho:"-",consumo:"2",unidad:"und"},
+          {item:"04",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"90",unidad:"m"},
+          {item:"05",componente:"Etiqueta",descripcion:"Etiqueta de cuidado especial",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "cob-everest": {
+    codigo: "FT-COB-003", nombre: "Cobertor Everest Bordado", categoria: "Cobertores",
+    imagen: "COBERTORES/COBERTOR EVEREST BORDADO/COBERTOR LUCIFER.jpg",
+    descripcion: "Cobertor tela velvet con reverso sherpa. Incluye 2 cojines bordados + 1 cojín sublimado. Edición personajes.",
+    proceso: ["Corte de velvet","Corte de sherpa","Bordado de cojines","Sublimación de cojín adicional","Ensamble","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja"],
+    observaciones: "Coordinar diseños de bordado y sublimación según licencia de personaje. Tiempos adicionales por bordado.",
+    variantes: {
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "2 bordados + 1 sublimado", peso: 3.1,
+        materiales: [
+          {item:"01",componente:"Velvet",descripcion:"Velvet 220 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Sherpa",descripcion:"Sherpa 280 g/m²",ancho:"1.60 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Cojines bordados",descripcion:"Relleno + funda velvet con bordado",ancho:"-",consumo:"2",unidad:"und"},
+          {item:"04",componente:"Cojín sublimado",descripcion:"Relleno + funda sublimada",ancho:"-",consumo:"1",unidad:"und"},
+          {item:"05",componente:"Hilo bordado",descripcion:"Hilo rayon bordado",ancho:"-",consumo:"30",unidad:"m"},
+          {item:"06",componente:"Hilo confección",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"95",unidad:"m"}
+        ]}
+    }
+  },
+  "cob-siberiano": {
+    codigo: "FT-COB-004", nombre: "Cobertor Siberiano", categoria: "Cobertores",
+    imagen: "COBERTORES/COBERTOR SIBERIANO/COBERTOR SIBERIANO ROSA.jpeg",
+    descripcion: "Cobertor de máximo calor y confort. Tela de alta calidad para noches frías. 10 colores disponibles.",
+    proceso: ["Corte de tela principal","Corte de forro térmico","Ensamble y acolchado","Revisión","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","no-bleach"],
+    observaciones: "Producto pesado. Revisar resistencia de costuras en puntos de tensión.",
+    variantes: {
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 3.5,
+        materiales: [
+          {item:"01",componente:"Tela principal",descripcion:"Microfibra gruesa 180 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Forro térmico",descripcion:"Polar térmico 300 g/m²",ancho:"1.60 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Relleno",descripcion:"Plumón 180 g/m²",ancho:"1.50 m",consumo:"3.36",unidad:"m²"},
+          {item:"04",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"100",unidad:"m"}
+        ]},
+      "2 1/2 Plazas": { ancho: 180, largo: 220, talla: "2 1/2 Plazas", cojines: "N/A", peso: 4.0,
+        materiales: [
+          {item:"01",componente:"Tela principal",descripcion:"Microfibra gruesa 180 g/m²",ancho:"1.50 m",consumo:"4.00",unidad:"m"},
+          {item:"02",componente:"Forro térmico",descripcion:"Polar térmico 300 g/m²",ancho:"1.60 m",consumo:"4.00",unidad:"m"},
+          {item:"03",componente:"Relleno",descripcion:"Plumón 180 g/m²",ancho:"1.50 m",consumo:"3.96",unidad:"m²"},
+          {item:"04",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"115",unidad:"m"}
+        ]},
+      "3 Plazas": { ancho: 200, largo: 230, talla: "3 Plazas", cojines: "N/A", peso: 4.6,
+        materiales: [
+          {item:"01",componente:"Tela principal",descripcion:"Microfibra gruesa 180 g/m²",ancho:"1.50 m",consumo:"4.60",unidad:"m"},
+          {item:"02",componente:"Forro térmico",descripcion:"Polar térmico 300 g/m²",ancho:"1.60 m",consumo:"4.60",unidad:"m"},
+          {item:"03",componente:"Relleno",descripcion:"Plumón 180 g/m²",ancho:"1.50 m",consumo:"4.60",unidad:"m²"},
+          {item:"04",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"130",unidad:"m"}
+        ]}
+    }
+  },
+  "cob-peluzo": {
+    codigo: "FT-COB-005", nombre: "Cobertor Peluzo", categoria: "Cobertores",
+    imagen: "COBERTORES/COBERTOR PELUZO/COBERTOR PELUZO BLANCO.jpeg",
+    descripcion: "Cobertor extra abrigado con elegante textura de burbuja 3D, súper suave y calientito. Incluye 2 cojines a juego + 1 cojín decorativo en forma de corazón. Ideal para regalo.",
+    proceso: ["Corte de tela burbuja 3D","Corte de forro térmico","Confección de cojines (2 cuadrados + 1 corazón)","Ensamble cuerpo con forro","Pespunte decorativo","Control de calidad","Empaque con etiqueta de regalo"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja","no-bleach"],
+    observaciones: "La tela burbuja 3D requiere aguja de punta de bola para no romper la textura. Cojín corazón requiere molde específico. Colores: Crema, Violeta, Rosado Coral, Chocolate, Tabaco.",
+    variantes: {
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "2 cojines + 1 corazón", peso: 3.3,
+        materiales: [
+          {item:"01",componente:"Tela burbuja 3D",descripcion:"Microfibra texturizada burbuja 200 g/m²",ancho:"1.60 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Forro térmico",descripcion:"Polar borreguito 280 g/m²",ancho:"1.60 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Cojines",descripcion:"2 cojines cuadrados + 1 corazón",ancho:"-",consumo:"3",unidad:"und"},
+          {item:"04",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"100",unidad:"m"},
+          {item:"05",componente:"Etiqueta",descripcion:"Etiqueta de cuidado + etiqueta regalo",ancho:"-",consumo:"2",unidad:"und"},
+          {item:"06",componente:"Bolsa",descripcion:"Bolsa de regalo con cinta",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "cob-muneca": {
+    codigo: "FT-COB-006", nombre: "Cobertor Muñeca", categoria: "Cobertores",
+    imagen: "COBERTORES/COBERTOR MUÑECA/COBERTOR MUÑECA ROSA.jpeg",
+    descripcion: "Cobertor súper suave y acogedor. Dos diseños en uno: hermosa tela estampada por un lado, y tela tipo borreguito extra suave y cálida por el otro. 15 colores disponibles.",
+    proceso: ["Corte de tela estampada","Corte de borreguito","Emparejamiento de diseños","Ensamble perimetral","Pespunte decorativo","Revisión de ambas caras","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja","no-bleach"],
+    observaciones: "Verificar que el estampado quede visible solo por el lado correcto. El borreguito debe quedar hacia el interior al ensamblar. Control de pelusa post-producción.",
+    variantes: {
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 2.8,
+        materiales: [
+          {item:"01",componente:"Tela estampada",descripcion:"Microfibra estampada 120 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Borreguito",descripcion:"Polar borreguito 260 g/m²",ancho:"1.60 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"85",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "cob-tropical": {
+    codigo: "FT-COB-007", nombre: "Cobertor Tropical", categoria: "Cobertores",
+    imagen: "COBERTORES/COBERTOR TROPICAL/COBERTOR TROPICAL- AZULCELESTE.jpeg",
+    descripcion: "Cobertor ligero, cómodo y perfecto para un descanso placentero. Incluye 2 fundas de almohada. Reverso en tela suave. Ideal para climas cálidos y templados.",
+    proceso: ["Corte de tela principal","Corte de reverso suave","Corte de fundas de almohada","Confección de fundas","Ensamble de cuerpo","Pespunte perimetral","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja"],
+    observaciones: "Producto de gama media. No requiere relleno. Verificar que las fundas coincidan en tono con el cuerpo. 13 colores disponibles.",
+    variantes: {
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "2 fundas de almohada", peso: 1.6,
+        materiales: [
+          {item:"01",componente:"Tela principal",descripcion:"Microfibra lisa 100 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Reverso",descripcion:"Microfibra suave 90 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Fundas almohada",descripcion:"Fundas a juego 50×70 cm",ancho:"-",consumo:"2",unidad:"und"},
+          {item:"04",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"70",unidad:"m"},
+          {item:"05",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "cob-superior": {
+    codigo: "FT-COB-008", nombre: "Cobertor Superior Acolchado Bordado", categoria: "Cobertores",
+    imagen: "COBERTORES/COBERTOR SUPERIOR ACOLCHADO BORDADO/COBERTOR SUPERIOR ACOLCHADO BORDADO- AZUL.jpeg",
+    descripcion: "Cobertor acolchado bordado perfecto para climas tropicales. Ligero, fresco y elegante. Disponible en 8 colores.",
+    proceso: ["Corte de tela principal","Marcado de diseño de bordado","Bordado decorativo","Corte de forro","Acolchado","Pespunte de bordes","Revisión","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja","no-bleach"],
+    observaciones: "El bordado decorativo debe estar centrado. Tiempos de producción extendidos por proceso de bordado. Usar guata ligera 80 g/m².",
+    variantes: {
+      "1 1/2 Plazas": { ancho: 140, largo: 190, talla: "1 1/2 Plazas", cojines: "N/A", peso: 1.5,
+        materiales: [
+          {item:"01",componente:"Tela principal",descripcion:"Microfibra lisa 110 g/m²",ancho:"1.50 m",consumo:"2.90",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra suave 90 g/m²",ancho:"1.50 m",consumo:"2.90",unidad:"m"},
+          {item:"03",componente:"Guata",descripcion:"Guata siliconada 80 g/m²",ancho:"1.50 m",consumo:"2.66",unidad:"m²"},
+          {item:"04",componente:"Hilo bordado",descripcion:"Hilo rayon para bordado",ancho:"-",consumo:"25",unidad:"m"},
+          {item:"05",componente:"Hilo confección",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"65",unidad:"m"},
+          {item:"06",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 1.8,
+        materiales: [
+          {item:"01",componente:"Tela principal",descripcion:"Microfibra lisa 110 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra suave 90 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Guata",descripcion:"Guata siliconada 80 g/m²",ancho:"1.50 m",consumo:"3.36",unidad:"m²"},
+          {item:"04",componente:"Hilo bordado",descripcion:"Hilo rayon para bordado",ancho:"-",consumo:"30",unidad:"m"},
+          {item:"05",componente:"Hilo confección",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"75",unidad:"m"},
+          {item:"06",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "2 1/2 Plazas": { ancho: 180, largo: 220, talla: "2 1/2 Plazas", cojines: "N/A", peso: 2.1,
+        materiales: [
+          {item:"01",componente:"Tela principal",descripcion:"Microfibra lisa 110 g/m²",ancho:"1.50 m",consumo:"4.00",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra suave 90 g/m²",ancho:"1.50 m",consumo:"4.00",unidad:"m"},
+          {item:"03",componente:"Guata",descripcion:"Guata siliconada 80 g/m²",ancho:"1.50 m",consumo:"3.96",unidad:"m²"},
+          {item:"04",componente:"Hilo bordado",descripcion:"Hilo rayon para bordado",ancho:"-",consumo:"35",unidad:"m"},
+          {item:"05",componente:"Hilo confección",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"85",unidad:"m"},
+          {item:"06",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "3 Plazas": { ancho: 200, largo: 230, talla: "3 Plazas", cojines: "N/A", peso: 2.5,
+        materiales: [
+          {item:"01",componente:"Tela principal",descripcion:"Microfibra lisa 110 g/m²",ancho:"1.50 m",consumo:"4.60",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra suave 90 g/m²",ancho:"1.50 m",consumo:"4.60",unidad:"m"},
+          {item:"03",componente:"Guata",descripcion:"Guata siliconada 80 g/m²",ancho:"1.50 m",consumo:"4.60",unidad:"m²"},
+          {item:"04",componente:"Hilo bordado",descripcion:"Hilo rayon para bordado",ancho:"-",consumo:"40",unidad:"m"},
+          {item:"05",componente:"Hilo confección",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"95",unidad:"m"},
+          {item:"06",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "cob-polipiel": {
+    codigo: "FT-COB-009", nombre: "Cobertor Polipiel", categoria: "Cobertores",
+    imagen: "COBERTORES/COBERTOR POLIPIEL/COBERTOR POLIPIEL AZUL.jpeg",
+    descripcion: "Cobertor en polipiel premium, suave al tacto y con acabado elegante. Ideal para climas frescos. Disponible en 7 colores.",
+    proceso: ["Corte de polipiel","Corte de forro térmico","Ensamble perimetral","Pespunte decorativo","Revisión de costuras","Empaque"],
+    cuidado: ["limpieza-seco","no-lavar","no-secadora","plancha-baja"],
+    observaciones: "La polipiel no se lava en máquina. Recomendar limpieza en seco o paño húmedo. No doblar en ángulos agudos para evitar grietas. Producto actualmente AGOTADO — consultar reposición.",
+    variantes: {
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 3.0,
+        materiales: [
+          {item:"01",componente:"Polipiel",descripcion:"Polipiel premium 180 g/m²",ancho:"1.40 m",consumo:"3.80",unidad:"m"},
+          {item:"02",componente:"Forro térmico",descripcion:"Polar borreguito 280 g/m²",ancho:"1.60 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"90",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado especial",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "2 1/2 Plazas": { ancho: 180, largo: 220, talla: "2 1/2 Plazas", cojines: "N/A", peso: 3.5,
+        materiales: [
+          {item:"01",componente:"Polipiel",descripcion:"Polipiel premium 180 g/m²",ancho:"1.40 m",consumo:"4.40",unidad:"m"},
+          {item:"02",componente:"Forro térmico",descripcion:"Polar borreguito 280 g/m²",ancho:"1.60 m",consumo:"4.00",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"105",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado especial",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "3 Plazas": { ancho: 200, largo: 230, talla: "3 Plazas", cojines: "N/A", peso: 4.0,
+        materiales: [
+          {item:"01",componente:"Polipiel",descripcion:"Polipiel premium 180 g/m²",ancho:"1.40 m",consumo:"5.00",unidad:"m"},
+          {item:"02",componente:"Forro térmico",descripcion:"Polar borreguito 280 g/m²",ancho:"1.60 m",consumo:"4.60",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"120",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado especial",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+
+  "cbj-ovejera": {
+    codigo: "FT-CBJ-001", nombre: "Cobija Ovejera Wolly", categoria: "Cobijas",
+    imagen: "COBIJAS/COBIJA OVEJERA WOLLY COLOR GUAYABA.jpeg",
+    descripcion: "Cobija ovejera premium color guayaba. Suavidad irresistible y abrigo perfecto. Doble vista.",
+    proceso: ["Corte de tela ovejera","Corte de forro","Ensamble perimetral","Revisión de pelusa","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","no-bleach"],
+    observaciones: "Controlar exceso de pelusa en primer lavado. Incluir instrucción de lavado previo al cliente.",
+    variantes: {
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 2.2,
+        materiales: [
+          {item:"01",componente:"Tela ovejera",descripcion:"Ovejera sintética 250 g/m²",ancho:"1.60 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"70",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "cbj-francesa": {
+    codigo: "FT-CBJ-002", nombre: "Cobija Francesa Habano", categoria: "Cobijas",
+    imagen: "COBIJAS/COBIJA FRANCESA COLOR HABANO.jpeg",
+    descripcion: "Elegancia francesa en tono habano. Sofisticación atemporal para dormitorios de lujo. Textura fina.",
+    proceso: ["Corte de tela francesa","Corte de forro","Confección de bordes","Ensamble","Revisión","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja"],
+    observaciones: "Tela delicada. Usar agujas finas y tensión baja en máquina.",
+    variantes: {
+      "Plaza y media": { ancho: 150, largo: 200, talla: "Plaza y media", cojines: "N/A", peso: 1.8,
+        materiales: [
+          {item:"01",componente:"Tela francesa",descripcion:"Tela tipo francesa 110 g/m²",ancho:"1.50 m",consumo:"3.20",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra 90 g/m²",ancho:"1.50 m",consumo:"3.20",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"65",unidad:"m"}
+        ]},
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 2.1,
+        materiales: [
+          {item:"01",componente:"Tela francesa",descripcion:"Tela tipo francesa 110 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra 90 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"75",unidad:"m"}
+        ]},
+      "2 1/2 Plazas": { ancho: 180, largo: 220, talla: "2 1/2 Plazas", cojines: "N/A", peso: 2.5,
+        materiales: [
+          {item:"01",componente:"Tela francesa",descripcion:"Tela tipo francesa 110 g/m²",ancho:"1.50 m",consumo:"4.00",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra 90 g/m²",ancho:"1.50 m",consumo:"4.00",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"85",unidad:"m"}
+        ]}
+    }
+  },
+  "cbj-3d": {
+    codigo: "FT-CBJ-003", nombre: "Cobija 3D", categoria: "Cobijas",
+    imagen: "COBIJAS/COBIJA 3D.jpeg",
+    descripcion: "Cobija con diseño floral en relieve tridimensional que transforma el dormitorio. Promoción especial por tiempo limitado.",
+    proceso: ["Corte de tela 3D","Corte de forro","Ensamble","Pespunte decorativo siguiendo el relieve","Revisión de calidad","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja","no-bleach"],
+    observaciones: "La tela 3D requiere cuidado al coser para no aplastar el relieve. Usar prensa de teflón. Promoción especial vigente.",
+    variantes: {
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 2.0,
+        materiales: [
+          {item:"01",componente:"Tela 3D",descripcion:"Microfibra relieve 3D 150 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"75",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "cbj-borrego": {
+    codigo: "FT-CBJ-004", nombre: "Cobija Borrego Café", categoria: "Cobijas",
+    imagen: "COBIJAS/COBIJA BORREGO CAFE.jpeg",
+    descripcion: "Máxima suavidad tipo borrego en tono café elegante. Abrigo que se siente como un abrazo. Textura afelpada que retiene el calor.",
+    proceso: ["Corte de borrego sintético","Corte de forro","Ensamble perimetral","Revisión de pelusa","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","no-bleach"],
+    observaciones: "Producto de alto margen. Control de calidad estricto en densidad de pelo. Incluir instrucciones de primer lavado.",
+    variantes: {
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 2.6,
+        materiales: [
+          {item:"01",componente:"Borrego sintético",descripcion:"Borrego sintético 300 g/m² pelo largo",ancho:"1.60 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"80",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "cbj-coreana-delgada": {
+    codigo: "FT-CBJ-005", nombre: "Cobija Coreana Delgada", categoria: "Cobijas",
+    imagen: "COBIJAS/COBIJA COREANA DELGADA.jpeg",
+    descripcion: "Edición Deluxe ligera y versátil. El estilo coreano que conquistó Ecuador. Diseño elegante y minimalista.",
+    proceso: ["Corte de tela principal","Corte de forro","Ensamble","Pespunte decorativo","Revisión","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja"],
+    observaciones: "Producto de moda. Coordinar colores según tendencia de temporada. No requiere relleno.",
+    variantes: {
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 1.4,
+        materiales: [
+          {item:"01",componente:"Tela principal",descripcion:"Microfibra premium 100 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra suave 90 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"65",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "cbj-coreana-gruesa": {
+    codigo: "FT-CBJ-006", nombre: "Cobija Coreana Gruesa", categoria: "Cobijas",
+    imagen: "COBIJAS/COBIJA COREANA GRUESA.jpeg",
+    descripcion: "Edición Premium gruesa con diseño floral vibrante. Máximo abrigo con estilo coreano. Doble vista con estampado.",
+    proceso: ["Corte de tela estampada","Corte de forro grueso","Ensamble","Acolchado ligero","Pespunte","Revisión","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja","no-bleach"],
+    observaciones: "Versión gruesa de la línea coreana. Requiere guata ligera 60 g/m² para mantener la forma.",
+    variantes: {
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 2.4,
+        materiales: [
+          {item:"01",componente:"Tela estampada",descripcion:"Microfibra estampada 120 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra gruesa 130 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Guata",descripcion:"Guata siliconada 60 g/m²",ancho:"1.50 m",consumo:"3.36",unidad:"m²"},
+          {item:"04",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"80",unidad:"m"},
+          {item:"05",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "cbj-peluche-nino": {
+    codigo: "FT-CBJ-007", nombre: "Cobija Peluche Especial Niño", categoria: "Cobijas",
+    imagen: "COBIJAS/COBIJA PELUCHE ESPECIAL NIÑO.jpeg",
+    descripcion: "Diseño espacial con cohetes y astronautas. La favorita de los pequeños exploradores. Tela peluche ultra suave.",
+    proceso: ["Corte de peluche estampado","Corte de forro","Ensamble","Pespunte decorativo","Revisión de seguridad (sin piezas duras)","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","no-bleach"],
+    observaciones: "Producto infantil. Verificar que no queden agujas ni elementos duros. Etiqueta de seguridad obligatoria.",
+    variantes: {
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 2.0,
+        materiales: [
+          {item:"01",componente:"Peluche estampado",descripcion:"Peluche estampado 200 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra suave 90 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"70",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de seguridad infantil",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "cbj-peluche-nina": {
+    codigo: "FT-CBJ-008", nombre: "Cobija Peluche Especial Niña", categoria: "Cobijas",
+    imagen: "COBIJAS/COBIJA PELUCHE ESPECIAL NIÑA.jpeg",
+    descripcion: "Hello Kitty en tela peluche rosa. La compañera perfecta para las princesas del hogar. Ultra suave y acogedora.",
+    proceso: ["Corte de peluche rosa estampado","Corte de forro","Ensamble","Pespunte decorativo","Revisión de seguridad","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","no-bleach"],
+    observaciones: "Producto infantil con licencia. Verificar derechos de imagen. Control de calidad estricto en estampado.",
+    variantes: {
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 2.0,
+        materiales: [
+          {item:"01",componente:"Peluche estampado",descripcion:"Peluche rosa estampado 200 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra suave 90 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"70",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de seguridad infantil",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "cbj-iliniza-lila": {
+    codigo: "FT-CBJ-009", nombre: "Cobija Iliniza Punto Lila", categoria: "Cobijas",
+    imagen: "COBIJAS/COBIJA ILINIZA PUNTO LILA.jpeg",
+    descripcion: "Textura de punto en color lila relajante. El abrigo perfecto con toque artesanal. Inspirada en los Andes ecuatorianos.",
+    proceso: ["Corte de tela punto","Corte de forro","Ensamble","Pespunte","Revisión","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja","no-bleach"],
+    observaciones: "La tela de punto puede estirarse. Dejar descansar 24h antes del corte final. Controlar encogimiento.",
+    variantes: {
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 2.3,
+        materiales: [
+          {item:"01",componente:"Tela punto",descripcion:"Tela de punto 160 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"75",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "cbj-iliniza-habano": {
+    codigo: "FT-CBJ-010", nombre: "Cobija Iliniza Punto Habano", categoria: "Cobijas",
+    imagen: "COBIJAS/COBIJA ILINIZA PUNTO HABANO.jpeg",
+    descripcion: "Textura de punto en tono habano natural. Calidez artesanal para noches de descanso. Misma calidad que la versión lila.",
+    proceso: ["Corte de tela punto","Corte de forro","Ensamble","Pespunte","Revisión","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja","no-bleach"],
+    observaciones: "Mismas consideraciones que la versión lila. Dejar descansar tela 24h antes del corte.",
+    variantes: {
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 2.3,
+        materiales: [
+          {item:"01",componente:"Tela punto",descripcion:"Tela de punto 160 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"75",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "cbj-jackard-azul": {
+    codigo: "FT-CBJ-011", nombre: "Cobija Jackard Lines Azul Jean", categoria: "Cobijas",
+    imagen: "COBIJAS/COBIJA JACKARD LINES AZUL JEAN.jpeg",
+    descripcion: "Líneas verticales Jackard en azul jean moderno. Textura ribeteada que aporta dimensión visual única. Elegancia urbana.",
+    proceso: ["Corte de tela Jackard","Corte de forro","Marcado de líneas","Ensamble","Pespunte ribeteado","Revisión","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja","no-bleach"],
+    observaciones: "La textura Jackard requiere alineación precisa de las líneas al cortar. Verificar que el patrón quede centrado.",
+    variantes: {
+      "Plaza y media": { ancho: 150, largo: 200, talla: "Plaza y media", cojines: "N/A", peso: 2.0,
+        materiales: [
+          {item:"01",componente:"Tela Jackard",descripcion:"Tela Jackard 140 g/m²",ancho:"1.50 m",consumo:"3.20",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"3.20",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"70",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 2.3,
+        materiales: [
+          {item:"01",componente:"Tela Jackard",descripcion:"Tela Jackard 140 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"80",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "2 1/2 Plazas": { ancho: 180, largo: 220, talla: "2 1/2 Plazas", cojines: "N/A", peso: 2.7,
+        materiales: [
+          {item:"01",componente:"Tela Jackard",descripcion:"Tela Jackard 140 g/m²",ancho:"1.50 m",consumo:"4.00",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"4.00",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"90",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "3 Plazas": { ancho: 200, largo: 230, talla: "3 Plazas", cojines: "N/A", peso: 3.1,
+        materiales: [
+          {item:"01",componente:"Tela Jackard",descripcion:"Tela Jackard 140 g/m²",ancho:"1.50 m",consumo:"4.60",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"4.60",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"105",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "cbj-jackard-habano": {
+    codigo: "FT-CBJ-012", nombre: "Cobija Jackard Lines Habano", categoria: "Cobijas",
+    imagen: "COBIJAS/COBIJA JACKARD LINES HABANO.jpeg",
+    descripcion: "Líneas verticales Jackard en habano elegante. La misma textura premium en tono cálido. Sofisticación natural.",
+    proceso: ["Corte de tela Jackard","Corte de forro","Marcado de líneas","Ensamble","Pespunte ribeteado","Revisión","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja","no-bleach"],
+    observaciones: "Mismas consideraciones que la versión azul jean. Alinear patrón Jackard al cortar.",
+    variantes: {
+      "Plaza y media": { ancho: 150, largo: 200, talla: "Plaza y media", cojines: "N/A", peso: 2.0,
+        materiales: [
+          {item:"01",componente:"Tela Jackard",descripcion:"Tela Jackard 140 g/m²",ancho:"1.50 m",consumo:"3.20",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"3.20",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"70",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 2.3,
+        materiales: [
+          {item:"01",componente:"Tela Jackard",descripcion:"Tela Jackard 140 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"80",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "2 1/2 Plazas": { ancho: 180, largo: 220, talla: "2 1/2 Plazas", cojines: "N/A", peso: 2.7,
+        materiales: [
+          {item:"01",componente:"Tela Jackard",descripcion:"Tela Jackard 140 g/m²",ancho:"1.50 m",consumo:"4.00",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"4.00",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"90",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "3 Plazas": { ancho: 200, largo: 230, talla: "3 Plazas", cojines: "N/A", peso: 3.1,
+        materiales: [
+          {item:"01",componente:"Tela Jackard",descripcion:"Tela Jackard 140 g/m²",ancho:"1.50 m",consumo:"4.60",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"4.60",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"105",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "cbj-luminosa": {
+    codigo: "FT-CBJ-013", nombre: "Cobija Ovejera Luminosa", categoria: "Cobijas",
+    imagen: "",
+    descripcion: "Ovejera con efecto luminoso que brilla en la oscuridad. Magia para los pequeños. Fibras luminosas integradas.",
+    proceso: ["Corte de tela ovejera luminosa","Corte de forro","Ensamble","Control de luminiscencia","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","no-bleach"],
+    observaciones: "No usar detergente con blanqueador óptico. Puede afectar la luminiscencia. Producto infantil — revisión de seguridad obligatoria.",
+    variantes: {
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 2.4,
+        materiales: [
+          {item:"01",componente:"Ovejera luminosa",descripcion:"Ovejera sintética luminosa 250 g/m²",ancho:"1.60 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"75",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de seguridad infantil",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "cbj-pina-habano": {
+    codigo: "FT-CBJ-014", nombre: "Cobija Piña Habano", categoria: "Cobijas",
+    imagen: "COBIJAS/COBIJA PIÑA HABANO.jpeg",
+    descripcion: "Textura de piña en tono habano clásico. Diseño geométrico atemporal que aporta elegancia y calidez.",
+    proceso: ["Corte de tela texturizada piña","Corte de forro","Ensamble","Pespunte","Revisión","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja","no-bleach"],
+    observaciones: "La textura piña es delicada. Usar aguja de punta de bola y tensión media.",
+    variantes: {
+      "Plaza y media": { ancho: 150, largo: 200, talla: "Plaza y media", cojines: "N/A", peso: 1.9,
+        materiales: [
+          {item:"01",componente:"Tela piña",descripcion:"Microfibra texturizada piña 130 g/m²",ancho:"1.50 m",consumo:"3.20",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"3.20",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"65",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 2.2,
+        materiales: [
+          {item:"01",componente:"Tela piña",descripcion:"Microfibra texturizada piña 130 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"75",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "2 1/2 Plazas": { ancho: 180, largo: 220, talla: "2 1/2 Plazas", cojines: "N/A", peso: 2.6,
+        materiales: [
+          {item:"01",componente:"Tela piña",descripcion:"Microfibra texturizada piña 130 g/m²",ancho:"1.50 m",consumo:"4.00",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"4.00",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"85",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "3 Plazas": { ancho: 200, largo: 230, talla: "3 Plazas", cojines: "N/A", peso: 3.0,
+        materiales: [
+          {item:"01",componente:"Tela piña",descripcion:"Microfibra texturizada piña 130 g/m²",ancho:"1.50 m",consumo:"4.60",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"4.60",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"95",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "cbj-pina-cafe": {
+    codigo: "FT-CBJ-015", nombre: "Cobija Piña Café", categoria: "Cobijas",
+    imagen: "COBIJAS/COBIJA PIÑA CAFE.jpeg",
+    descripcion: "Textura de piña en tono café intenso. El mismo diseño atemporal en color cálido profundo. Elegancia natural.",
+    proceso: ["Corte de tela texturizada piña","Corte de forro","Ensamble","Pespunte","Revisión","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja","no-bleach"],
+    observaciones: "Mismas consideraciones que la versión habano. Usar aguja de punta de bola.",
+    variantes: {
+      "Plaza y media": { ancho: 150, largo: 200, talla: "Plaza y media", cojines: "N/A", peso: 1.9,
+        materiales: [
+          {item:"01",componente:"Tela piña",descripcion:"Microfibra texturizada piña 130 g/m²",ancho:"1.50 m",consumo:"3.20",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"3.20",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"65",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 2.2,
+        materiales: [
+          {item:"01",componente:"Tela piña",descripcion:"Microfibra texturizada piña 130 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"75",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "2 1/2 Plazas": { ancho: 180, largo: 220, talla: "2 1/2 Plazas", cojines: "N/A", peso: 2.6,
+        materiales: [
+          {item:"01",componente:"Tela piña",descripcion:"Microfibra texturizada piña 130 g/m²",ancho:"1.50 m",consumo:"4.00",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"4.00",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"85",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "3 Plazas": { ancho: 200, largo: 230, talla: "3 Plazas", cojines: "N/A", peso: 3.0,
+        materiales: [
+          {item:"01",componente:"Tela piña",descripcion:"Microfibra texturizada piña 130 g/m²",ancho:"1.50 m",consumo:"4.60",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"4.60",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"95",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "cbj-termica": {
+    codigo: "FT-CBJ-016", nombre: "Cobija Térmica", categoria: "Cobijas",
+    imagen: "",
+    descripcion: "Eficiencia térmica al mejor precio. Tela térmica eficiente que retiene el calor corporal sin ser abultada. A partir de 6 unidades, precio irresistible.",
+    proceso: ["Corte de tela térmica","Corte de forro","Ensamble","Pespunte","Revisión","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","no-bleach"],
+    observaciones: "Producto de entrada. Márgenes ajustados. Optimizar consumo al máximo. No incluye relleno adicional.",
+    variantes: {
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 1.8,
+        materiales: [
+          {item:"01",componente:"Tela térmica",descripcion:"Tela térmica 150 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 80 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"60",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "2 1/2 Plazas": { ancho: 180, largo: 220, talla: "2 1/2 Plazas", cojines: "N/A", peso: 2.1,
+        materiales: [
+          {item:"01",componente:"Tela térmica",descripcion:"Tela térmica 150 g/m²",ancho:"1.50 m",consumo:"4.00",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 80 g/m²",ancho:"1.50 m",consumo:"4.00",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"70",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "3 Plazas": { ancho: 200, largo: 230, talla: "3 Plazas", cojines: "N/A", peso: 2.5,
+        materiales: [
+          {item:"01",componente:"Tela térmica",descripcion:"Tela térmica 150 g/m²",ancho:"1.50 m",consumo:"4.60",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 80 g/m²",ancho:"1.50 m",consumo:"4.60",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"80",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+  "cbj-texturizada-lila": {
+    codigo: "FT-CBJ-017", nombre: "Cobija Texturizada Lila", categoria: "Cobijas",
+    imagen: "COBIJAS/COBIJA TEXTURIZADA PURPURA.jpeg",
+    descripcion: "Geometría texturizada en lila púrpura. Diseño moderno que aporta dimensión única al dormitorio.",
+    proceso: ["Corte de tela texturizada","Corte de forro","Ensamble","Pespunte decorativo","Revisión","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja","no-bleach"],
+    observaciones: "La textura geométrica requiere prensa de teflón al coser. No aplastar el relieve.",
+    variantes: {
+      "2 Plazas": { ancho: 160, largo: 210, talla: "2 Plazas", cojines: "N/A", peso: 2.2,
+        materiales: [
+          {item:"01",componente:"Tela texturizada",descripcion:"Microfibra texturizada geométrica 140 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"02",componente:"Forro",descripcion:"Microfibra lisa 90 g/m²",ancho:"1.50 m",consumo:"3.50",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"75",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta de cuidado",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+
+  "sab-algodon": {
+    codigo: "FT-SAB-001", nombre: "Sábanas 100% Algodón Premium", categoria: "Sábanas",
+    descripcion: "Juego de sábanas en algodón peinado 100%. Suaves, frescas y duraderas. Disponibles en todos los tamaños.",
+    proceso: ["Corte de sábana ajustable","Corte de sábana plana","Corte de fundas","Confección de elástico","Revisión de puntadas","Doblado y empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-media","no-bleach"],
+    observaciones: "Usar algodón peinado 30/1 o superior. Verificar encogimiento previo al corte. Tolerancia: ±1.5 cm.",
+    variantes: {
+      "Plaza": { ancho: 100, largo: 190, talla: "Plaza", cojines: "1 funda 50×70 cm", peso: 0.9,
+        materiales: [
+          {item:"01",componente:"Tela algodón",descripcion:"Algodón peinado 144 hilos",ancho:"2.40 m",consumo:"4.20",unidad:"m"},
+          {item:"02",componente:"Elástico",descripcion:"Elástico trenzado 2 cm",ancho:"-",consumo:"2.00",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo algodón 30/1",ancho:"-",consumo:"45",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta 100% algodón",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "Plaza y media": { ancho: 110, largo: 200, talla: "Plaza y media", cojines: "1 funda 50×70 cm", peso: 1.0,
+        materiales: [
+          {item:"01",componente:"Tela algodón",descripcion:"Algodón peinado 144 hilos",ancho:"2.40 m",consumo:"4.60",unidad:"m"},
+          {item:"02",componente:"Elástico",descripcion:"Elástico trenzado 2 cm",ancho:"-",consumo:"2.20",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo algodón 30/1",ancho:"-",consumo:"50",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta 100% algodón",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "2 Plazas": { ancho: 140, largo: 210, talla: "2 Plazas", cojines: "2 fundas 50×70 cm", peso: 1.3,
+        materiales: [
+          {item:"01",componente:"Tela algodón",descripcion:"Algodón peinado 144 hilos",ancho:"2.40 m",consumo:"5.20",unidad:"m"},
+          {item:"02",componente:"Elástico",descripcion:"Elástico trenzado 2 cm",ancho:"-",consumo:"2.80",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo algodón 30/1",ancho:"-",consumo:"60",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta 100% algodón",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "Queen": { ancho: 160, largo: 220, talla: "Queen", cojines: "2 fundas 50×75 cm", peso: 1.6,
+        materiales: [
+          {item:"01",componente:"Tela algodón",descripcion:"Algodón peinado 144 hilos",ancho:"2.40 m",consumo:"6.00",unidad:"m"},
+          {item:"02",componente:"Elástico",descripcion:"Elástico trenzado 2 cm",ancho:"-",consumo:"3.20",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo algodón 30/1",ancho:"-",consumo:"70",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta 100% algodón",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "King": { ancho: 180, largo: 230, talla: "King", cojines: "2 fundas 50×75 cm", peso: 1.9,
+        materiales: [
+          {item:"01",componente:"Tela algodón",descripcion:"Algodón peinado 144 hilos",ancho:"2.40 m",consumo:"6.80",unidad:"m"},
+          {item:"02",componente:"Elástico",descripcion:"Elástico trenzado 2 cm",ancho:"-",consumo:"3.60",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo algodón 30/1",ancho:"-",consumo:"80",unidad:"m"},
+          {item:"04",componente:"Etiqueta",descripcion:"Etiqueta 100% algodón",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  },
+
+  "alm-premium": {
+    codigo: "FT-ALM-001", nombre: "Almohadas Suaves Premium", categoria: "Almohadas",
+    descripcion: "Almohadas en fibra suave con funda de algodón. Soporte perfecto para descanso sin interrupciones.",
+    proceso: ["Corte de funda","Confección de funda con cierre","Relleno de fibra siliconada","Cierre y revisión","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja"],
+    observaciones: "Cantidad de relleno según firmeza requerida. Empacar comprimido para reducir volumen de transporte.",
+    variantes: {
+      "Estándar": { ancho: 50, largo: 70, talla: "Estándar", cojines: "N/A", peso: 0.8,
+        materiales: [
+          {item:"01",componente:"Tela funda",descripcion:"Percal algodón 50/50",ancho:"1.50 m",consumo:"0.80",unidad:"m"},
+          {item:"02",componente:"Relleno",descripcion:"Fibra siliconada 100% poliéster",ancho:"-",consumo:"450",unidad:"g"},
+          {item:"03",componente:"Cierre",descripcion:"Cierre invisible 40 cm",ancho:"-",consumo:"1",unidad:"und"},
+          {item:"04",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"15",unidad:"m"}
+        ]},
+      "Queen": { ancho: 50, largo: 75, talla: "Queen", cojines: "N/A", peso: 0.9,
+        materiales: [
+          {item:"01",componente:"Tela funda",descripcion:"Percal algodón 50/50",ancho:"1.50 m",consumo:"0.85",unidad:"m"},
+          {item:"02",componente:"Relleno",descripcion:"Fibra siliconada 100% poliéster",ancho:"-",consumo:"550",unidad:"g"},
+          {item:"03",componente:"Cierre",descripcion:"Cierre invisible 40 cm",ancho:"-",consumo:"1",unidad:"und"},
+          {item:"04",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"18",unidad:"m"}
+        ]},
+      "King": { ancho: 50, largo: 90, talla: "King", cojines: "N/A", peso: 1.1,
+        materiales: [
+          {item:"01",componente:"Tela funda",descripcion:"Percal algodón 50/50",ancho:"1.50 m",consumo:"1.00",unidad:"m"},
+          {item:"02",componente:"Relleno",descripcion:"Fibra siliconada 100% poliéster",ancho:"-",consumo:"700",unidad:"g"},
+          {item:"03",componente:"Cierre",descripcion:"Cierre invisible 40 cm",ancho:"-",consumo:"1",unidad:"und"},
+          {item:"04",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"20",unidad:"m"}
+        ]}
+    }
+  },
+
+  "ht-sab-bramante": {
+    codigo: "FT-HT-001", nombre: "Sábana Bramante Dubai", categoria: "Hotel",
+    descripcion: "50% algodón / 50% poliéster. 144 hilos. Suave, ligera y fresca. Alta resistencia al uso hotelero.",
+    proceso: ["Corte de sábana plana","Corte de sábana ajustable","Corte de fundas","Confección con overlock","Revisión de resistencia","Empaque institucional"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-media","no-bleach"],
+    observaciones: "Color blanco estándar. Resistencia mínima a 50 lavados industriales. Incluir etiqueta de propiedad del hotel si se requiere.",
+    variantes: {
+      "Plaza": { ancho: 100, largo: 190, talla: "Plaza", cojines: "2 fundas 50×70 cm", peso: 0.8,
+        materiales: [
+          {item:"01",componente:"Tela bramante",descripcion:"Polialgodón 144 hilos 50/50",ancho:"2.40 m",consumo:"4.00",unidad:"m"},
+          {item:"02",componente:"Elástico",descripcion:"Elástico industrial 2.5 cm",ancho:"-",consumo:"2.00",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"40",unidad:"m"}
+        ]},
+      "2 Plazas": { ancho: 140, largo: 210, talla: "2 Plazas", cojines: "2 fundas 50×70 cm", peso: 1.2,
+        materiales: [
+          {item:"01",componente:"Tela bramante",descripcion:"Polialgodón 144 hilos 50/50",ancho:"2.40 m",consumo:"5.00",unidad:"m"},
+          {item:"02",componente:"Elástico",descripcion:"Elástico industrial 2.5 cm",ancho:"-",consumo:"2.80",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"55",unidad:"m"}
+        ]},
+      "Queen": { ancho: 160, largo: 220, talla: "Queen", cojines: "2 fundas 50×75 cm", peso: 1.5,
+        materiales: [
+          {item:"01",componente:"Tela bramante",descripcion:"Polialgodón 144 hilos 50/50",ancho:"2.40 m",consumo:"5.80",unidad:"m"},
+          {item:"02",componente:"Elástico",descripcion:"Elástico industrial 2.5 cm",ancho:"-",consumo:"3.20",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"65",unidad:"m"}
+        ]},
+      "King": { ancho: 180, largo: 230, talla: "King", cojines: "2 fundas 50×75 cm", peso: 1.8,
+        materiales: [
+          {item:"01",componente:"Tela bramante",descripcion:"Polialgodón 144 hilos 50/50",ancho:"2.40 m",consumo:"6.60",unidad:"m"},
+          {item:"02",componente:"Elástico",descripcion:"Elástico industrial 2.5 cm",ancho:"-",consumo:"3.60",unidad:"m"},
+          {item:"03",componente:"Hilo",descripcion:"Hilo poliéster 40/2",ancho:"-",consumo:"75",unidad:"m"}
+        ]}
+    }
+  },
+  "ht-alm-dubai": {
+    codigo: "FT-HT-002", nombre: "Almohada Dubai Hotelera", categoria: "Hotel",
+    descripcion: "Fibra siliconada 100% poliéster. Firmeza baja a media. Hipoalergénica, antiácaros y antibacteriana.",
+    proceso: ["Corte de funda","Confección con cierre reforzado","Relleno de fibra siliconada","Cierre y revisión","Empaque"],
+    cuidado: ["lavado-maquina","secado-sombra","plancha-baja"],
+    observaciones: "Empacar en bolsa individual. Incluir instrucciones de lavado para uso hotelero.",
+    variantes: {
+      "90x50 cm": { ancho: 50, largo: 90, talla: "90×50 cm", cojines: "N/A", peso: 0.9,
+        materiales: [
+          {item:"01",componente:"Tela funda",descripcion:"Percal polialgodón 50/50",ancho:"1.50 m",consumo:"0.90",unidad:"m"},
+          {item:"02",componente:"Relleno",descripcion:"Fibra siliconada 100% poliéster",ancho:"-",consumo:"550",unidad:"g"},
+          {item:"03",componente:"Cierre",descripcion:"Cierre reforzado 50 cm",ancho:"-",consumo:"1",unidad:"und"}
+        ]},
+      "75x50 cm": { ancho: 50, largo: 75, talla: "75×50 cm", cojines: "N/A", peso: 0.7,
+        materiales: [
+          {item:"01",componente:"Tela funda",descripcion:"Percal polialgodón 50/50",ancho:"1.50 m",consumo:"0.75",unidad:"m"},
+          {item:"02",componente:"Relleno",descripcion:"Fibra siliconada 100% poliéster",ancho:"-",consumo:"400",unidad:"g"},
+          {item:"03",componente:"Cierre",descripcion:"Cierre reforzado 40 cm",ancho:"-",consumo:"1",unidad:"und"}
+        ]}
+    }
+  }
+};
+
+const STORAGE_KEY = 'ft_fabitex_fichas';
+let fichas = [];
+let currentId = null;
+let currentFicha = null;
+
+function loadData() {
+  try { fichas = JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch(e) { fichas = []; }
+  if (!fichas.length) seedDemo();
+}
+function saveData() { localStorage.setItem(STORAGE_KEY, JSON.stringify(fichas)); }
+
+function seedDemo() {
+  Object.keys(catalogoBase).forEach(key => {
+    const base = catalogoBase[key];
+    const primeraPlaza = Object.keys(base.variantes)[0];
+    fichas.push({
+      id: key,
+      codigo: base.codigo,
+      nombre: base.nombre,
+      categoria: base.categoria,
+      imagen: base.imagen || "",
+      fecha: new Date().toISOString().slice(0,10),
+      version: "v1.0",
+      responsable: "",
+      descripcion: base.descripcion,
+      proceso: base.proceso,
+      cuidado: base.cuidado,
+      observaciones: base.observaciones,
+      variantes: JSON.parse(JSON.stringify(base.variantes)),
+      plazaActiva: primeraPlaza,
+      fotos: {}
+    });
+  });
+  saveData();
+}
+
+function showPage(id) {
+  document.getElementById('page-dashboard').classList.toggle('hidden', id !== 'dashboard');
+  document.getElementById('page-form').classList.toggle('hidden', id !== 'form');
+  window.scrollTo(0,0);
+}
+function goDashboard() { currentId = null; currentFicha = null; renderDashboard(); showPage('dashboard'); }
+
+function editProduct(id) {
+  currentId = id;
+  currentFicha = fichas.find(x => x.id === id);
+  if (!currentFicha) return;
+  document.getElementById('form-title').textContent = 'Ficha Técnica: ' + currentFicha.nombre;
+  document.getElementById('btn-delete').classList.remove('hidden');
+  populateForm(currentFicha);
+  showPage('form');
+}
+
+const categorias = ["Edredones","Cobertores","Cobijas","Sábanas","Almohadas","Hotel"];
+let categoriaActiva = "todos";
+
+function renderDashboard() {
+  const q = (document.getElementById('search-input').value || '').toLowerCase();
+
+  const catContainer = document.getElementById('catFilters');
+  let catHtml = `<div class="cat-pill ${categoriaActiva==='todos'?'active':''}" onclick="setCat('todos')">Todos</div>`;
+  categorias.forEach(c => {
+    const count = fichas.filter(f => f.categoria === c).length;
+    catHtml += `<div class="cat-pill ${categoriaActiva===c?'active':''}" onclick="setCat('${c}')">${c} (${count})</div>`;
+  });
+  catContainer.innerHTML = catHtml;
+
+  document.getElementById('stat-total').textContent = fichas.length;
+  document.getElementById('stat-edredones').textContent = fichas.filter(p => p.categoria === 'Edredones').length;
+  document.getElementById('stat-cobertores').textContent = fichas.filter(p => p.categoria === 'Cobertores').length;
+  document.getElementById('stat-cobijas').textContent = fichas.filter(p => p.categoria === 'Cobijas').length;
+  document.getElementById('stat-sabanas').textContent = fichas.filter(p => p.categoria === 'Sábanas').length;
+  document.getElementById('stat-hotel').textContent = fichas.filter(p => p.categoria === 'Hotel').length;
+
+  const filtered = fichas.filter(p => {
+    const matchQ = !q || [p.nombre, p.codigo, p.categoria].some(v => (v||'').toLowerCase().includes(q));
+    const matchC = categoriaActiva === 'todos' || p.categoria === categoriaActiva;
+    return matchQ && matchC;
+  });
+
+  const container = document.getElementById('product-list');
+  if (!filtered.length) {
+    container.innerHTML = `<div class="empty-state"><h3>No hay fichas técnicas</h3><p>Usa el catálogo base o crea una nueva ficha.</p></div>`;
+    return;
+  }
+
+  container.innerHTML = '<div class="product-grid">' + filtered.map(p => {
+    const badgeClass = 'badge-' + p.categoria.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z]/g,'');
+    const plazas = Object.keys(p.variantes || {}).join(' · ');
+    const imgHtml = p.imagen ? `<div class="product-card-img"><img src="${p.imagen}" alt="${p.nombre}" loading="lazy" onerror="this.style.display='none'"></div>` : '';
+    return `<div class="product-card" onclick="editProduct('${p.id}')">
+      ${imgHtml}
+      <span class="badge ${badgeClass}">${p.categoria}</span>
+      <h3>${p.nombre}</h3>
+      <div class="meta">${p.codigo} · Versión ${p.version}</div>
+      <div class="dims">Plazas: ${plazas || 'N/A'}</div>
+      <div class="footer">
+        <span class="date">${p.fecha || 'Sin fecha'}</span>
+        <span style="font-size:11px;color:var(--text-ter)">✏️ Editar</span>
+      </div>
+    </div>`;
+  }).join('') + '</div>';
+}
+
+function setCat(cat) { categoriaActiva = cat; renderDashboard(); }
+
+function populateForm(p) {
+  document.getElementById('f-codigo').value = p.codigo || '';
+  document.getElementById('f-nombre').value = p.nombre || '';
+  document.getElementById('f-categoria').value = p.categoria || '';
+  document.getElementById('f-fecha').value = p.fecha || '';
+  document.getElementById('f-version').value = p.version || '';
+  document.getElementById('f-responsable').value = p.responsable || '';
+  document.getElementById('f-descripcion').value = p.descripcion || '';
+  document.getElementById('f-obs').value = p.observaciones || '';
+
+  document.querySelectorAll('.care-item').forEach(el => el.classList.remove('selected'));
+  (p.cuidado || []).forEach(v => {
+    const el = document.querySelector('.care-item[data-value="'+v+'"]');
+    if(el) el.classList.add('selected');
+  });
+
+  const procList = document.getElementById('f-proc');
+  procList.innerHTML = '';
+  (p.proceso || []).forEach(step => {
+    const li = document.createElement('li');
+    li.innerHTML = `<input value="${esc(step)}">`;
+    procList.appendChild(li);
+  });
+
+  const plazaSelect = document.getElementById('f-plaza');
+  plazaSelect.innerHTML = '<option value="">-- Seleccione una plaza --</option>';
+  Object.keys(p.variantes || {}).forEach(plaza => {
+    const opt = document.createElement('option');
+    opt.value = plaza; opt.textContent = plaza;
+    if (plaza === p.plazaActiva) opt.selected = true;
+    plazaSelect.appendChild(opt);
+  });
+
+  if (p.plazaActiva && p.variantes[p.plazaActiva]) {
+    cargarVariante(p.variantes[p.plazaActiva]);
+  } else {
+    clearVariantFields();
+  }
+
+  const catalogImg = document.getElementById('f-catalog-img');
+  const catalogWrap = document.getElementById('f-catalog-img-wrap');
+  if (catalogImg && catalogWrap) {
+    if (p.imagen) {
+      catalogImg.src = p.imagen;
+      catalogImg.style.display = 'block';
+      catalogWrap.style.display = 'block';
+    } else {
+      catalogImg.style.display = 'none';
+      catalogWrap.style.display = 'none';
+    }
+  }
+}
+
+function cargarVariante(v) {
+  document.getElementById('f-ancho').value = v.ancho || '';
+  document.getElementById('f-largo').value = v.largo || '';
+  calcDims();
+  document.getElementById('f-talla').value = v.talla || '';
+  document.getElementById('f-cojines').value = v.cojines || '';
+  document.getElementById('f-peso').value = v.peso || '';
+
+  const tbody = document.getElementById('f-bom-body');
+  tbody.innerHTML = '';
+  (v.materiales || []).forEach(m => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td class="item-num">${m.item}</td><td><input value="${esc(m.componente)}"></td><td><input value="${esc(m.descripcion)}"></td><td><input value="${esc(m.ancho)}"></td><td><input value="${esc(m.consumo)}"></td><td><input value="${esc(m.unidad)}"></td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+function clearVariantFields() {
+  document.getElementById('f-ancho').value = '';
+  document.getElementById('f-largo').value = '';
+  document.getElementById('f-dimensiones').value = '';
+  document.getElementById('f-talla').value = '';
+  document.getElementById('f-cojines').value = '';
+  document.getElementById('f-peso').value = '';
+  document.getElementById('f-bom-body').innerHTML = '';
+}
+
+function cambiarPlaza() {
+  if (!currentFicha) return;
+  const plazaSelect = document.getElementById('f-plaza');
+  const nuevaPlaza = plazaSelect.value;
+  const plazaAnterior = currentFicha.plazaActiva;
+
+  // Guardar automáticamente la plaza anterior antes de cambiar (si existe y tiene datos)
+  if (plazaAnterior && currentFicha.variantes[plazaAnterior]) {
+    guardarVarianteActual(true); // true = modo silencioso (sin alert)
+  }
+
+  if (!nuevaPlaza) { clearVariantFields(); currentFicha.plazaActiva = null; return; }
+
+  currentFicha.plazaActiva = nuevaPlaza;
+  if (currentFicha.variantes[nuevaPlaza]) {
+    cargarVariante(currentFicha.variantes[nuevaPlaza]);
+  } else {
+    // Nueva plaza sin datos: inicializar vacía
+    clearVariantFields();
+    document.getElementById('f-talla').value = nuevaPlaza;
+  }
+}
+
+function guardarVarianteActual(silencioso) {
+  if (!currentFicha || !currentFicha.plazaActiva) { 
+    if (!silencioso) alert('Selecciona una plaza primero.'); 
+    return; 
+  }
+
+  const plaza = currentFicha.plazaActiva;
+  const materiales = Array.from(document.querySelectorAll('#f-bom-body tr')).map((tr, i) => ({
+    item: String(i+1).padStart(2,'0'),
+    componente: tr.children[1].querySelector('input').value,
+    descripcion: tr.children[2].querySelector('input').value,
+    ancho: tr.children[3].querySelector('input').value,
+    consumo: tr.children[4].querySelector('input').value,
+    unidad: tr.children[5].querySelector('input').value,
+  }));
+
+  currentFicha.variantes[plaza] = {
+    ancho: document.getElementById('f-ancho').value,
+    largo: document.getElementById('f-largo').value,
+    talla: document.getElementById('f-talla').value,
+    cojines: document.getElementById('f-cojines').value,
+    peso: document.getElementById('f-peso').value,
+    materiales: materiales
+  };
+  saveData();
+  if (!silencioso) alert('✅ Consumos y dimensiones guardados para ' + plaza);
+}
+
+function calcDims() {
+  const a = document.getElementById('f-ancho').value;
+  const l = document.getElementById('f-largo').value;
+  document.getElementById('f-dimensiones').value = (a && l) ? `${a} cm × ${l} cm` : '';
+}
+
+function esc(s) { return (s || '').replace(/"/g, '&quot;'); }
+
+function addBomRow() {
+  const tbody = document.getElementById('f-bom-body');
+  const num = String(tbody.children.length + 1).padStart(2, '0');
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td class="item-num">${num}</td><td><input placeholder="Componente"></td><td><input placeholder="Descripción"></td><td><input placeholder="-"></td><td><input placeholder="0"></td><td><input placeholder="und"></td>`;
+  tbody.appendChild(tr);
+}
+function removeBomRow() {
+  const tbody = document.getElementById('f-bom-body');
+  if (tbody.children.length > 1) tbody.removeChild(tbody.lastElementChild);
+}
+function addProcessStep() {
+  const list = document.getElementById('f-proc');
+  const li = document.createElement('li');
+  li.innerHTML = '<input placeholder="Describe el paso de manufactura">';
+  list.appendChild(li);
+}
+function removeProcessStep() {
+  const list = document.getElementById('f-proc');
+  if (list.children.length > 1) list.removeChild(list.lastElementChild);
+}
+function toggleCare(el) { el.classList.toggle('selected'); }
+
+function previewImage(input, previewId) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = document.getElementById(previewId);
+    img.src = e.target.result;
+    img.style.display = 'block';
+  };
+  reader.readAsDataURL(file);
+}
+
+function agregarNuevaPlaza() {
+  if (!currentFicha) { alert('Primero debes abrir una ficha técnica.'); return; }
+
+  const input = document.getElementById('f-nueva-plaza');
+  const nombrePlaza = input.value.trim();
+
+  if (!nombrePlaza) { alert('Escribe un nombre para la nueva plaza.'); return; }
+  if (currentFicha.variantes[nombrePlaza]) { alert('Ya existe una plaza con ese nombre.'); return; }
+
+  // Guardar la plaza actual antes de cambiar
+  if (currentFicha.plazaActiva && currentFicha.variantes[currentFicha.plazaActiva]) {
+    guardarVarianteActual(true);
+  }
+
+  // Crear nueva plaza vacía copiando la estructura de la plaza activa (si existe) o vacía
+  const plazaBase = currentFicha.plazaActiva && currentFicha.variantes[currentFicha.plazaActiva] 
+    ? JSON.parse(JSON.stringify(currentFicha.variantes[currentFicha.plazaActiva])) 
+    : { ancho: '', largo: '', talla: nombrePlaza, cojines: '', peso: '', materiales: [] };
+
+  // Si es copia, limpiamos los valores específicos pero mantenemos la estructura de materiales
+  if (plazaBase.materiales && plazaBase.materiales.length > 0) {
+    plazaBase.materiales = plazaBase.materiales.map(m => ({
+      item: m.item,
+      componente: m.componente,
+      descripcion: m.descripcion,
+      ancho: m.ancho,
+      consumo: '',
+      unidad: m.unidad
+    }));
+  }
+  plazaBase.talla = nombrePlaza;
+
+  currentFicha.variantes[nombrePlaza] = plazaBase;
+  currentFicha.plazaActiva = nombrePlaza;
+  saveData();
+
+  // Actualizar el select
+  const select = document.getElementById('f-plaza');
+  const opt = document.createElement('option');
+  opt.value = nombrePlaza;
+  opt.textContent = nombrePlaza;
+  opt.selected = true;
+  select.appendChild(opt);
+
+  // Cargar la nueva plaza
+  cargarVariante(plazaBase);
+  input.value = '';
+
+  alert('✅ Plaza "' + nombrePlaza + '" agregada. Ajusta las dimensiones y consumos, luego guarda.');
+}
+
+function eliminarPlazaActual() {
+  if (!currentFicha || !currentFicha.plazaActiva) { alert('No hay plaza seleccionada.'); return; }
+  const plaza = currentFicha.plazaActiva;
+  if (!confirm('¿Eliminar la plaza "' + plaza + '"? Se perderán sus datos de dimensiones y materiales.')) return;
+
+  delete currentFicha.variantes[plaza];
+  currentFicha.plazaActiva = null;
+  saveData();
+
+  // Recargar el select
+  const select = document.getElementById('f-plaza');
+  select.innerHTML = '<option value="">-- Seleccione una plaza --</option>';
+  Object.keys(currentFicha.variantes || {}).forEach(p => {
+    const opt = document.createElement('option');
+    opt.value = p; opt.textContent = p;
+    select.appendChild(opt);
+  });
+  clearVariantFields();
+  alert('Plaza eliminada.');
+}
+
+function gatherForm() {
+  const proceso = Array.from(document.querySelectorAll('#f-proc li')).map(li => li.querySelector('input').value);
+  const cuidado = Array.from(document.querySelectorAll('.care-item.selected')).map(el => el.dataset.value);
+
+  if (currentFicha && currentFicha.plazaActiva) {
+    guardarVarianteActual();
+  }
+
+  return {
+    id: currentId,
+    codigo: document.getElementById('f-codigo').value,
+    nombre: document.getElementById('f-nombre').value,
+    categoria: document.getElementById('f-categoria').value,
+    fecha: document.getElementById('f-fecha').value,
+    version: document.getElementById('f-version').value,
+    responsable: document.getElementById('f-responsable').value,
+    descripcion: document.getElementById('f-descripcion').value,
+    proceso, cuidado,
+    observaciones: document.getElementById('f-obs').value,
+    variantes: currentFicha ? currentFicha.variantes : {},
+    plazaActiva: currentFicha ? currentFicha.plazaActiva : null
+  };
+}
+
+function saveProduct() {
+  if (!currentFicha) return;
+  const data = gatherForm();
+  if (!data.nombre.trim()) { alert('El nombre del producto es obligatorio.'); return; }
+  if (!data.codigo.trim()) { alert('El código es obligatorio.'); return; }
+
+  currentFicha.codigo = data.codigo;
+  currentFicha.nombre = data.nombre;
+  currentFicha.categoria = data.categoria;
+  currentFicha.fecha = data.fecha;
+  currentFicha.version = data.version;
+  currentFicha.responsable = data.responsable;
+  currentFicha.descripcion = data.descripcion;
+  currentFicha.proceso = data.proceso;
+  currentFicha.cuidado = data.cuidado;
+  currentFicha.observaciones = data.observaciones;
+
+  saveData();
+  goDashboard();
+}
+
+function confirmDelete() { document.getElementById('modal-delete').classList.add('active'); }
+function closeModal() { document.getElementById('modal-delete').classList.remove('active'); }
+function doDelete() {
+  if (currentId) { fichas = fichas.filter(p => p.id !== currentId); saveData(); }
+  closeModal();
+  goDashboard();
+}
+
+function exportAllData() {
+  const blob = new Blob([JSON.stringify(fichas, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'fichas-tecnicas-fabitex.json'; a.click(); URL.revokeObjectURL(url);
+}
+function importAllData(input) {
+  const file = input.files[0]; if(!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (Array.isArray(data)) { fichas = data; saveData(); renderDashboard(); alert('Datos importados correctamente.'); }
+      else { alert('El archivo no tiene el formato correcto.'); }
+    } catch(err) { alert('Error al leer el archivo.'); }
+  };
+  reader.readAsText(file);
+  input.value = '';
+}
+
+loadData();
+renderDashboard();
+</script>
+</body>
+</html>
